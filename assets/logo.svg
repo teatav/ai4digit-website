@@ -1,0 +1,16 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AI4DigiT butterfly logo">
+  <!-- Antennae -->
+  <path d="M60 58 C56 44 50 36 42 30" stroke="#5E6D82" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+  <path d="M60 58 C64 44 70 36 78 30" stroke="#5E6D82" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+  <circle cx="42" cy="30" r="2.6" fill="#5E6D82"/>
+  <circle cx="78" cy="30" r="2.6" fill="#5E6D82"/>
+  <!-- Four overlapping petals (multiply blend creates the blended centre) -->
+  <g style="mix-blend-mode:multiply">
+    <ellipse cx="44" cy="48" rx="20" ry="13" transform="rotate(-35 44 48)" fill="#F4796A"/>
+    <ellipse cx="76" cy="48" rx="20" ry="13" transform="rotate(35 76 48)" fill="#F5A57A"/>
+    <ellipse cx="44" cy="74" rx="20" ry="13" transform="rotate(35 44 74)" fill="#87C0E0"/>
+    <ellipse cx="76" cy="74" rx="20" ry="13" transform="rotate(-35 76 74)" fill="#4EC28A"/>
+  </g>
+  <!-- Body -->
+  <ellipse cx="60" cy="61" rx="3.2" ry="14" fill="#3C4A5A"/>
+</svg>

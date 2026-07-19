@@ -1,0 +1,306 @@
+/* ============================================================
+   AI4DigiT — European Digital Innovation Hub
+   Brand system per Communication & Dissemination Handbook (D2.1)
+   ============================================================ */
+
+:root {
+  /* Primary pillar colours */
+  --coral: #F4796A;   /* Digital Assessment */
+  --peach: #F5A57A;   /* Training & Education */
+  --sky:   #87C0E0;   /* Finance & Matchmaking */
+  --mint:  #4EC28A;   /* Ecosystem & Network */
+
+  /* 10% tints */
+  --coral-10: #FDE9E7;
+  --peach-10: #FDF0E5;
+  --sky-10:   #E0F0FA;
+  --mint-10:  #E0F7EC;
+
+  /* Neutrals */
+  --steel:    #5E6D82;
+  --navy:     #1A3A6B;
+  --light-grey: #F2F5FA;
+  --mid-grey: #D0D8E4;
+  --charcoal: #3C4A5A;
+  --white:    #FFFFFF;
+
+  --eu-blue:  #003399;
+  --eu-yellow:#FFCC00;
+
+  --maxw: 1140px;
+  --radius: 14px;
+  --shadow: 0 12px 40px rgba(26, 58, 107, 0.10);
+  --shadow-sm: 0 4px 16px rgba(26, 58, 107, 0.08);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+
+body {
+  margin: 0;
+  font-family: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--charcoal);
+  line-height: 1.6;
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, .display {
+  font-family: "Montserrat", system-ui, sans-serif;
+  color: var(--navy);
+  line-height: 1.2;
+  margin: 0 0 .5em;
+}
+
+h2 { font-size: clamp(1.6rem, 3.5vw, 2.3rem); }
+h3 { font-size: 1.2rem; }
+
+a { color: var(--coral); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+p { margin: 0 0 1rem; }
+
+.container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+section { padding: 84px 0; }
+.section-light { background: var(--light-grey); }
+
+.eyebrow {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: .78rem;
+  color: var(--coral);
+  margin-bottom: .6rem;
+}
+
+.lead { font-size: 1.15rem; color: var(--steel); max-width: 760px; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  font-size: .9rem;
+  padding: 13px 28px;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+.btn:hover { text-decoration: none; transform: translateY(-2px); }
+.btn-primary { background: var(--coral); color: var(--white); box-shadow: var(--shadow-sm); }
+.btn-primary:hover { background: #ef6253; }
+.btn-ghost { background: transparent; color: var(--navy); border-color: var(--mid-grey); }
+.btn-ghost:hover { border-color: var(--navy); }
+
+/* ---------- Header / Nav ---------- */
+header.site {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,.92);
+  backdrop-filter: saturate(180%) blur(10px);
+  border-bottom: 1px solid var(--mid-grey);
+}
+.nav {
+  display: flex; align-items: center; gap: 18px;
+  height: 72px;
+}
+.brand { display: flex; align-items: center; gap: 12px; margin-right: auto; }
+.brand img { height: 46px; width: 46px; }
+.brand .wordmark { display: flex; flex-direction: column; line-height: 1.05; }
+.brand .wordmark b {
+  font-family: "Montserrat", sans-serif; font-weight: 800;
+  font-size: 1.25rem; color: var(--navy); letter-spacing: .01em;
+}
+.brand .wordmark span { font-size: .68rem; color: var(--steel); letter-spacing: .03em; }
+
+.nav-links { display: flex; gap: 22px; align-items: center; }
+.nav-links a {
+  color: var(--charcoal); font-weight: 600; font-size: .92rem;
+  font-family: "Montserrat", sans-serif; padding: 6px 2px; border-bottom: 2px solid transparent;
+}
+.nav-links a:hover { color: var(--navy); border-bottom-color: var(--coral); text-decoration: none; }
+
+.lang-toggle { display: flex; border: 1px solid var(--mid-grey); border-radius: 999px; overflow: hidden; }
+.lang-toggle button {
+  border: 0; background: transparent; cursor: pointer;
+  font-family: "Montserrat", sans-serif; font-weight: 700; font-size: .8rem;
+  padding: 7px 13px; color: var(--steel);
+}
+.lang-toggle button.active { background: var(--navy); color: var(--white); }
+
+.nav-toggle { display: none; background: none; border: 0; cursor: pointer; padding: 8px; }
+.nav-toggle span { display: block; width: 24px; height: 2px; background: var(--navy); margin: 5px 0; transition: .2s; }
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative; overflow: hidden;
+  background:
+    radial-gradient(900px 500px at 85% -10%, var(--sky-10), transparent 60%),
+    radial-gradient(800px 500px at 5% 110%, var(--mint-10), transparent 55%),
+    var(--white);
+  padding: 96px 0 84px;
+}
+.hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: center; }
+.hero h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); font-weight: 800; }
+.hero h1 .accent { color: var(--coral); }
+.hero .lead { font-size: 1.25rem; margin-bottom: 28px; }
+.hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.hero-art { display: flex; justify-content: center; }
+.hero-art .ring {
+  position: relative; width: 510px; height: 510px; max-width: 88vw;
+  display: grid; place-items: center;
+}
+.hero-art img { width: 64%; filter: drop-shadow(0 18px 40px rgba(26,58,107,.18)); }
+.hero-art .petal-dot { position: absolute; width: 16px; height: 16px; border-radius: 50%; }
+
+.stats { display: flex; gap: 36px; flex-wrap: wrap; margin-top: 40px; }
+.stat b { font-family: "Montserrat", sans-serif; font-size: 2rem; color: var(--navy); display: block; }
+.stat span { color: var(--steel); font-size: .9rem; }
+
+/* ---------- Pillars / Services ---------- */
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+.pillar {
+  background: var(--white); border-radius: var(--radius); padding: 28px 24px;
+  box-shadow: var(--shadow-sm); border-top: 5px solid var(--c);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.pillar:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+.pillar .icon {
+  width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center;
+  background: var(--c); color: #fff; margin-bottom: 16px;
+}
+.pillar .icon svg { width: 28px; height: 28px; }
+.pillar h3 { color: var(--navy); }
+.pillar .codes { font-size: .78rem; font-weight: 700; color: var(--c); letter-spacing: .04em; margin-top: 14px; font-family: "Montserrat",sans-serif; }
+.pillar p { font-size: .94rem; color: var(--steel); margin: 0; }
+
+/* ---------- Partners ---------- */
+.partners { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+.partner {
+  background: var(--white); border: 1px solid var(--mid-grey); border-radius: var(--radius);
+  padding: 26px 22px; text-align: left;
+}
+.partner .tag {
+  display: inline-block; font-family: "Montserrat",sans-serif; font-weight: 800; font-size: 1.4rem;
+  color: var(--white); background: var(--navy); border-radius: 10px; padding: 6px 14px; margin-bottom: 14px;
+}
+.partner.role-coord .tag { background: var(--coral); }
+.partner h3 { font-size: 1.02rem; }
+.partner .role { font-size: .8rem; font-weight: 700; color: var(--coral); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 6px; font-family:"Montserrat",sans-serif; }
+.partner p { font-size: .9rem; color: var(--steel); margin: 0; }
+
+/* ---------- Activities ---------- */
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.card {
+  background: var(--white); border-radius: var(--radius); padding: 26px;
+  box-shadow: var(--shadow-sm);
+}
+.card .kbadge { font-size: 1.8rem; }
+.card h3 { margin-top: 10px; }
+.card p { font-size: .92rem; color: var(--steel); margin: 0; }
+
+/* ---------- Audience chips ---------- */
+.chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+.chip {
+  background: var(--white); border: 1px solid var(--mid-grey); border-radius: 999px;
+  padding: 8px 16px; font-size: .88rem; font-weight: 600; color: var(--navy);
+}
+.chip::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--coral); margin-right: 8px; vertical-align: middle; }
+
+/* ---------- Impact / KPI ---------- */
+.kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+.kpi {
+  background: var(--white); border-radius: var(--radius); padding: 26px; text-align: center;
+  box-shadow: var(--shadow-sm); border-bottom: 4px solid var(--c);
+}
+.kpi b { font-family:"Montserrat",sans-serif; font-size: 2.3rem; color: var(--navy); display:block; }
+.kpi .label { font-weight: 700; color: var(--charcoal); }
+.kpi .sub { font-size: .82rem; color: var(--steel); }
+
+/* ---------- Timeline ---------- */
+.timeline { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+.phase { background: var(--white); border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow-sm); }
+.phase .yr { font-family:"Montserrat",sans-serif; font-weight:800; color: var(--coral); }
+.phase ul { margin: 12px 0 0; padding-left: 18px; color: var(--steel); font-size: .9rem; }
+.phase li { margin-bottom: 6px; }
+
+/* ---------- Newsletter / CTA band ---------- */
+.cta-band {
+  background: linear-gradient(120deg, var(--navy), #234a86);
+  color: var(--white); border-radius: 22px; padding: 48px; text-align: center;
+}
+.cta-band h2 { color: var(--white); }
+.cta-band p { color: rgba(255,255,255,.85); max-width: 620px; margin: 0 auto 24px; }
+.subscribe { display: flex; gap: 10px; max-width: 480px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+.subscribe input {
+  flex: 1 1 240px; padding: 13px 18px; border-radius: 999px; border: 0; font-size: 1rem;
+}
+.subscribe small { display:block; color: rgba(255,255,255,.65); margin-top: 12px; font-size: .8rem; }
+
+/* ---------- Contact ---------- */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.contact-info p { color: var(--steel); }
+.contact-info a { font-weight: 600; }
+
+/* ---------- Footer ---------- */
+footer.site { background: var(--navy); color: rgba(255,255,255,.82); padding: 56px 0 28px; }
+footer.site .cols { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 36px; }
+footer.site h4 { color: var(--white); font-size: 1rem; }
+footer.site a { color: rgba(255,255,255,.82); }
+footer.site a:hover { color: var(--white); }
+footer.site ul { list-style: none; padding: 0; margin: 0; }
+footer.site li { margin-bottom: 8px; font-size: .92rem; }
+.eu-note {
+  display: flex; align-items: center; gap: 14px; margin-top: 28px; padding-top: 22px;
+  border-top: 1px solid rgba(255,255,255,.18); font-size: .85rem;
+}
+.eu-note .eu-logo { flex: 0 0 auto; height: 46px; width: auto; display: block; }
+.copyright { text-align: center; margin-top: 24px; font-size: .82rem; color: rgba(255,255,255,.6); }
+
+/* EU co-funded badge (header) */
+.eu-badge { display: flex; align-items: center; }
+.eu-badge img { height: 32px; width: auto; display: block; }
+
+/* i18n visibility */
+[data-lang-block] { display: none; }
+[data-lang-block].active { display: revert; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 960px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-art { order: -1; }
+  .grid-4, .partners, .kpis { grid-template-columns: repeat(2, 1fr); }
+  .grid-3, .timeline { grid-template-columns: 1fr; }
+  .contact-grid, footer.site .cols { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .nav-links, .eu-badge { display: none; }
+  .nav-links.open {
+    display: flex; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0;
+    background: var(--white); border-bottom: 1px solid var(--mid-grey); padding: 18px 24px; gap: 12px;
+  }
+  .nav-toggle { display: block; }
+  section { padding: 60px 0; }
+  .grid-4, .partners, .kpis { grid-template-columns: 1fr; }
+  .cta-band { padding: 32px 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; transition: none !important; }
+}
+
+/* Focus visibility — WCAG 2.1 AA */
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 3px solid var(--sky); outline-offset: 2px; border-radius: 4px;
+}
+.skip-link {
+  position: absolute; left: -999px; top: 0; background: var(--navy); color: #fff;
+  padding: 10px 16px; z-index: 200; border-radius: 0 0 8px 0;
+}
+.skip-link:focus { left: 0; }
