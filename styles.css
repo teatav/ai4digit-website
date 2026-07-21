@@ -76,7 +76,7 @@ section { padding: 84px 0; }
   margin-bottom: .6rem;
 }
 
-.lead { font-size: 1.15rem; color: var(--steel); max-width: 760px; }
+.lead { font-size: 1.15rem; color: var(--steel); max-width: none; }
 
 /* ---------- Buttons ---------- */
 .btn {
@@ -304,3 +304,9 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   padding: 10px 16px; z-index: 200; border-radius: 0 0 8px 0;
 }
 .skip-link:focus { left: 0; }
+
+/* 10-services list */
+.svc-ul { list-style: none; padding: 0; margin: 14px 0 0; }
+.svc-ul li { position: relative; padding-left: 20px; margin-bottom: 9px; font-size: .95rem; color: var(--charcoal); line-height: 1.35; }
+.svc-ul li::before { content: ""; position: absolute; left: 0; top: .5em; width: 8px; height: 8px; border-radius: 50%; background: var(--coral); }
+#network .btn-ghost { display: inline-block; }
