@@ -125,13 +125,19 @@ header.site {
 }
 .nav-links a:hover { color: var(--navy); border-bottom-color: var(--coral); text-decoration: none; }
 
-.lang-toggle { display: flex; border: 1px solid var(--mid-grey); border-radius: 999px; overflow: hidden; }
+.lang-toggle { display: flex; gap: 8px; align-items: center; }
 .lang-toggle button {
-  border: 0; background: transparent; cursor: pointer;
-  font-family: "Montserrat", sans-serif; font-weight: 700; font-size: .8rem;
-  padding: 7px 13px; color: var(--steel);
+  border: 0; background: transparent; cursor: pointer; padding: 2px; line-height: 0;
+  border-radius: 4px; opacity: .45; filter: grayscale(35%);
+  transition: opacity .15s ease, transform .15s ease;
 }
-.lang-toggle button.active { background: var(--navy); color: var(--white); }
+.lang-toggle button img {
+  display: block; width: 30px; height: 20px; border-radius: 3px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.12);
+}
+.lang-toggle button:hover { opacity: .85; transform: translateY(-1px); }
+.lang-toggle button.active { opacity: 1; filter: none; }
+.lang-toggle button.active img { box-shadow: 0 0 0 2px var(--navy); }
 
 .nav-toggle { display: none; background: none; border: 0; cursor: pointer; padding: 8px; }
 .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--navy); margin: 5px 0; transition: .2s; }
