@@ -214,7 +214,7 @@ if (navToggle) {
 // ── Newsletter subscription (SINGLE OPT-IN) ─────────────────────────────
 // The email is stored immediately (no confirmation click needed).
 // Paste your Google Apps Script Web App URL below (see backend/subscribe.gs).
-const SUBSCRIBE_ENDPOINT = "https://script.google.com/macros/s/AKfycbwVUZwJ_iuvCjDfd9dj1uPqVysrJn4xfmTvUWsKIOTC5MqztMWujaGAJpBdqYMrpa4a/exec"; // e.g. "https://script.google.com/macros/s/XXXX/exec"
+const SUBSCRIBE_ENDPOINT = "https://script.google.com/macros/s/AKfycby7X2zwbH85mMCGh5AG0XQhEjsNsYeb9fQkh94ZHTAqnMFDJlwhvHLxqwSVbJavRMcH/exec"; // e.g. "https://script.google.com/macros/s/XXXX/exec"
 
 const subForm = document.getElementById("subForm");
 if (subForm) {

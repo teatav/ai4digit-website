@@ -1,0 +1,326 @@
+/* ============================================================
+   AI4DigiT — Visual enhancements (LOCAL PREVIEW, additive only)
+   Loaded after styles.css. Removing the <link> reverts everything.
+   ============================================================ */
+
+/* ---------- 1. Scroll progress bar ---------- */
+.scroll-progress {
+  position: fixed; top: 0; left: 0; height: 3px; width: 0; z-index: 300;
+  background: linear-gradient(90deg, var(--coral), var(--peach), var(--sky), var(--mint));
+  transition: width .08s linear;
+}
+
+/* ---------- 2. Hero decorations ---------- */
+.hero { position: relative; isolation: isolate; }
+
+.deco-blobs { position: absolute; inset: 0; z-index: -2; overflow: hidden; pointer-events: none; }
+.blob { position: absolute; border-radius: 50%; filter: blur(60px); opacity: .55; }
+.blob.b1 { width: 440px; height: 440px; background: var(--sky-10);   top: -140px; right: -90px; }
+.blob.b2 { width: 380px; height: 380px; background: var(--mint-10);  bottom: -160px; left: -70px; }
+.blob.b3 { width: 300px; height: 300px; background: var(--coral-10); top: 42%; left: 52%; }
+
+/* faint dot-grid texture over the hero, masked so it fades out */
+.hero::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background-image: radial-gradient(rgba(26,58,107,.07) 1.4px, transparent 1.4px);
+  background-size: 26px 26px;
+  -webkit-mask-image: radial-gradient(760px 420px at 72% 24%, #000, transparent 78%);
+          mask-image: radial-gradient(760px 420px at 72% 24%, #000, transparent 78%);
+}
+
+/* butterfly glow, dashed orbit and floating petal dots */
+.hero-art .ring { isolation: isolate; }
+.ring-glow {
+  position: absolute; width: 72%; height: 72%; border-radius: 50%;
+  background: radial-gradient(circle, rgba(135,192,224,.38), transparent 70%);
+  filter: blur(26px); z-index: -1;
+}
+.orbit {
+  position: absolute; width: 82%; height: 82%; border-radius: 50%;
+  border: 1.5px dashed rgba(26,58,107,.16); z-index: -1;
+  animation: a4d-spin 44s linear infinite;
+}
+.hero-art .petal-dot {
+  position: absolute; width: 18px; height: 18px; border-radius: 50%;
+  box-shadow: 0 6px 18px rgba(26,58,107,.20);
+  animation: a4d-floaty 6s ease-in-out infinite;
+}
+.petal-dot.p1 { background: var(--coral); top: 6%;  left: 22%; }
+.petal-dot.p2 { background: var(--peach); top: 20%; right: 10%; width: 14px; height: 14px; animation-delay: 1.2s; }
+.petal-dot.p3 { background: var(--sky);   bottom: 18%; left: 10%; width: 22px; height: 22px; animation-delay: .6s; }
+.petal-dot.p4 { background: var(--mint);  bottom: 8%;  right: 20%; animation-delay: 1.8s; }
+
+@keyframes a4d-floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+@keyframes a4d-spin   { to { transform: rotate(360deg); } }
+
+/* ---------- 3. Eyebrow accent line ---------- */
+.eyebrow.enh { display: inline-flex; align-items: center; gap: 10px; }
+.eyebrow.enh::before {
+  content: ""; width: 26px; height: 2px; border-radius: 2px;
+  background: linear-gradient(90deg, var(--coral), var(--peach));
+}
+
+/* ---------- 4. Scroll reveal ---------- */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.in { opacity: 1; transform: none; }
+
+/* ---------- 5. Card / pillar polish ---------- */
+.pillar .icon { box-shadow: 0 10px 22px color-mix(in srgb, var(--c) 42%, transparent); }
+.card { transition: transform .18s ease, box-shadow .18s ease; }
+.card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+
+/* subtle dotted texture inside the navy newsletter band */
+.cta-band { position: relative; overflow: hidden; }
+.cta-band::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(rgba(255,255,255,.09) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+}
+.cta-band > * { position: relative; z-index: 1; }
+
+/* ---------- 6. Curved divider into the footer ---------- */
+.footer-wave-wrap { background: var(--light-grey); line-height: 0; }
+.footer-wave { display: block; width: 100%; height: 56px; }
+.footer-wave path { fill: var(--navy); }
+
+/* ---------- 7. Back-to-top button ---------- */
+.to-top {
+  position: fixed; right: 22px; bottom: 22px; width: 46px; height: 46px; border-radius: 50%;
+  background: var(--navy); color: #fff; border: 0; cursor: pointer; display: grid; place-items: center;
+  box-shadow: 0 10px 26px rgba(26,58,107,.30);
+  opacity: 0; transform: translateY(12px); transition: opacity .25s ease, transform .25s ease, background .2s ease;
+  z-index: 200;
+}
+.to-top.show { opacity: 1; transform: none; }
+.to-top:hover { background: #234a86; }
+.to-top svg { width: 20px; height: 20px; }
+
+/* ---------- Motion-safety ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .petal-dot, .orbit { animation: none !important; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
+
+/* ============================================================
+   VERSION 2 — additional graphics (additive)
+   ============================================================ */
+
+/* V2.1 — Cursor-follow spotlight glow on cards & pillars */
+.pillar, .card { --mx: 50%; --my: 0%; }
+.pillar::before, .card::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: radial-gradient(240px circle at var(--mx) var(--my), rgba(244,121,106,.12), transparent 60%);
+  opacity: 0; transition: opacity .3s ease; z-index: 0;
+}
+.pillar:hover::before, .card:hover::before { opacity: 1; }
+.pillar > *, .card > * { position: relative; z-index: 1; }
+
+/* V2.2 — Ghost watermark numbers on the four pillars */
+.pillar { overflow: hidden; }
+.pillar::after {
+  content: attr(data-num); position: absolute; top: 10px; right: 16px;
+  font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 3.8rem;
+  color: var(--c); opacity: .16; line-height: 1; z-index: 0; pointer-events: none;
+}
+
+/* V2.3 — Animated underline that draws under each section title */
+section:not(.hero) h2.reveal::after {
+  content: ""; display: block; height: 3px; width: 0; margin-top: 12px; border-radius: 3px;
+  background: linear-gradient(90deg, var(--coral), var(--peach)); transition: width .7s ease .15s;
+}
+section:not(.hero) h2.reveal.in::after { width: 56px; }
+.cta-band h2.reveal::after {
+  background: linear-gradient(90deg, var(--sky), var(--mint)); margin-left: auto; margin-right: auto;
+}
+
+/* V2.4 — Impact timeline connector + numbered nodes */
+.timeline { position: relative; counter-reset: a4d-phase; }
+.timeline::before {
+  content: ""; position: absolute; top: 26px; left: 9%; right: 9%; height: 2px; z-index: 0;
+  background: linear-gradient(90deg, var(--coral), var(--peach), var(--mint)); opacity: .4;
+}
+.phase { position: relative; z-index: 1; }
+.phase .yr { position: relative; padding-left: 34px; }
+.phase .yr::before {
+  content: counter(a4d-phase); counter-increment: a4d-phase;
+  position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+  width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--coral); color: #fff; font-size: .8rem; font-weight: 800;
+  box-shadow: 0 4px 12px rgba(244,121,106,.42);
+}
+
+/* V2.5 — Chip hover interaction */
+.chip { transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease; }
+.chip:hover { transform: translateY(-3px); box-shadow: 0 8px 18px rgba(26,58,107,.14); border-color: var(--coral); }
+
+/* V2.6 — Network constellation decoration */
+#network { position: relative; overflow: hidden; }
+#network .container { position: relative; z-index: 1; }
+.constellation { position: absolute; top: 0; right: 0; width: 360px; height: 100%; z-index: 0; opacity: .55; pointer-events: none; }
+.constellation .node { animation: a4d-pulse 4s ease-in-out infinite; transform-origin: center; }
+.constellation .node:nth-of-type(2) { animation-delay: .7s; }
+.constellation .node:nth-of-type(3) { animation-delay: 1.4s; }
+.constellation .node:nth-of-type(4) { animation-delay: 2.1s; }
+.constellation .node:nth-of-type(5) { animation-delay: 2.8s; }
+@keyframes a4d-pulse { 0%,100% { opacity: .45; } 50% { opacity: 1; } }
+
+/* V2.7 — Animated gradient shine on the hero accent text */
+.hero h1 .accent {
+  background: linear-gradient(90deg, var(--coral), var(--peach), var(--coral));
+  background-size: 200% auto; -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  animation: a4d-shine 7s linear infinite;
+}
+@keyframes a4d-shine { to { background-position: 200% center; } }
+
+/* V2.8 — Parallax drift wrapper (transform applied via JS) */
+.deco-blobs { transition: transform .3s ease-out; will-change: transform; }
+
+@media (prefers-reduced-motion: reduce) {
+  .constellation .node { animation: none !important; }
+  .hero h1 .accent { animation: none !important; -webkit-text-fill-color: var(--coral); color: var(--coral); }
+  .deco-blobs { transition: none !important; }
+}
+
+/* ============================================================
+   Horizontal timeline component (#impact)
+   ============================================================ */
+#impact .htimeline {
+  position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.htl-track {
+  position: absolute; left: 7%; right: 7%; top: 50%; height: 4px; transform: translateY(-50%);
+  background: linear-gradient(90deg, var(--coral), var(--peach), var(--sky), var(--mint));
+  border-radius: 4px; z-index: 0;
+}
+.htl-item { position: relative; height: 440px; }
+
+/* node sitting on the central line */
+.htl-node {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 3;
+  width: 50px; height: 50px; border-radius: 50%; background: #fff; border: 3px solid var(--coral);
+  display: grid; place-items: center; box-shadow: 0 6px 16px rgba(26,58,107,.18);
+}
+.htl-node span { font-family: "Montserrat", sans-serif; font-weight: 800; color: var(--navy); font-size: 1.1rem; }
+
+/* stem connecting node to card */
+.htl-item::before {
+  content: ""; position: absolute; left: 50%; transform: translateX(-50%);
+  width: 2px; height: 40px; background: var(--mid-grey); z-index: 1;
+}
+.htl-item:nth-child(odd)::before  { bottom: 50%; }   /* stem goes up to a card above */
+.htl-item:nth-child(even)::before { top: 50%; }      /* stem goes down to a card below */
+
+/* card, anchored to the line and growing away from it */
+.htl-card {
+  position: absolute; left: 50%; transform: translateX(-50%); width: 92%;
+  background: #fff; border-radius: 14px; padding: 22px; box-shadow: var(--shadow);
+  border-top: 4px solid var(--coral);
+}
+.htl-item:nth-child(odd) .htl-card  { bottom: calc(50% + 40px); }
+.htl-item:nth-child(even) .htl-card { top: calc(50% + 40px); }
+.htl-card h3 { margin: 0 0 6px; }
+.htl-card p { margin: 0; font-size: .92rem; color: var(--steel); }
+
+.htl-year {
+  display: inline-block; font-family: "Montserrat", sans-serif; font-weight: 800;
+  font-size: .78rem; letter-spacing: .04em; text-transform: uppercase; color: #fff;
+  background: var(--coral); border-radius: 999px; padding: 4px 13px; margin-bottom: 10px;
+}
+
+/* per-phase brand colours */
+.htl-item.i2 .htl-node { border-color: var(--sky); }
+.htl-item.i2 .htl-card { border-top-color: var(--sky); }
+.htl-item.i2 .htl-year { background: var(--sky); }
+.htl-item.i3 .htl-node { border-color: var(--mint); }
+.htl-item.i3 .htl-card { border-top-color: var(--mint); }
+.htl-item.i3 .htl-year { background: var(--mint); }
+
+/* ============================================================
+   "How we share knowledge" — interactive tabbed showcase
+   ============================================================ */
+.ksh { display: grid; grid-template-columns: 320px 1fr; gap: 24px; align-items: stretch; }
+.ksh-tabs { display: flex; flex-direction: column; gap: 12px; }
+.ksh-tab {
+  display: flex; align-items: center; gap: 13px; text-align: left; width: 100%;
+  padding: 15px 16px; border-radius: 14px; border: 1px solid var(--mid-grey); background: #fff;
+  cursor: pointer; font-family: "Montserrat", sans-serif; font-weight: 700; font-size: .98rem;
+  color: var(--navy); transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+}
+.ksh-tab:hover { border-color: var(--c); transform: translateX(4px); }
+.ksh-tab.active { background: var(--c); color: #fff; border-color: var(--c); box-shadow: 0 12px 26px color-mix(in srgb, var(--c) 34%, transparent); }
+.ksh-ic {
+  width: 40px; height: 40px; flex: 0 0 auto; border-radius: 11px; display: grid; place-items: center;
+  background: var(--c); color: #fff; transition: background .18s ease;
+}
+.ksh-ic svg { width: 22px; height: 22px; }
+.ksh-tab.active .ksh-ic { background: rgba(255,255,255,.25); }
+
+.ksh-stage {
+  --c: var(--coral);
+  position: relative; background: #fff; border-radius: 18px; box-shadow: var(--shadow);
+  padding: 40px; display: flex; align-items: center; overflow: hidden;
+  border-left: 5px solid var(--c); transition: border-color .3s ease;
+}
+.ksh-stage::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5;
+  background: radial-gradient(360px circle at 100% 0%, color-mix(in srgb, var(--c) 12%, transparent), transparent 70%);
+  transition: background .3s ease;
+}
+.ksh-panel { display: none; gap: 26px; align-items: center; position: relative; z-index: 1; }
+.ksh-panel.active { display: flex; animation: ksh-in .45s ease; }
+.ksh-panel-ic {
+  width: 84px; height: 84px; flex: 0 0 auto; border-radius: 20px; display: grid; place-items: center;
+  background: var(--c); color: #fff; box-shadow: 0 14px 30px color-mix(in srgb, var(--c) 40%, transparent);
+}
+.ksh-panel-ic svg { width: 42px; height: 42px; }
+.ksh-panel h3 { margin: 0 0 8px; font-size: 1.4rem; color: var(--navy); }
+.ksh-panel p { margin: 0; color: var(--steel); font-size: 1.02rem; line-height: 1.6; }
+@keyframes ksh-in { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: none; } }
+
+@media (max-width: 860px) {
+  .ksh { grid-template-columns: 1fr; }
+  .ksh-tabs { flex-direction: row; flex-wrap: wrap; }
+  .ksh-tab { flex: 1 1 44%; }
+  .ksh-stage { padding: 28px; border-left: 0; border-top: 5px solid var(--coral); }
+  .ksh-panel { flex-direction: column; text-align: center; gap: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ksh-panel.active { animation: none; }
+  .ksh-tab:hover { transform: none; }
+}
+
+/* ============================================================
+   Newsletter badge (animated envelope with broadcast rings)
+   ============================================================ */
+.news-badge { position: relative; width: 74px; height: 74px; margin: 0 auto 20px; display: grid; place-items: center; }
+.news-badge .nb-circle {
+  width: 74px; height: 74px; border-radius: 50%; background: #fff; display: grid; place-items: center;
+  box-shadow: 0 12px 30px rgba(0,0,0,.28); position: relative; z-index: 2;
+}
+.news-badge .nb-circle svg { width: 34px; height: 34px; color: var(--coral); }
+.news-badge .nb-ring {
+  position: absolute; inset: 0; border-radius: 50%; border: 2px solid rgba(255,255,255,.55);
+  animation: nb-pulse 2.8s ease-out infinite; z-index: 1;
+}
+.news-badge .nb-ring.r2 { animation-delay: 1.4s; }
+@keyframes nb-pulse { 0% { transform: scale(1); opacity: .6; } 100% { transform: scale(1.95); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .news-badge .nb-ring { animation: none !important; opacity: 0; } }
+
+/* responsive: collapse to a clean vertical timeline */
+@media (max-width: 860px) {
+  #impact .htimeline { grid-template-columns: 1fr; gap: 18px; }
+  .htl-track { display: none; }
+  .htl-item { height: auto; padding-left: 62px; }
+  .htl-item::before,
+  .htl-item:nth-child(odd)::before,
+  .htl-item:nth-child(even)::before {
+    left: 23px; top: 10px; bottom: 10px; height: auto; transform: none;
+  }
+  .htl-node { position: absolute; top: 12px; left: 23px; transform: translateX(-50%); width: 44px; height: 44px; }
+  .htl-card,
+  .htl-item:nth-child(odd) .htl-card,
+  .htl-item:nth-child(even) .htl-card {
+    position: static; transform: none; width: auto; top: auto; bottom: auto;
+  }
+}

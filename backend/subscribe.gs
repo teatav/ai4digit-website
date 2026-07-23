@@ -47,8 +47,14 @@ function doPost(e) {
     }
 
     // De-duplicate: skip if the email is already subscribed.
-    var existing = sheet.getRange(2, 1, Math.max(sheet.getLastRow() - 1, 0), 1)
-                        .getValues().map(function (r) { return String(r[0]).toLowerCase(); });
+    // Guard: only read existing rows when there is at least one data row,
+    // otherwise getRange(..., 0, ...) throws "number of rows must be at least 1".
+    var last = sheet.getLastRow();
+    var existing = [];
+    if (last >= 2) {
+      existing = sheet.getRange(2, 1, last - 1, 1)
+                      .getValues().map(function (r) { return String(r[0]).toLowerCase(); });
+    }
     if (existing.indexOf(email) === -1) {
       sheet.appendRow([
         email,

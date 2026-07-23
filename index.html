@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="enhance.css" />
 </head>
 <body>
   <a href="#main" class="skip-link" data-i18n="nav.skip">Kalo te përmbajtja</a>
@@ -218,21 +219,34 @@
         <p class="eyebrow" data-i18n="impact.eyebrow">Objektivat tona</p>
         <h2 data-i18n="impact.title">Synime të matshme</h2>
 
-        <div class="timeline" style="margin-top:40px;">
-          <div class="phase">
-            <div class="yr" data-i18n="ph1.yr">Viti 1</div>
-            <h3 data-i18n="ph1.t">Nisje & Ndërgjegjësim</h3>
-            <p data-i18n="ph1.d">Ngritja e Qendrës dhe e kanaleve, aktivizimi i shërbimeve të para dhe ndërgjegjësimi i ekosistemit.</p>
+        <div class="htimeline" style="margin-top:64px;">
+          <div class="htl-track" aria-hidden="true"></div>
+
+          <div class="htl-item i1">
+            <div class="htl-node" aria-hidden="true"><span>1</span></div>
+            <div class="htl-card">
+              <span class="htl-year" data-i18n="ph1.yr">Viti 1</span>
+              <h3 data-i18n="ph1.t">Nisje & Ndërgjegjësim</h3>
+              <p data-i18n="ph1.d">Ngritja e Qendrës dhe e kanaleve, aktivizimi i shërbimeve të para dhe ndërgjegjësimi i ekosistemit.</p>
+            </div>
           </div>
-          <div class="phase">
-            <div class="yr" data-i18n="ph2.yr">Viti 2</div>
-            <h3 data-i18n="ph2.t">Angazhim & Rritje</h3>
-            <p data-i18n="ph2.d">Ofrim i plotë i shërbimeve, angazhim i NVM-ve e institucioneve dhe rritje e ndikimit.</p>
+
+          <div class="htl-item i2">
+            <div class="htl-node" aria-hidden="true"><span>2</span></div>
+            <div class="htl-card">
+              <span class="htl-year" data-i18n="ph2.yr">Viti 2</span>
+              <h3 data-i18n="ph2.t">Angazhim & Rritje</h3>
+              <p data-i18n="ph2.d">Ofrim i plotë i shërbimeve, angazhim i NVM-ve e institucioneve dhe rritje e ndikimit.</p>
+            </div>
           </div>
-          <div class="phase">
-            <div class="yr" data-i18n="ph3.yr">Viti 3</div>
-            <h3 data-i18n="ph3.t">Ndikim & Qëndrueshmëri</h3>
-            <p data-i18n="ph3.d">Konsolidim i rezultateve, ndikim i matshëm dhe qëndrueshmëri afatgjatë e Qendrës.</p>
+
+          <div class="htl-item i3">
+            <div class="htl-node" aria-hidden="true"><span>3</span></div>
+            <div class="htl-card">
+              <span class="htl-year" data-i18n="ph3.yr">Viti 3</span>
+              <h3 data-i18n="ph3.t">Ndikim & Qëndrueshmëri</h3>
+              <p data-i18n="ph3.d">Konsolidim i rezultateve, ndikim i matshëm dhe qëndrueshmëri afatgjatë e Qendrës.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -243,11 +257,44 @@
       <div class="container">
         <p class="eyebrow" data-i18n="act.eyebrow">Aktivitetet tona</p>
         <h2 data-i18n="act.title">Si e shpërndajmë dijen</h2>
-        <div class="grid-3" style="margin-top:36px;">
-          <div class="card"><h3 data-i18n="act1.t">Grupime (Clustering)</h3><p data-i18n="act1.b">Aktivitete shumëpalëshe që bashkojnë bizneset, sektorin publik, akademinë dhe ofruesit e shërbimeve mbi digjitalizimin, inteligjencën artificiale dhe financimet vendase e të huaja.</p></div>
-          <div class="card"><h3 data-i18n="act3.t">Trajnime & Evente</h3><p data-i18n="act3.b">Trajnime për Maturitetin Digjital, Pajtueshmërinë me IA Act, GDPR dhe teknika të implementimit të IA për biznese dhe institucione publike, me certifikimet përkatëse.</p></div>
-          <div class="card"><h3 data-i18n="act4.t">Bashkëpunim me BE-në</h3><p data-i18n="act4.b">Bashkëpunime me projekte të tjera të financuara nga BE-ja për të maksimizuar sinergjitë.</p></div>
-          <div class="card"><h3 data-i18n="act5.t">Buletin & Media</h3><p data-i18n="act5.b">Buletin 6-mujor dygjuhësh, njoftime për shtyp dhe prani aktive në rrjetet sociale.</p></div>
+        <div class="ksh" style="margin-top:40px;">
+          <div class="ksh-tabs" role="tablist" aria-label="How we share knowledge">
+            <button class="ksh-tab active" data-ksh="0" role="tab" aria-selected="true" style="--c:var(--coral)">
+              <span class="ksh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.4"/><circle cx="18" cy="6" r="2.4"/><circle cx="12" cy="18" r="2.4"/><path d="M7.6 7.6 10.8 15.6M16.4 7.6 13.2 15.6M8.4 6h7.2"/></svg></span>
+              <span class="ksh-lbl" data-i18n="act1.t">Grupime (Clustering)</span>
+            </button>
+            <button class="ksh-tab" data-ksh="1" role="tab" aria-selected="false" style="--c:var(--peach)">
+              <span class="ksh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 10-10-5L2 10l10 5 10-5Z"/><path d="M6 12v4c0 1.1 2.7 2.5 6 2.5s6-1.4 6-2.5v-4"/></svg></span>
+              <span class="ksh-lbl" data-i18n="act3.t">Trajnime & Evente</span>
+            </button>
+            <button class="ksh-tab" data-ksh="2" role="tab" aria-selected="false" style="--c:var(--sky)">
+              <span class="ksh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.6 2.5 15.4 0 18M12 3c-2.5 2.6-2.5 15.4 0 18"/></svg></span>
+              <span class="ksh-lbl" data-i18n="act4.t">Bashkëpunim me BE-në</span>
+            </button>
+            <button class="ksh-tab" data-ksh="3" role="tab" aria-selected="false" style="--c:var(--mint)">
+              <span class="ksh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a3 3 0 0 1 0 6"/><path d="M3 10v4a1 1 0 0 0 1 1h3l5 4V5L7 9H4a1 1 0 0 0-1 1Z"/></svg></span>
+              <span class="ksh-lbl" data-i18n="act5.t">Buletin & Media</span>
+            </button>
+          </div>
+
+          <div class="ksh-stage">
+            <div class="ksh-panel active" data-ksh="0" role="tabpanel" style="--c:var(--coral)">
+              <div class="ksh-panel-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.4"/><circle cx="18" cy="6" r="2.4"/><circle cx="12" cy="18" r="2.4"/><path d="M7.6 7.6 10.8 15.6M16.4 7.6 13.2 15.6M8.4 6h7.2"/></svg></div>
+              <div><h3 data-i18n="act1.t">Grupime (Clustering)</h3><p data-i18n="act1.b">Aktivitete shumëpalëshe që bashkojnë bizneset, sektorin publik, akademinë dhe ofruesit e shërbimeve mbi digjitalizimin, inteligjencën artificiale dhe financimet vendase e të huaja.</p></div>
+            </div>
+            <div class="ksh-panel" data-ksh="1" role="tabpanel" style="--c:var(--peach)">
+              <div class="ksh-panel-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 10-10-5L2 10l10 5 10-5Z"/><path d="M6 12v4c0 1.1 2.7 2.5 6 2.5s6-1.4 6-2.5v-4"/></svg></div>
+              <div><h3 data-i18n="act3.t">Trajnime & Evente</h3><p data-i18n="act3.b">Trajnime për Maturitetin Digjital, Pajtueshmërinë me IA Act, GDPR dhe teknika të implementimit të IA për biznese dhe institucione publike, me certifikimet përkatëse.</p></div>
+            </div>
+            <div class="ksh-panel" data-ksh="2" role="tabpanel" style="--c:var(--sky)">
+              <div class="ksh-panel-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.6 2.5 15.4 0 18M12 3c-2.5 2.6-2.5 15.4 0 18"/></svg></div>
+              <div><h3 data-i18n="act4.t">Bashkëpunim me BE-në</h3><p data-i18n="act4.b">Bashkëpunime me projekte të tjera të financuara nga BE-ja për të maksimizuar sinergjitë.</p></div>
+            </div>
+            <div class="ksh-panel" data-ksh="3" role="tabpanel" style="--c:var(--mint)">
+              <div class="ksh-panel-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a3 3 0 0 1 0 6"/><path d="M3 10v4a1 1 0 0 0 1 1h3l5 4V5L7 9H4a1 1 0 0 0-1 1Z"/></svg></div>
+              <div><h3 data-i18n="act5.t">Buletin & Media</h3><p data-i18n="act5.b">Buletin 6-mujor dygjuhësh, njoftime për shtyp dhe prani aktive në rrjetet sociale.</p></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -353,5 +400,6 @@
   </footer>
 
   <script src="script.js"></script>
+  <script src="enhance.js"></script>
 </body>
 </html>
