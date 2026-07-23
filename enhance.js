@@ -132,30 +132,6 @@
     });
   }
 
-  /* V2.6 — network constellation decoration */
-  var net = document.querySelector("#network");
-  if (net) {
-    var svg =
-      '<svg class="constellation" viewBox="0 0 360 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
-      '<g stroke="#87C0E0" stroke-width="1.2" opacity=".6">' +
-      '<line x1="70" y1="70" x2="200" y2="120"/><line x1="200" y1="120" x2="300" y2="70"/>' +
-      '<line x1="200" y1="120" x2="150" y2="250"/><line x1="150" y1="250" x2="290" y2="230"/>' +
-      '<line x1="150" y1="250" x2="90" y2="350"/><line x1="290" y1="230" x2="300" y2="70"/>' +
-      '<line x1="90" y1="350" x2="250" y2="340"/>' +
-      '</g>' +
-      '<circle class="node" cx="70"  cy="70"  r="6" fill="#F4796A"/>' +
-      '<circle class="node" cx="200" cy="120" r="8" fill="#1A3A6B"/>' +
-      '<circle class="node" cx="300" cy="70"  r="5" fill="#F5A57A"/>' +
-      '<circle class="node" cx="150" cy="250" r="7" fill="#4EC28A"/>' +
-      '<circle class="node" cx="290" cy="230" r="5" fill="#87C0E0"/>' +
-      '<circle class="node" cx="90"  cy="350" r="6" fill="#F4796A"/>' +
-      '<circle class="node" cx="250" cy="340" r="5" fill="#4EC28A"/>' +
-      '</svg>';
-    var holder = document.createElement("div");
-    holder.innerHTML = svg;
-    net.insertBefore(holder.firstChild, net.firstChild);
-  }
-
   /* "How we share knowledge" — interactive tabs */
   (function () {
     var tabs = document.querySelectorAll(".ksh-tab");
@@ -187,6 +163,14 @@
       t.addEventListener("mouseenter", function () { activate(i); });
     });
   })();
+
+  /* Flip cards ("Pse AI4DigiT") — click / keyboard toggle for touch & a11y */
+  document.querySelectorAll(".flip").forEach(function (f) {
+    f.addEventListener("click", function () { f.classList.toggle("flipped"); });
+    f.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); f.classList.toggle("flipped"); }
+    });
+  });
 
   /* Newsletter badge — animated envelope with broadcast rings */
   var cta = document.querySelector(".cta-band");

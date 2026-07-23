@@ -153,17 +153,6 @@ section:not(.hero) h2.reveal.in::after { width: 56px; }
 .chip { transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease; }
 .chip:hover { transform: translateY(-3px); box-shadow: 0 8px 18px rgba(26,58,107,.14); border-color: var(--coral); }
 
-/* V2.6 — Network constellation decoration */
-#network { position: relative; overflow: hidden; }
-#network .container { position: relative; z-index: 1; }
-.constellation { position: absolute; top: 0; right: 0; width: 360px; height: 100%; z-index: 0; opacity: .55; pointer-events: none; }
-.constellation .node { animation: a4d-pulse 4s ease-in-out infinite; transform-origin: center; }
-.constellation .node:nth-of-type(2) { animation-delay: .7s; }
-.constellation .node:nth-of-type(3) { animation-delay: 1.4s; }
-.constellation .node:nth-of-type(4) { animation-delay: 2.1s; }
-.constellation .node:nth-of-type(5) { animation-delay: 2.8s; }
-@keyframes a4d-pulse { 0%,100% { opacity: .45; } 50% { opacity: 1; } }
-
 /* V2.7 — Animated gradient shine on the hero accent text */
 .hero h1 .accent {
   background: linear-gradient(90deg, var(--coral), var(--peach), var(--coral));
@@ -177,7 +166,6 @@ section:not(.hero) h2.reveal.in::after { width: 56px; }
 .deco-blobs { transition: transform .3s ease-out; will-change: transform; }
 
 @media (prefers-reduced-motion: reduce) {
-  .constellation .node { animation: none !important; }
   .hero h1 .accent { animation: none !important; -webkit-text-fill-color: var(--coral); color: var(--coral); }
   .deco-blobs { transition: none !important; }
 }
@@ -289,6 +277,38 @@ section:not(.hero) h2.reveal.in::after { width: 56px; }
   .ksh-panel.active { animation: none; }
   .ksh-tab:hover { transform: none; }
 }
+
+/* ============================================================
+   "Pse AI4DigiT" — interactive flip cards
+   ============================================================ */
+.flip { background: transparent; perspective: 1200px; min-height: 246px; cursor: pointer; border-radius: 14px; }
+.flip:focus-visible { outline: 3px solid var(--sky); outline-offset: 3px; }
+.flip-inner {
+  position: relative; width: 100%; height: 100%; min-height: 246px;
+  transition: transform .6s cubic-bezier(.4,.2,.2,1); transform-style: preserve-3d;
+}
+.flip:hover .flip-inner, .flip:focus-visible .flip-inner, .flip.flipped .flip-inner { transform: rotateY(180deg); }
+.flip-front, .flip-back {
+  position: absolute; inset: 0; -webkit-backface-visibility: hidden; backface-visibility: hidden;
+  border-radius: 14px; padding: 26px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column;
+}
+.flip-front { background: #fff; border-top: 5px solid var(--c); }
+.flip-front h3 { color: var(--navy); margin: 0 0 10px; }
+.flip-ic {
+  width: 52px; height: 52px; border-radius: 14px; background: var(--c); color: #fff;
+  display: grid; place-items: center; margin-bottom: 16px;
+  box-shadow: 0 10px 22px color-mix(in srgb, var(--c) 40%, transparent);
+}
+.flip-ic svg { width: 28px; height: 28px; }
+.flip-hint {
+  margin-top: auto; font-family: "Montserrat", sans-serif; font-weight: 700; font-size: .74rem;
+  text-transform: uppercase; letter-spacing: .05em; color: var(--c);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.flip-hint::after { content: "\21BB"; font-size: 1rem; }
+.flip-back { background: var(--c); color: #fff; transform: rotateY(180deg); justify-content: center; }
+.flip-back p { margin: 0; font-size: .95rem; color: #fff; line-height: 1.55; }
+@media (prefers-reduced-motion: reduce) { .flip-inner { transition: none; } }
 
 /* ============================================================
    Newsletter badge (animated envelope with broadcast rings)

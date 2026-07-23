@@ -5,7 +5,7 @@
 const I18N = {
   sq: {
     "meta.desc": "AI4DigiT, Qendra Evropiane e Inovacionit Digjital për Shqipërinë. Vlerësim digjital, trajnime, financim dhe ekosistem për sektorin publik, NVM-të dhe inovatorët.",
-    "nav.skip": "Kalo te përmbajtja", "nav.services": "Shërbimet", "nav.about": "Rreth",
+    "nav.skip": "Kalo te përmbajtja", "nav.services": "Shërbimet", "nav.about": "Rreth nesh",
     "nav.partners": "Partneriteti", "nav.impact": "Ndikimi", "nav.activities": "Aktivitetet", "nav.contact": "Kontakt",
     "eu.cofunded": "Co-funded by the European Union",
     "hero.eyebrow": "Qendër Evropiane e Inovacionit Digjital në Shqipëri",
@@ -66,6 +66,7 @@ const I18N = {
     "footer.tagline": "Përgatitim Shqipërinë për epokën e inteligjencës artificiale.",
     "why.eyebrow": "Pse AI4DigiT", "why.title": "Një pikë e vetme për transformimin tuaj digjital dhe me inteligjencë artificiale",
     "why.lead": "Sillni ekipin tuaj për të ngritur aftësi të reja dhe për të njohur mjetet më të fundit të inteligjencës artificiale që lehtësojnë proceset e përditshme të punës dhe vendimmarrjen. AI4DigiT ju ndihmon ta bëni biznesin ose institucionin tuaj gati për të ardhmen, pa pagesë.",
+    "why.more": "Shih detajet",
     "why1.t": "One-stop shop & Help Desk", "why1.b": "Help Desk-u ynë është pika e parë e kontaktit: na tregoni nevojën tuaj dhe ne ju drejtojmë te shërbimi i duhur, një dritare e vetme për të gjitha shërbimet e Hub-it dhe të ekosistemit evropian të IA-së.",
     "why2.t": "Ekspertë me përvojë", "why2.b": "Shërbimet ofrohen nga ekspertë me përvojë shumëvjeçare në digjitalizim, siguri kibernetike, inteligjencë artificiale, shkrim projektesh dhe trajnime.",
     "why3.t": "Fizikisht ose online", "why3.b": "Të gjitha shërbimet ofrohen fizikisht, në zyrat tona në Tiranë, ose online, sipas preferencës dhe komoditetit tuaj.",
@@ -145,6 +146,7 @@ const I18N = {
     "footer.tagline": "Preparing Albania for the age of AI.",
     "why.eyebrow": "Why AI4DigiT", "why.title": "A single point for your digital and AI transformation",
     "why.lead": "Bring your team to build new skills and get to know the latest artificial-intelligence tools that ease everyday work processes and decision-making. AI4DigiT helps you make your business or institution ready for the future, free of charge.",
+    "why.more": "See details",
     "why1.t": "One-stop shop & Help Desk", "why1.b": "Our Help Desk is the first point of contact: tell us your need and we route you to the right service, a single window to all the Hub's services and the European AI ecosystem.",
     "why2.t": "Experienced experts", "why2.b": "Services are delivered by experts with many years of experience in digitalisation, cybersecurity, artificial intelligence, project writing and training.",
     "why3.t": "In person or online", "why3.b": "All services are delivered in person, at our offices in Tirana, or online, according to your preference and convenience.",
