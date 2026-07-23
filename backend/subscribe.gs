@@ -22,6 +22,24 @@
 
 var SHEET_NAME = 'subscribers';
 
+/**
+ * Verification endpoint. Open the /exec URL in a browser (GET) to see
+ * which spreadsheet the data lands in and how many subscribers are stored.
+ */
+function doGet(e) {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = ss ? ss.getSheetByName(SHEET_NAME) : null;
+  var count = sheet ? Math.max(sheet.getLastRow() - 1, 0) : 0;
+  return json({
+    ok: true,
+    spreadsheet: ss ? ss.getName() : null,
+    spreadsheetUrl: ss ? ss.getUrl() : null,
+    sheet: SHEET_NAME,
+    exists: !!sheet,
+    count: count
+  });
+}
+
 function doPost(e) {
   var lock = LockService.getScriptLock();
   lock.tryLock(15000);
