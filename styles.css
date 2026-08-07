@@ -314,18 +314,18 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 /* ---------- News timeline ---------- */
 .timeline-news { position: relative; margin-top: 40px; }
 .timeline-news::before {
-  content: ""; position: absolute; left: 34px; top: 14px; bottom: 14px; width: 3px; border-radius: 3px;
+  content: ""; position: absolute; left: 43px; top: 16px; bottom: 16px; width: 3px; border-radius: 3px;
   background: linear-gradient(var(--coral), var(--sky));
 }
-.tl-item { position: relative; padding-left: 102px; margin-bottom: 30px; }
+.tl-item { position: relative; padding-left: 122px; margin-bottom: 30px; }
 .tl-dot {
-  position: absolute; left: 0; top: 22px; width: 70px; height: 70px; border-radius: 50%;
+  position: absolute; left: 0; top: 20px; width: 88px; height: 88px; border-radius: 50%;
   background: #fff; border: 3px solid var(--coral); box-shadow: 0 6px 16px rgba(26,58,107,.16); z-index: 1;
-  display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1;
-  font-family: "Montserrat", sans-serif;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.05;
+  font-family: "Montserrat", sans-serif; text-align: center;
 }
-.tl-dot b { font-size: 1.45rem; font-weight: 800; color: var(--navy); }
-.tl-dot span { font-size: .62rem; font-weight: 700; color: var(--steel); margin-top: 3px; letter-spacing: .02em; }
+.tl-dot b { font-size: 1.7rem; font-weight: 800; color: var(--navy); }
+.tl-dot span { font-size: .82rem; font-weight: 700; color: var(--navy); margin-top: 3px; letter-spacing: .01em; }
 .tl-item:nth-child(2) .tl-dot { border-color: var(--sky); }
 .tl-card {
   display: flex; gap: 0; background: #fff; border-radius: var(--radius); overflow: hidden;
