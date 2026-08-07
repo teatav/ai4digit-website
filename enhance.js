@@ -64,7 +64,7 @@
   /* --- 4. Scroll reveal --- */
   if (!reduce && "IntersectionObserver" in window) {
     var targets = document.querySelectorAll(
-      "section:not(.hero) h2, section:not(.hero) .lead, .pillar, .card, .phase, .htl-item, .chips, .cta-band, .contact-info"
+      "section:not(.hero) h2, section:not(.hero) .lead, .pillar, .card, .phase, .htl-item, .tl-item, .chips, .cta-band, .contact-info"
     );
     targets.forEach(function (t) { t.classList.add("reveal"); });
 
