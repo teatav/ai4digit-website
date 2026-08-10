@@ -324,8 +324,8 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.05;
   font-family: "Montserrat", sans-serif; text-align: center;
 }
-.tl-dot b { font-size: 1.7rem; font-weight: 800; color: var(--navy); }
-.tl-dot span { font-size: .82rem; font-weight: 700; color: var(--navy); margin-top: 3px; letter-spacing: .01em; }
+.tl-dot b { font-size: 1.4rem; font-weight: 800; color: var(--navy); }
+.tl-dot span { font-size: .8rem; font-weight: 700; color: var(--navy); margin-top: 3px; letter-spacing: .01em; }
 .tl-item:nth-child(2) .tl-dot { border-color: var(--sky); }
 .tl-card {
   display: flex; gap: 0; background: #fff; border-radius: var(--radius); overflow: hidden;
