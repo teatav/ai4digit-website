@@ -7,9 +7,7 @@ const I18N = {
     "meta.desc": "AI4DigiT, Qendra Evropiane e Inovacionit Digjital për Shqipërinë. Vlerësim digjital, trajnime, financim dhe ekosistem për sektorin publik, NVM-të dhe inovatorët.",
     "nav.skip": "Kalo te përmbajtja", "nav.services": "Shërbimet", "nav.about": "Rreth nesh",
     "nav.partners": "Partneriteti", "nav.impact": "Ndikimi", "nav.activities": "Aktivitetet", "nav.news": "Lajme", "nav.faq": "Pyetje", "nav.contact": "Kontakt",
-    "news.eyebrow": "Lajme & Njoftime", "news.title": "Të rejat nga AI4DigiT", "news.more": "Lexo më shumë →",
-    "news1.tag": "Së shpejti", "news1.title": "AI4DigiT bashkohet me EDIH Days në Digital Week të Dortmund", "news1.desc": "AI4DigiT do të marrë pjesë në EDIH Days @ Digital Week Dortmund — tri ditë networking dhe bashkëpunimi mes Qendrave Evropiane të Inovacionit Digjital.",
-    "news2.tag": "Event", "news2.title": "Takimi Kick-Off i AI4DigiT", "news2.desc": "AI4DigiT u nis zyrtarisht, duke mbështetur transformimin digjital të NVM-ve dhe institucioneve publike shqiptare.",
+    "news.eyebrow": "Lajme & Njoftime", "news.title": "Të rejat nga AI4DigiT", "news.more": "Lexo më shumë →", "news.all": "Të gjitha lajmet →", "news.pageTitle": "Të gjitha lajmet dhe eventet e AI4DigiT", "news.pageLead": "Lajmet, eventet dhe aktivitetet e Qendrës, nga më i fundit te më i hershmi.", "news.back": "← Kthehu te faqja kryesore",
     "eu.cofunded": "Co-funded by the European Union",
     "hero.eyebrow": "Qendër Evropiane e Inovacionit Digjital në Shqipëri",
     "hero.title1": "Përgatitim Shqipërinë",
@@ -92,9 +90,7 @@ const I18N = {
     "meta.desc": "AI4DigiT, the European Digital Innovation Hub for Albania. Digital assessment, training, finance and ecosystem services for the public sector, SMEs and innovators.",
     "nav.skip": "Skip to content", "nav.services": "Services", "nav.about": "About",
     "nav.partners": "Partnership", "nav.impact": "Impact", "nav.activities": "Activities", "nav.news": "News", "nav.faq": "FAQ", "nav.contact": "Contact",
-    "news.eyebrow": "News & Updates", "news.title": "The latest from AI4DigiT", "news.more": "Read more →",
-    "news1.tag": "Coming soon", "news1.title": "AI4DigiT joins the EDIH Days in the Digital Week of Dortmund", "news1.desc": "AI4DigiT will take part in the EDIH Days @ Digital Week Dortmund — three days of networking and collaboration among European Digital Innovation Hubs.",
-    "news2.tag": "Event", "news2.title": "AI4DigiT Kick-off Meeting", "news2.desc": "AI4DigiT has officially launched, supporting the digital transformation of Albanian SMEs and public institutions.",
+    "news.eyebrow": "News & Updates", "news.title": "The latest from AI4DigiT", "news.more": "Read more →", "news.all": "All news →", "news.pageTitle": "All AI4DigiT news and events", "news.pageLead": "News, events and activities of the Hub, from the most recent to the earliest.", "news.back": "← Back to the home page",
     "eu.cofunded": "Co-funded by the European Union",
     "hero.eyebrow": "European Digital Innovation Hub in Albania",
     "hero.title1": "Preparing Albania",
@@ -175,6 +171,31 @@ const I18N = {
   }
 };
 
+// News: one list (assets/news/news-data.js) for the home page (latest N) and news.html (all)
+function renderNews(lang) {
+  if (typeof NEWS === "undefined") return;
+  const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const items = NEWS.slice().sort((a, b) => b.date.localeCompare(a.date));
+  const more = (I18N[lang] || I18N.sq)["news.more"];
+  document.querySelectorAll("[data-news-list]").forEach(box => {
+    const limit = parseInt(box.getAttribute("data-news-limit") || "0", 10);
+    const list = limit > 0 ? items.slice(0, limit) : items;
+    box.innerHTML = list.map(n => {
+      const L = k => esc((n[k] && (n[k][lang] || n[k].sq)) || "");
+      const media = n.img ? (n.link
+        ? `<a class="tl-media" href="${esc(n.link)}"><img src="${esc(n.img)}" alt="" loading="lazy"></a>`
+        : `<span class="tl-media"><img src="${esc(n.img)}" alt="" loading="lazy"></span>`) : "";
+      const link = n.link ? `<a class="tl-more" href="${esc(n.link)}">${esc(more)}</a>` : "";
+      return `<article class="tl-item">
+        <time class="tl-dot" datetime="${esc(n.date)}"><b>${esc(n.days)}</b><span>${esc(n.month)}</span></time>
+        <div class="tl-card">${media}<div class="tl-body">
+          <div class="tl-meta"><span class="tl-tag">${L("tag")}</span></div>
+          <h3>${L("title")}</h3><p>${L("desc")}</p>${link}
+        </div></div></article>`;
+    }).join("");
+  });
+}
+
 function setLang(lang) {
   const dict = I18N[lang];
   if (!dict) return;
@@ -194,6 +215,7 @@ function setLang(lang) {
     btn.classList.toggle("active", active);
     btn.setAttribute("aria-pressed", active ? "true" : "false");
   });
+  renderNews(lang);
   // FAQ: one block per language, generated from the knowledge base
   document.querySelectorAll("[data-faq-lang]").forEach(el => {
     el.hidden = el.getAttribute("data-faq-lang") !== lang;

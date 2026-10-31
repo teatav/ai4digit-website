@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lajme / News, AI4DigiT</title>
+  <meta name="description" content="Të gjitha lajmet dhe eventet e AI4DigiT, Qendra Evropiane e Inovacionit Digjital për Shqipërinë. All AI4DigiT news and events." />
+  <link rel="icon" href="assets/ai4digit-logo.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=202610312210" />
+  <style>
+    .legal { max-width: 860px; margin: 0 auto; padding: 40px 24px 72px; }
+    .legal .back { display:inline-flex; align-items:center; gap:8px; font-family:"Montserrat",sans-serif; font-weight:700; font-size:.85rem; color:var(--coral); margin-bottom:22px; }
+    .legal h1 { font-family:"Montserrat",sans-serif; font-size:2.1rem; color:var(--navy); margin-bottom:6px; }
+    .legal .updated { color:var(--steel); font-size:.95rem; font-weight:600; margin-bottom:22px; }
+    .legal .event-img { width:100%; border-radius:16px; box-shadow:var(--shadow-sm); margin:6px 0 24px; display:block; }
+    .legal p, .legal li { color:var(--charcoal); line-height:1.65; font-size:1.02rem; }
+    .legal ul { padding-left:6px; margin:10px 0; list-style:none; }
+    .legal ul li { margin-bottom:8px; }
+    .legal .tag { display:inline-block; font-family:"Montserrat",sans-serif; font-weight:700; font-size:.7rem; text-transform:uppercase; letter-spacing:.05em; color:#fff; background:var(--coral); border-radius:999px; padding:4px 12px; margin-bottom:14px; }
+    .legal .hashtags { color:var(--steel); font-size:.85rem; margin-top:18px; }
+    .legal .btn-linkedin { display:inline-flex; align-items:center; gap:9px; margin:20px 0 4px; background:#0A66C2; color:#fff; font-family:"Montserrat",sans-serif; font-weight:700; font-size:.9rem; padding:12px 22px; border-radius:999px; }
+    .legal .btn-linkedin:hover { background:#004182; text-decoration:none; }
+    .legal a { color:var(--coral); }
+    .legal-header { border-bottom:1px solid var(--mid-grey); }
+    .legal-header .nav { height:72px; display:flex; align-items:center; }
+    .legal-header .lang-toggle { margin-left:auto; }
+    .news-page { max-width: 980px; }
+    .news-page .lead { color:var(--steel); font-size:1.05rem; margin:0 0 8px; }
+  </style>
+</head>
+<body>
+  <header class="site legal-header">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="AI4DigiT home">
+        <img src="assets/ai4digit-logo.png" alt="" />
+        <span class="wordmark"><b>AI4DigiT</b><span>European Digital Innovation Hub</span></span>
+      </a>
+      <div class="lang-toggle" role="group" aria-label="Language / Gjuha">
+        <button data-setlang="sq" class="active" aria-pressed="true" aria-label="Shqip" title="Shqip"><img src="assets/flag-al.svg" alt="Shqip" width="30" height="20"></button>
+        <button data-setlang="en" aria-pressed="false" aria-label="English" title="English"><img src="assets/flag-gb.svg" alt="English" width="30" height="20"></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="legal news-page">
+    <a class="back" href="index.html" data-i18n="news.back">← Kthehu te faqja kryesore</a>
+    <p class="eyebrow" data-i18n="news.eyebrow">Lajme & Njoftime</p>
+    <h1 data-i18n="news.pageTitle">Të gjitha lajmet dhe eventet e AI4DigiT</h1>
+    <p class="lead" data-i18n="news.pageLead">Lajmet, eventet dhe aktivitetet e Qendrës, nga më i fundit te më i hershmi.</p>
+    <div class="timeline-news" data-news-list></div>
+    <noscript><p>JavaScript is needed to show the news list.</p></noscript>
+  </main>
+
+  <footer class="site">
+    <div class="container">
+      <div class="eu-note">
+        <img class="eu-logo" src="assets/eu-cofunded-white.png" alt="Co-funded by the European Union" />
+        <span>Co-funded by the European Union, Digital Europe Programme. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Commission.</span>
+      </div>
+      <p class="copyright">© <span id="year">2026</span> AI4DigiT EDIH</p>
+    </div>
+  </footer>
+  <!-- Visitor statistics: GoatCounter, self-hosted by AI4DigiT. No cookies, no IP addresses stored. -->
+<script src="assets/news/news-data.js?v=202610312210"></script>
+  <script src="script.js?v=202610312210"></script>
+  <script data-goatcounter="https://stats.ai4digit.eu/count" async src="https://stats.ai4digit.eu/count.js"></script>
+</body>
+</html>
