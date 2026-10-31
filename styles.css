@@ -360,3 +360,30 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .svc-ul li { position: relative; padding-left: 20px; margin-bottom: 9px; font-size: .95rem; color: var(--charcoal); line-height: 1.35; }
 .svc-ul li::before { content: ""; position: absolute; left: 0; top: .5em; width: 8px; height: 8px; border-radius: 50%; background: var(--coral); }
 #network .btn-ghost { display: inline-block; }
+
+/* ================= FAQ (generated from the knowledge base) ================= */
+.faq-list { margin-top: 28px; display: grid; gap: 12px; max-width: 880px; }
+.faq-item { background: var(--white); border: 1px solid var(--mid-grey); border-radius: var(--radius); overflow: hidden; }
+.faq-item[open] { box-shadow: var(--shadow); border-color: var(--sky); }
+.faq-item summary {
+  cursor: pointer; list-style: none; padding: 18px 56px 18px 22px; position: relative;
+  font-family: "Montserrat", sans-serif; font-weight: 700; color: var(--navy); font-size: 1.02rem; line-height: 1.4;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: "+"; position: absolute; right: 22px; top: 50%; transform: translateY(-50%);
+  width: 26px; height: 26px; border-radius: 50%; background: var(--coral-10); color: var(--coral);
+  display: grid; place-items: center; font-size: 1.2rem; font-weight: 700; transition: transform .2s;
+}
+.faq-item[open] summary::after { content: "–"; background: var(--sky-10); color: var(--navy); }
+.faq-item summary:focus-visible { outline: 3px solid var(--sky); outline-offset: -3px; }
+.faq-answer { padding: 0 22px 20px; color: var(--charcoal); line-height: 1.65; }
+.faq-answer p { margin: 0 0 10px; }
+.faq-answer h4 { margin: 16px 0 6px; font-size: .98rem; color: var(--navy); }
+.faq-answer ul, .faq-answer ol { margin: 0 0 12px; padding-left: 22px; }
+.faq-answer li { margin: 4px 0; }
+.faq-table { overflow-x: auto; margin: 6px 0 12px; }
+.faq-table table { border-collapse: collapse; width: 100%; font-size: .92rem; }
+.faq-table th, .faq-table td { border: 1px solid var(--mid-grey); padding: 8px 10px; text-align: left; vertical-align: top; }
+.faq-table th { background: var(--light-grey); color: var(--navy); }
+.faq-list[hidden] { display: none; }

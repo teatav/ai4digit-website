@@ -1,0 +1,162 @@
+{
+ "en": [
+  {
+   "title": "Are services delivered in person or online?",
+   "tags": "FAQ",
+   "order": "",
+   "modified": "20260820090000000",
+   "text": "Both, at the beneficiary's preference.\n\nIn-person delivery takes place at the AI4DigiT offices in Tirana. Online delivery is available for every service. Training courses are frequently run hybrid.\n\nFor assessment services such as [[S02 Digital Maturity Assessment (DMAT)]], a mix is common: questionnaire completion remotely, results workshop in person.\n"
+  },
+  {
+   "title": "Can public institutions use the services?",
+   "tags": "FAQ",
+   "order": "",
+   "modified": "20260820090000000",
+   "text": "Yes. National public institutions and local and regional authorities are an explicit target group, and supporting the digital transformation of the public sector is part of the Hub's mission.\n\nA dedicated public-sector variant of the DMAT questionnaire exists, because the standard SME instrument does not map cleanly onto how public bodies work.\n\nPublic institutions typically have stricter obligations under the AI Act when deploying AI in service delivery, see [[S03 AI Act Compliance Assessment]].\n\nAKSHI, the National Agency for Information Society, is a consortium partner, which gives the Hub a direct channel into the national digitalisation agenda.\n"
+  },
+  {
+   "title": "Do I get a certificate for the training courses?",
+   "tags": "FAQ",
+   "order": "",
+   "modified": "20260820090000000",
+   "text": "Yes. Participants receive a certificate on completion of a course.\n\nThis applies to both [[S07 Introductory Courses on Digitalisation and AI]] (4 hours) and [[S08 Advanced Thematic Courses]] (16 hours).\n\nThe certificate confirms participation and the topics covered.\n"
+  },
+  {
+   "title": "Do the services cost anything?",
+   "tags": "FAQ",
+   "order": "",
+   "modified": "20260820090000000",
+   "text": "No. Every AI4DigiT service is free of charge for the beneficiary for the three-year duration of the project.\n\nThis is possible because AI4DigiT is co-funded by the European Union through the Digital Europe Programme. The cost of delivery is covered by the grant, not by the organisations receiving the service.\n\nWhat this does //not// cover: the technology an organisation decides to buy as a result of the advice. AI4DigiT will help identify and fund that investment through [[S10 Access to Finance Roadmap]], but it does not pay for it.\n\nRelated: [[Does AI4DigiT give me money?]] · [[How is AI4DigiT funded?]]\n"
+  },
+  {
+   "title": "Does AI4DigiT give me money?",
+   "tags": "FAQ",
+   "order": "",
+   "modified": "20260820090000000",
+   "text": "No. AI4DigiT does not provide grants, loans, equity or any other direct financing.\n\nWhat it does through [[S10 Access to Finance Roadmap]]:\n\n* Maps the domestic and European funding options that fit your specific investment\n* Assesses whether you are investment-ready, and helps close the gaps\n* Produces a financial roadmap\n* Supports you in preparing applications\n* Introduces you to banks, investors, IFIs and networks\n\nThe money comes from those funders. AI4DigiT improves your chances of getting it.\n\nRelated: [[Do the services cost anything?]]\n"
+  },
+  {
+   "title": "How do I start working with AI4DigiT?",
+   "tags": "FAQ",
+   "order": "",
+   "modified": "20260820090000000",
+   "text": "Five steps:\n\n# ''Contact us'' at ~info@ai4digit.eu, or through the contact form at www.ai4digit.eu.\n# ''Assessment.'' We run your Digital Maturity Assessment (DMAT) and review your position through an additional questionnaire about AI and GDPR compliance.\n# ''Action plan.'' Based on the results, we draft a personalised action plan for your digital journey.\n# ''Training and consultation.'' Delivered throughout the introductory and advanced courses, the workshops, and the action plan for your digital journey.\n# ''Funding.'' We identify financing for your technology investment and support your applications.\n\nThe first step is always the [[S01 Help Desk and One-Stop Shop]]. You do not need to know which service you need before you get in touch.\n"
+  },
+  {
+   "title": "How is AI4DigiT funded?",
+   "tags": "FAQ",
+   "order": "",
+   "modified": "20260820090000000",
+   "text": "AI4DigiT is a European Digital Innovation Hub co-funded by the European Union through the Digital Europe Programme.\n\n|!Field |!Value |\n|Project number |101268847 |\n|Acronym |AI4DigiT |\n|Full name |Artificial Intelligence for DIGItal Transformation in Albania Innovation Hub |\n|Call |DIGITAL-2025-EDIH-AC-08 |\n|Duration |Three years |\n\nBecause delivery is grant-funded, all services are free to beneficiaries for the project's duration. Sustaining the Hub beyond the grant period is an explicit objective for year three.\n"
+  },
+  {
+   "title": "In which language are the services delivered?",
+   "tags": "FAQ",
+   "order": "",
+   "modified": "20260820090000000",
+   "text": "In Albanian and English. All training is delivered in Albanian and/or English, and assessment instruments, including the DMAT questionnaire and the combined AI Act and GDPR assessment, exist in Albanian and English.\n\nEnglish materials are available throughout, and the Hub's newsletter is bilingual. Where an EU-level expert delivers a session, it may run in English.\n\nThis wiki itself is maintained in English, because it is the consortium's internal working language and is shared with European partners. Official service names are recorded in Albanian on each service page.\n"
+  },
+  {
+   "title": "What data does AI4DigiT collect about my organisation, and how is it protected?",
+   "tags": "FAQ",
+   "order": "",
+   "modified": "20260820090000000",
+   "text": "To deliver services and to meet its reporting obligations to the European Commission, AI4DigiT collects:\n\n* Organisation identification and contact details\n* DMAT questionnaire responses and assessment results, including the follow-up assessment\n* Records of services delivered and participants trained\n* Satisfaction survey responses\n\nAssessment results are used to advise you and, in aggregated and anonymised form, for KPI reporting to the Commission. Individual results are not published.\n\nProcessing is governed by the GDPR and the aligned Albanian framework. Beneficiaries sign a service agreement and, where applicable, a consent form before delivery begins.\n\nRelated: [[S04 GDPR Compliance Assessment]] · the privacy notice at ai4digit.eu/privacy\n"
+  },
+  {
+   "title": "What is DMAT and why does it come first?",
+   "tags": "FAQ",
+   "order": "",
+   "modified": "20260820090000000",
+   "text": "DMAT is the Digital Maturity Assessment, the European Commission's standard instrument for measuring how digitally mature an organisation is, across dimensions including digital strategy, digital readiness, human-centric digitalisation, data management, automation and AI, and green digitalisation.\n\nIt comes first for two reasons.\n\n''For you:'' it establishes an evidence base. Advice given without knowing where an organisation actually stands tends to be generic. The DMAT results determine which of the other nine services are worth your time.\n\n''For the Hub:'' DMAT is a baseline assessment through which the European Commission and the Hub evaluate the impact of AI4DigiT's services on the community of SMEs and public sector organisations (PSOs) included in the project's services.\n\nSee [[S02 Digital Maturity Assessment (DMAT)]].\n"
+  },
+  {
+   "title": "What is the difference between the AI Act and the GDPR assessment?",
+   "tags": "FAQ",
+   "order": "",
+   "modified": "20260820090000000",
+   "text": "They cover different regulations and different risks, and are often delivered together.\n\n|!  |!AI Act ([[S03 AI Act Compliance Assessment]]) |!GDPR ([[S04 GDPR Compliance Assessment]]) |\n|What it regulates |AI systems, by risk tier |Processing of personal data |\n|Central question |What AI are you using, and how risky is it? |Whose data do you hold, and on what basis? |\n|Key output |Risk classification and obligations per AI system |Record of processing and remediation plan |\n|Legal source |Regulation (EU) 2024/1689 |GDPR and the aligned Albanian framework |\n\nThe overlap is substantial: most AI systems process personal data, so an AI deployment usually triggers both sets of obligations. AI4DigiT therefore uses a single combined Albanian-language assessment instrument covering both.\n\nIn neither case does AI4DigiT act as a certification body or a supervisory authority. The output is expert advice, not a compliance certificate.\n"
+  },
+  {
+   "title": "Which services does AI4DigiT provide?",
+   "tags": "FAQ",
+   "order": "",
+   "modified": "20260820090000000",
+   "text": "AI4DigiT provides ten services, all free of charge, grouped into four families. A short description of each follows. See [[Services]] for the full detail.\n\n!! Digital Assessment\n\n* ''[[S02 Digital Maturity Assessment (DMAT)]].'' A structured assessment of where your organisation stands digitally, ending in a report and a prioritised action plan.\n* ''[[S03 AI Act Compliance Assessment]].'' A review of the AI systems you use, classifying each one by risk and setting out your obligations under the EU AI Act.\n* ''[[S04 GDPR Compliance Assessment]].'' A data protection review against the GDPR and the aligned Albanian law, ending in a remediation plan.\n* ''[[S05 AI and Digital Solution Journey]].'' Guidance that turns your assessment results into a costed, sequenced roadmap of the digital and AI solutions worth investing in.\n\n!! Training and Education\n\n* ''[[S07 Introductory Courses on Digitalisation and AI]].'' Four-hour foundational courses for non-technical staff and managers, with a certificate on completion.\n* ''[[S08 Advanced Thematic Courses]].'' In-depth sixteen-hour courses for the people who will implement digital and AI solutions.\n\n!! Finance and Networking\n\n* ''[[S09 Information Events and Workshops]].'' Awareness and clustering events that bring business, the public sector, academia and funders together.\n* ''[[S10 Access to Finance Roadmap]].'' Identifies the funding you can realistically obtain for a digital investment, prepares you to apply, and connects you to funders.\n\n!! Ecosystem and Network\n\n* ''[[S01 Help Desk and One-Stop Shop]].'' The single point of contact. Tell us your need and we route you to the right service.\n* ''[[S06 Matchmaking with EU AI Infrastructures]].'' Connects you to European testing facilities, AI factories, supercomputing capacity, other innovation hubs and potential partners.\n\nRelated: [[Do the services cost anything?]] · [[How do I start working with AI4DigiT?]]\n"
+  },
+  {
+   "title": "Who can use AI4DigiT services?",
+   "tags": "FAQ",
+   "order": "",
+   "modified": "20260820090000000",
+   "text": "AI4DigiT serves organisations operating in Albania:\n\n* Micro-enterprises\n* Small and medium-sized enterprises (SMEs)\n* National public institutions\n* Local and regional authorities\n* Innovators and start-ups\n\nInternational companies with a branch in Albania are also eligible, for the activity of that branch.\n\nThere is particular focus on tourism and hospitality (hotels, guesthouses, travel agencies), agribusiness, financial services and microfinance, and retail and manufacturing, but the services are cross-sectoral and no eligible organisation is turned away for being in the \"wrong\" sector.\n\nRelated: [[Can public institutions use the services?]] · [[S01 Help Desk and One-Stop Shop]]\n"
+  }
+ ],
+ "sq": [
+  {
+   "en": "Who can use AI4DigiT services?",
+   "q": "Kush mund t'i përdorë shërbimet e AI4DigiT?",
+   "a": "\nAI4DigiT u shërben organizatave që operojnë në Shqipëri:\n\n* Mikro-ndërmarrjet\n* Ndërmarrjet e vogla dhe të mesme (NVM)\n* Institucionet publike kombëtare\n* Autoritetet vendore dhe rajonale\n* Inovatorët dhe start-up-et\n\nKompanitë ndërkombëtare me një degë në Shqipëri janë gjithashtu të pranueshme, për aktivitetin e asaj dege.\n\nKa një fokus të veçantë te turizmi dhe mikpritja (hotele, shtëpi pritëse, agjenci udhëtimi), agrobiznesi, shërbimet financiare dhe mikrofinanca, si dhe tregtia dhe prodhimi. Megjithatë shërbimet janë ndërsektoriale dhe asnjë organizatë e pranueshme nuk refuzohet për shkak të sektorit.\n"
+  },
+  {
+   "en": "Which services does AI4DigiT provide?",
+   "q": "Cilat shërbime ofron AI4DigiT?",
+   "a": "\nAI4DigiT ofron dhjetë shërbime, të gjitha pa pagesë, të grupuara në katër familje. Më poshtë jepet një përshkrim i shkurtër i secilit.\n\n!! Vlerësim Digjital\n\n* ''Vlerësimi i Maturitetit Digjital (DMAT).'' Një vlerësim i strukturuar i gjendjes suaj digjitale, që përfundon me një raport dhe një plan veprimi të prioritizuar.\n* ''Pajtueshmëria me AI Act.'' Një rishikim i sistemeve të inteligjencës artificiale që përdorni, duke klasifikuar secilin sipas rrezikut dhe duke përcaktuar detyrimet tuaja sipas Aktit Evropian për IA-në.\n* ''Pajtueshmëria me GDPR.'' Një rishikim i mbrojtjes së të dhënave kundrejt GDPR-së dhe ligjit shqiptar të përafruar, që përfundon me një plan veprimi.\n* ''AI & Digital Solution Journey.'' Udhëzim që i kthen rezultatet e vlerësimit tuaj në një plan rrugë të kostuar dhe të sekuencuar për zgjidhjet digjitale dhe me IA që ia vlen të investohen.\n\n!! Trajnim & Edukim\n\n* ''Kurse hyrëse mbi digjitalizimin dhe IA-në.'' Kurse bazë katërorëshe për stafin dhe menaxherët jo-teknikë, me certifikatë në përfundim.\n* ''Kurse të avancuara tematike.'' Kurse të thelluara gjashtëmbëdhjetëorëshe për ata që do të zbatojnë zgjidhjet digjitale dhe me IA.\n\n!! Financim & Ndërlidhje\n\n* ''Evente informuese dhe workshop-e.'' Evente ndërgjegjësimi dhe grupimi që bashkojnë biznesin, sektorin publik, akademinë dhe financuesit.\n* ''Roadmap për Akses në Financë.'' Identifikon financimin që mund të siguroni realisht për një investim digjital, ju përgatit për të aplikuar dhe ju lidh me financuesit.\n\n!! Ekosistem & Rrjet\n\n* ''Help Desk dhe One-Stop Shop.'' Pika e vetme e kontaktit. Na tregoni nevojën tuaj dhe ne ju drejtojmë te shërbimi i duhur.\n* ''Matchmaking me infrastrukturat e IA-së të BE-së.'' Ju lidh me qendrat evropiane të testimit, fabrikat e IA-së, kapacitetet superkompjuterike, hub-e të tjera inovacioni dhe partnerë të mundshëm.\n"
+  },
+  {
+   "en": "Do the services cost anything?",
+   "q": "A kanë kosto shërbimet?",
+   "a": "\nJo. Çdo shërbim i AI4DigiT është pa pagesë për përfituesin gjatë tre viteve të projektit.\n\nKjo është e mundur sepse AI4DigiT bashkëfinancohet nga Bashkimi Evropian përmes Programit Digital Europe. Kostoja e ofrimit mbulohet nga granti, jo nga organizatat që marrin shërbimin.\n\nÇfarë nuk mbulohet: teknologjia që një organizatë vendos të blejë si rezultat i këshillimit. AI4DigiT do t'ju ndihmojë ta identifikoni dhe ta financoni atë investim përmes shërbimit Roadmap për Akses në Financë, por nuk e paguan atë.\n"
+  },
+  {
+   "en": "In which language are the services delivered?",
+   "q": "Në cilën gjuhë ofrohen shërbimet?",
+   "a": "\nNë shqip dhe anglisht. I gjithë trajnimi ofrohet në shqip dhe/ose anglisht, dhe instrumentet e vlerësimit, përfshirë pyetësorin DMAT dhe vlerësimin e kombinuar për AI Act dhe GDPR, ekzistojnë në shqip dhe anglisht.\n\nMaterialet në anglisht janë të disponueshme kudo, dhe buletini i Qendrës është dygjuhësh. Kur një ekspert i nivelit të BE-së zhvillon një sesion, ai mund të jetë në anglisht.\n\nVetë kjo wiki mbahet në anglisht, sepse është gjuha e brendshme e punës së konsorciumit dhe ndahet me partnerët evropianë. Emrat zyrtarë të shërbimeve janë të regjistruar në shqip në secilën faqe shërbimi.\n"
+  },
+  {
+   "en": "Are services delivered in person or online?",
+   "q": "Shërbimet ofrohen fizikisht apo online?",
+   "a": "\nTë dyja, sipas preferencës së përfituesit.\n\nOfrimi fizik zhvillohet në zyrat e AI4DigiT në Tiranë. Ofrimi online është i disponueshëm për çdo shërbim. Kurset e trajnimit shpesh zhvillohen në formë hibride.\n\nPër shërbimet e vlerësimit si Vlerësimi i Maturitetit Digjital (DMAT), një përzierje është e zakonshme: plotësimi i pyetësorit nga distanca, dhe workshop-i i rezultateve fizikisht.\n"
+  },
+  {
+   "en": "How do I start working with AI4DigiT?",
+   "q": "Si mund të filloj të punoj me AI4DigiT?",
+   "a": "\nPesë hapa:\n\n# ''Na kontaktoni'' në ~info@ai4digit.eu, ose përmes formularit të kontaktit në www.ai4digit.eu.\n# ''Vlerësimi.'' Ne kryejmë Vlerësimin e Maturitetit Digjital (DMAT) dhe rishikojmë pozicionin tuaj përmes një pyetësori shtesë mbi pajtueshmërinë me IA-në dhe GDPR-në.\n# ''Plani i veprimit.'' Bazuar në rezultatet, hartojmë një plan veprimi të personalizuar për rrugëtimin tuaj digjital.\n# ''Trajnim dhe konsultim.'' Ofrohet gjatë gjithë kurseve hyrëse dhe të avancuara, workshop-eve dhe planit të veprimit për rrugëtimin tuaj digjital.\n# ''Financim.'' Ne identifikojmë financimin për investimin tuaj teknologjik dhe mbështesim aplikimet tuaja.\n\nHapi i parë është gjithmonë Help Desk-u dhe One-Stop Shop. Nuk keni nevojë të dini se cilin shërbim ju duhet përpara se të na kontaktoni.\n"
+  },
+  {
+   "en": "What is DMAT and why does it come first?",
+   "q": "Çfarë është DMAT dhe pse vjen i pari?",
+   "a": "\nDMAT është Vlerësimi i Maturitetit Digjital, instrumenti standard i Komisionit Evropian për të matur se sa e maturuar digjitalisht është një organizatë, përgjatë dimensioneve që përfshijnë strategjinë digjitale, gatishmërinë digjitale, digjitalizimin me në qendër njeriun, menaxhimin e të dhënave, automatizimin dhe IA-në, si dhe digjitalizimin e gjelbër.\n\nVjen i pari për dy arsye.\n\n''Për ju:'' krijon një bazë provash. Këshilla e dhënë pa ditur se ku qëndron realisht një organizatë priret të jetë e përgjithshme. Rezultatet e DMAT përcaktojnë se cilat nga nëntë shërbimet e tjera ia vlejnë kohën tuaj.\n\n''Për Qendrën:'' DMAT është një vlerësim bazë si Komisioni Evropian dhe Qendra vlerësojnë impaktin e shërbimeve të AI4DigiT në komunitetin e SME-ve dhe PSO-ve të përfshira në shërbimet e projektit.\n"
+  },
+  {
+   "en": "Do I get a certificate for the training courses?",
+   "q": "A marr certifikatë për kurset e trajnimit?",
+   "a": "\nPo. Pjesëmarrësit marrin një certifikatë në përfundim të një kursi.\n\nKjo vlen si për Kurset hyrëse mbi digjitalizimin dhe IA-në (4 orë), ashtu edhe për Kurset e avancuara tematike (16 orë).\n\nCertifikata konfirmon pjesëmarrjen dhe temat e trajtuara.\n"
+  },
+  {
+   "en": "What is the difference between the AI Act and the GDPR assessment?",
+   "q": "Cili është ndryshimi mes vlerësimit për AI Act dhe atij për GDPR?",
+   "a": "\nAto mbulojnë rregullore dhe rreziqe të ndryshme, dhe shpesh ofrohen së bashku.\n\n|! |!AI Act |!GDPR |\n|Çfarë rregullon |Sistemet e IA-së, sipas nivelit të rrezikut |Përpunimin e të dhënave personale |\n|Pyetja qendrore |Çfarë IA-je përdorni dhe sa e rrezikshme është? |Të kujt janë të dhënat që mbani dhe mbi çfarë baze? |\n|Rezultati kryesor |Klasifikim rreziku dhe detyrime për çdo sistem IA |Regjistër përpunimi dhe plan veprimi |\n|Baza ligjore |Rregullorja (BE) 2024/1689 |GDPR dhe korniza shqiptare e përafruar |\n\nMbivendosja është e konsiderueshme: shumica e sistemeve të IA-së përpunojnë të dhëna personale, ndaj një vendosje e IA-së zakonisht aktivizon të dyja grupet e detyrimeve. Prandaj AI4DigiT përdor një instrument të vetëm vlerësimi në shqip që mbulon të dyja.\n\nNë asnjë rast AI4DigiT nuk vepron si organ certifikimi apo autoritet mbikëqyrës. Rezultati është këshillë eksperti, jo një certifikatë pajtueshmërie.\n"
+  },
+  {
+   "en": "Does AI4DigiT give me money?",
+   "q": "A më jep para AI4DigiT?",
+   "a": "\nJo. AI4DigiT nuk ofron grante, hua, kapital apo ndonjë financim tjetër të drejtpërdrejtë.\n\nÇfarë bën përmes shërbimit Roadmap për Akses në Financë:\n\n* Harton opsionet vendase dhe evropiane të financimit që përshtaten me investimin tuaj specifik\n* Vlerëson nëse jeni gati për investim dhe ndihmon të mbyllni mangësitë\n* Prodhon një plan rrugë financiar\n* Ju mbështet në përgatitjen e aplikimeve\n* Ju lidh me banka, investitorë, institucione financiare ndërkombëtare dhe rrjete\n\nParatë vijnë nga financuesit e mësipërm. AI4DigiT rrit shanset tuaja për t'i marrë.\n"
+  },
+  {
+   "en": "What data does AI4DigiT collect about my organisation, and how is it protected?",
+   "q": "Çfarë të dhënash mbledh AI4DigiT për organizatën time dhe si mbrohen?",
+   "a": "\nPër të ofruar shërbimet dhe për të përmbushur detyrimet e raportimit ndaj Komisionit Evropian, AI4DigiT mbledh:\n\n* Të dhënat e identifikimit dhe kontaktit të organizatës\n* Përgjigjet e pyetësorit DMAT dhe rezultatet e vlerësimit, përfshirë vlerësimin vijues\n* Të dhëna për shërbimet e ofruara dhe pjesëmarrësit e trajnuar\n* Përgjigjet e anketave të kënaqësisë\n\nRezultatet e vlerësimit përdoren për t'ju këshilluar dhe, në formë të agreguar dhe anonime, për raportimin e treguesve te Komisioni. Rezultatet individuale nuk publikohen.\n\nPërpunimi rregullohet nga GDPR dhe korniza shqiptare e përafruar. Përfituesit nënshkruajnë një marrëveshje shërbimi dhe, kur është e zbatueshme, një formular pëlqimi përpara se të fillojë ofrimi.\n"
+  },
+  {
+   "en": "Can public institutions use the services?",
+   "q": "A mund t'i përdorin shërbimet institucionet publike?",
+   "a": "\nPo. Institucionet publike kombëtare dhe autoritetet vendore e rajonale janë një grup i synuar i qartë, dhe mbështetja e transformimit digjital të sektorit publik është pjesë e misionit të Qendrës.\n\nEkziston një variant i dedikuar i pyetësorit DMAT për sektorin publik, sepse instrumenti standard për NVM-të nuk përshtatet plotësisht me mënyrën se si funksionojnë organet publike.\n\nInstitucionet publike zakonisht kanë detyrime më të rrepta sipas AI Act kur vendosin IA në ofrimin e shërbimeve.\n\nAKSHI, Agjencia Kombëtare e Shoqërisë së Informacionit, është partner i konsorciumit, çka i jep Qendrës një kanal të drejtpërdrejtë te agjenda kombëtare e digjitalizimit.\n"
+  },
+  {
+   "en": "How is AI4DigiT funded?",
+   "q": "Si financohet AI4DigiT?",
+   "a": "\nAI4DigiT është një Qendër Evropiane e Inovacionit Digjital, e bashkëfinancuar nga Bashkimi Evropian përmes Programit Digital Europe.\n\n|!Fusha |!Vlera |\n|Numri i projektit |101268847 |\n|Akronimi |AI4DigiT |\n|Emri i plotë |Artificial Intelligence for DIGItal Transformation in Albania Innovation Hub |\n|Thirrja |DIGITAL-2025-EDIH-AC-08 |\n|Kohëzgjatja |Tre vjet |\n\nMeqë ofrimi financohet nga granti, të gjitha shërbimet janë pa pagesë për përfituesit gjatë kohëzgjatjes së projektit. Qëndrueshmëria e Qendrës përtej periudhës së grantit është një objektiv i qartë për vitin e tretë.\n"
+  }
+ ]
+}

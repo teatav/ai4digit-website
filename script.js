@@ -6,7 +6,7 @@ const I18N = {
   sq: {
     "meta.desc": "AI4DigiT, Qendra Evropiane e Inovacionit Digjital për Shqipërinë. Vlerësim digjital, trajnime, financim dhe ekosistem për sektorin publik, NVM-të dhe inovatorët.",
     "nav.skip": "Kalo te përmbajtja", "nav.services": "Shërbimet", "nav.about": "Rreth nesh",
-    "nav.partners": "Partneriteti", "nav.impact": "Ndikimi", "nav.activities": "Aktivitetet", "nav.news": "Lajme", "nav.contact": "Kontakt",
+    "nav.partners": "Partneriteti", "nav.impact": "Ndikimi", "nav.activities": "Aktivitetet", "nav.news": "Lajme", "nav.faq": "Pyetje", "nav.contact": "Kontakt",
     "news.eyebrow": "Lajme & Njoftime", "news.title": "Të rejat nga AI4DigiT", "news.more": "Lexo më shumë →",
     "news1.tag": "Së shpejti", "news1.title": "AI4DigiT bashkohet me EDIH Days në Digital Week të Dortmund", "news1.desc": "AI4DigiT do të marrë pjesë në EDIH Days @ Digital Week Dortmund — tri ditë networking dhe bashkëpunimi mes Qendrave Evropiane të Inovacionit Digjital.",
     "news2.tag": "Event", "news2.title": "Takimi Kick-Off i AI4DigiT", "news2.desc": "AI4DigiT u nis zyrtarisht, duke mbështetur transformimin digjital të NVM-ve dhe institucioneve publike shqiptare.",
@@ -63,6 +63,8 @@ const I18N = {
     "cta.label": "Email", "cta.ph": "emri@shembull.al", "cta.btn": "Abonohuni", "cta.note": "Duke u abonuar në buletinin e AI4DigiT jeni duke bërë pajtimin e vetëm (single opt-in) sipas GDPR dhe Ligjit nr. 124/2024 “Për Mbrojtjen e të Dhënave Personale”. Ju mund të ç'abonoheni në çdo kohë nga buletini, ose duke dërguar një email në info@ai4digit.eu.",
     "cta.thanks": "Faleminderit! Do ju dërgohet një email konfirmimi (single opt-in).",
     "cta.error": "Ndodhi një gabim. Ju lutem provoni sërish ose na shkruani në info@ai4digit.eu.",
+    "faq.eyebrow": "Pyetje të shpeshta", "faq.title": "Pyetjet më të shpeshta për AI4DigiT",
+    "faq.lead": "Përgjigje të shkurtra për pyetjet që na bëjnë më shpesh NVM-të dhe institucionet publike. Nuk e gjeni përgjigjen? Na shkruani në <a href=\"mailto:info@ai4digit.eu\">info@ai4digit.eu</a>.",
     "contact.eyebrow": "Lidhu me ne", "contact.title": "Na kontaktoni",
     "contact.lead": "Dëshironi të merrni shërbimet tona? Keni pyetje mbi mundësitë për bashkëpunim? Na shkruani dhe ekipi ynë i komunikimit do t’ju kthejë përgjigje.",
     "contact.coord": "Koordinator:",
@@ -89,7 +91,7 @@ const I18N = {
   en: {
     "meta.desc": "AI4DigiT, the European Digital Innovation Hub for Albania. Digital assessment, training, finance and ecosystem services for the public sector, SMEs and innovators.",
     "nav.skip": "Skip to content", "nav.services": "Services", "nav.about": "About",
-    "nav.partners": "Partnership", "nav.impact": "Impact", "nav.activities": "Activities", "nav.news": "News", "nav.contact": "Contact",
+    "nav.partners": "Partnership", "nav.impact": "Impact", "nav.activities": "Activities", "nav.news": "News", "nav.faq": "FAQ", "nav.contact": "Contact",
     "news.eyebrow": "News & Updates", "news.title": "The latest from AI4DigiT", "news.more": "Read more →",
     "news1.tag": "Coming soon", "news1.title": "AI4DigiT joins the EDIH Days in the Digital Week of Dortmund", "news1.desc": "AI4DigiT will take part in the EDIH Days @ Digital Week Dortmund — three days of networking and collaboration among European Digital Innovation Hubs.",
     "news2.tag": "Event", "news2.title": "AI4DigiT Kick-off Meeting", "news2.desc": "AI4DigiT has officially launched, supporting the digital transformation of Albanian SMEs and public institutions.",
@@ -146,6 +148,8 @@ const I18N = {
     "cta.label": "Email", "cta.ph": "name@example.com", "cta.btn": "Subscribe", "cta.note": "By subscribing to the AI4DigiT newsletter you are giving single opt-in consent under the GDPR and Albanian Law no. 124/2024 “On the Protection of Personal Data”. You may unsubscribe at any time from the newsletter, or by emailing info@ai4digit.eu.",
     "cta.thanks": "Thank you! We'll send you a confirmation email (single opt-in).",
     "cta.error": "Something went wrong. Please try again or write to us at info@ai4digit.eu.",
+    "faq.eyebrow": "Frequently asked questions", "faq.title": "Frequently asked questions about AI4DigiT",
+    "faq.lead": "Short answers to the questions SMEs and public institutions ask us most often. Can't find your answer? Write to us at <a href=\"mailto:info@ai4digit.eu\">info@ai4digit.eu</a>.",
     "contact.eyebrow": "Get in touch", "contact.title": "Contact us",
     "contact.lead": "Would you like to use our services? Have questions about collaboration opportunities? Write to us and our communication team will get back to you.",
     "contact.coord": "Coordinator:",
@@ -189,6 +193,10 @@ function setLang(lang) {
     const active = btn.getAttribute("data-setlang") === lang;
     btn.classList.toggle("active", active);
     btn.setAttribute("aria-pressed", active ? "true" : "false");
+  });
+  // FAQ: one block per language, generated from the knowledge base
+  document.querySelectorAll("[data-faq-lang]").forEach(el => {
+    el.hidden = el.getAttribute("data-faq-lang") !== lang;
   });
   try { localStorage.setItem("ai4digit-lang", lang); } catch (e) {}
 }
@@ -273,3 +281,13 @@ if (subForm) {
 // Footer year
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+// FAQ: a link to a question (from the menu or from another answer) opens it
+function openFaqFromHash() {
+  const id = decodeURIComponent(location.hash.slice(1));
+  if (!id.startsWith("faq-")) return;
+  const el = document.getElementById(id);
+  if (el && el.tagName === "DETAILS") { el.open = true; el.scrollIntoView({ block: "start" }); }
+}
+window.addEventListener("hashchange", openFaqFromHash);
+openFaqFromHash();
