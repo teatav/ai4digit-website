@@ -182,9 +182,16 @@ function renderNews(lang) {
     const list = limit > 0 ? items.slice(0, limit) : items;
     box.innerHTML = list.map(n => {
       const L = k => esc((n[k] && (n[k][lang] || n[k].sq)) || "");
-      const media = n.img ? (n.link
-        ? `<a class="tl-media" href="${esc(n.link)}"><img src="${esc(n.img)}" alt="" loading="lazy"></a>`
-        : `<span class="tl-media"><img src="${esc(n.img)}" alt="" loading="lazy"></span>`) : "";
+      const pics = [n.img].concat(n.images || []).filter(Boolean);
+      const imgs = pics.map((src, k) => `<img src="${esc(src)}" alt="" loading="lazy"${k ? " hidden" : ""}>`).join("");
+      const arrows = pics.length > 1
+        ? `<button type="button" class="tl-nav tl-prev" aria-label="${lang === "en" ? "Previous photo" : "Foto e mëparshme"}">‹</button>` +
+          `<button type="button" class="tl-nav tl-next" aria-label="${lang === "en" ? "Next photo" : "Foto tjetër"}">›</button>` +
+          `<span class="tl-count">1 / ${pics.length}</span>`
+        : "";
+      const media = !pics.length ? "" : (n.link
+        ? `<div class="tl-media${pics.length > 1 ? " tl-slider" : ""}"><a href="${esc(n.link)}">${imgs}</a>${arrows}</div>`
+        : `<div class="tl-media${pics.length > 1 ? " tl-slider" : ""}">${imgs}${arrows}</div>`);
       const link = n.link ? `<a class="tl-more" href="${esc(n.link)}">${esc(more)}</a>` : "";
       return `<article class="tl-item">
         <time class="tl-dot" datetime="${esc(n.date)}"><b>${esc(n.days)}</b><span>${esc(n.month)}</span></time>
@@ -313,3 +320,17 @@ function openFaqFromHash() {
 }
 window.addEventListener("hashchange", openFaqFromHash);
 openFaqFromHash();
+
+// News cards with several photos: arrows scroll through them
+document.addEventListener("click", e => {
+  const btn = e.target.closest(".tl-nav");
+  if (!btn) return;
+  e.preventDefault();
+  const box = btn.closest(".tl-slider");
+  const imgs = Array.from(box.querySelectorAll("img"));
+  const cur = imgs.findIndex(i => !i.hidden);
+  const next = (cur + (btn.classList.contains("tl-next") ? 1 : -1) + imgs.length) % imgs.length;
+  imgs.forEach((im, k) => { im.hidden = k !== next; });
+  const c = box.querySelector(".tl-count");
+  if (c) c.textContent = `${next + 1} / ${imgs.length}`;
+});

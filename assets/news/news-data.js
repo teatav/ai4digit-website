@@ -6,6 +6,8 @@
  *   days   label on the timeline dot, e.g. "14–15" or "03"
  *   month  second line of the dot, "MM/YYYY"
  *   link   detail page (optional)
+ *   images more pictures (optional): with two or more, the card shows arrows
+ *          to scroll through them; `img` is shown first
  */
 const NEWS = [
   {
@@ -18,7 +20,8 @@ const NEWS = [
   },
   {
     date: "2026-09-15", days: "15–17", month: "09/2026",
-    img: "assets/news/dortmund.jpg", link: "dortmund.html",
+    img: "assets/news/dortmund/dortmund-3.jpg", link: "dortmund.html",
+    images: ["assets/news/dortmund/dortmund-4.jpg", "assets/news/dortmund/dortmund-2.jpg", "assets/news/dortmund/dortmund-1.jpg"],
     tag:   { sq: "Event", en: "Event" },
     title: { sq: "AI4DigiT mori pjesë në EDIH Days të Digital Week Dortmund", en: "AI4DigiT took part in the EDIH Days of Digital Week Dortmund" },
     desc:  { sq: "AI4DigiT mori pjesë në EDIH Days @ Digital Week Dortmund, tri ditë networking dhe bashkëpunimi mes Qendrave Evropiane të Inovacionit Digjital.",

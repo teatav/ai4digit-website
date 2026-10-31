@@ -387,3 +387,22 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .faq-table th, .faq-table td { border: 1px solid var(--mid-grey); padding: 8px 10px; text-align: left; vertical-align: top; }
 .faq-table th { background: var(--light-grey); color: var(--navy); }
 .faq-list[hidden] { display: none; }
+
+/* News cards: photo slider with arrows */
+.tl-media a { display:block; height:100%; }
+.tl-media img[hidden] { display:none; }
+.tl-slider { position:relative; }
+.tl-nav {
+  position:absolute; top:50%; transform:translateY(-50%); z-index:2;
+  width:36px; height:36px; border-radius:50%; border:0; cursor:pointer;
+  background:rgba(255,255,255,.92); color:var(--navy); font-size:1.6rem; line-height:1;
+  display:grid; place-items:center; box-shadow:0 2px 8px rgba(0,0,0,.25);
+}
+.tl-nav:hover { background:#fff; }
+.tl-nav:focus-visible { outline:3px solid var(--sky); }
+.tl-prev { left:8px; }
+.tl-next { right:8px; }
+.tl-count {
+  position:absolute; bottom:8px; right:8px; z-index:2; font-size:.75rem; font-weight:700;
+  color:#fff; background:rgba(26,58,107,.75); padding:2px 8px; border-radius:999px;
+}
