@@ -20,7 +20,7 @@ const NEWS = [
     date: "2026-09-15", days: "15–17", month: "09/2026",
     img: "assets/news/dortmund.jpg", link: "dortmund.html",
     tag:   { sq: "Event", en: "Event" },
-    title: { sq: "AI4DigiT në EDIH Days të Digital Week Dortmund", en: "AI4DigiT at the EDIH Days of Digital Week Dortmund" },
+    title: { sq: "AI4DigiT mori pjesë në EDIH Days të Digital Week Dortmund", en: "AI4DigiT took part in the EDIH Days of Digital Week Dortmund" },
     desc:  { sq: "AI4DigiT mori pjesë në EDIH Days @ Digital Week Dortmund, tri ditë networking dhe bashkëpunimi mes Qendrave Evropiane të Inovacionit Digjital.",
              en: "AI4DigiT took part in the EDIH Days @ Digital Week Dortmund, three days of networking and collaboration among European Digital Innovation Hubs." }
   }
