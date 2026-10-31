@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=202610312225" />
+  <link rel="stylesheet" href="styles.css?v=202610312227" />
   <style>
     .legal { max-width: 860px; margin: 0 auto; padding: 40px 24px 72px; }
     .legal .back { display:inline-flex; align-items:center; gap:8px; font-family:"Montserrat",sans-serif; font-weight:700; font-size:.85rem; color:var(--coral); margin-bottom:22px; }
@@ -22,12 +22,10 @@
     .legal-header { border-bottom:1px solid var(--mid-grey); }
     .legal-header .nav { height:72px; display:flex; align-items:center; }
     .legal-header .lang-toggle { margin-left:auto; }
-    .legal .gallery-title { font-family:"Montserrat",sans-serif; color:var(--navy); font-size:1.35rem; margin:34px 0 14px; }
-    .legal .gallery { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:14px; }
-    .legal .gallery figure { margin:0; }
-    .legal .gallery img { width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:12px; display:block; box-shadow:var(--shadow-sm); transition:transform .2s; }
-    .legal .gallery a:hover img { transform:scale(1.02); }
-    .legal .gallery figcaption { color:var(--steel); font-size:.85rem; line-height:1.4; margin-top:6px; }
+    .event-slider { position:relative; margin:6px 0 24px; border-radius:16px; overflow:hidden; box-shadow:var(--shadow-sm); background:#0b1f4b; }
+    .event-slider img { width:100%; aspect-ratio:4/3; object-fit:contain; display:block; }
+    .event-slider img[hidden] { display:none; }
+    .event-slider .tl-nav { width:44px; height:44px; font-size:2rem; }
   </style>
 </head>
 <body>
@@ -52,7 +50,7 @@
       <span class="tag">Event</span>
       <h1>AI4DigiT mori pjesë në EDIH Days të Digital Week Dortmund</h1>
       <p class="updated">15–17 Shtator 2026</p>
-      <img class="event-img" src="assets/news/dortmund/dortmund-3.jpg" alt="Pjesëmarrësit e EDIH Days 2026 në Dortmund / Participants of the EDIH Days 2026 in Dortmund" />
+      <div class="event-slider tl-slider"><img src="assets/news/dortmund/dortmund-3.jpg" alt="Pjesëmarrësit e EDIH Days 2026 në Dortmund"><img src="assets/news/dortmund/dortmund-4.jpg" alt="Pjesëmarrësit e EDIH Days 2026 në Dortmund" hidden><img src="assets/news/dortmund/dortmund-2.jpg" alt="Pjesëmarrësit e EDIH Days 2026 në Dortmund" hidden><img src="assets/news/dortmund/dortmund-1.jpg" alt="Pjesëmarrësit e EDIH Days 2026 në Dortmund" hidden><button type="button" class="tl-nav tl-prev" aria-label="Foto e mëparshme">‹</button><button type="button" class="tl-nav tl-next" aria-label="Foto tjetër">›</button><span class="tl-count">1 / 4</span></div>
 
       <p>AI4DigiT mori pjesë në EDIH Days @ Digital Week Dortmund (15–17 Shtator 2026), një event evropian treditor kushtuar networking-ut, bashkëpunimit dhe shkëmbimit të njohurive mes Qendrave Evropiane të Inovacionit Digjital.</p>
       <p>Gjatë eventit, AI4DigiT u angazhua në sesione interaktive EDIH, aktivitete matchmaking dhe shkëmbime peer-to-peer, ku ndau përvojat e saj, eksploroi mundësi bashkëpunimi dhe ndërtoi partneritete me EDIH të tjera në të gjithë Evropën.</p>
@@ -60,9 +58,6 @@
       <p>AI4DigiT prezantoi dy nga shërbimet e saj kryesore, Portalin e Përputhshmërisë me IA (vlerësimet për AI Act dhe GDPR) dhe Rrugëtimin e IA dhe zgjidhjeve digjitale. Në sesionin e matchmaking-ut propozoi një shërbim të përbashkët ndërkufitar: vlerësimin e përputhshmërisë me AI Act dhe GDPR për klientët e EDIH-eve partnere, në gjuhën e tyre dhe sipas legjislacionit të tyre kombëtar.</p>
       <p>AI4DigiT mori pjesë gjithashtu në CONF3RENCE 2026, ku u njoh me teknologjitë e reja dhe tendencat e inovacionit digjital të rëndësishme për aktivitetet e EDIH-eve, si dhe në Digital Week Dortmund dhe në Festival of Arts, Tech & Taste (FATT), me ekspozime inovacioni dhe një event live pitch për start-up-et.</p>
       <p>Sesionet e dedikuara të punës me EDIH-et e Ballkanit Perëndimor, Ukrainës dhe Moldavisë u fokusuan në forcimin e bashkëpunimit rajonal, në ndjekjen e nismave të nisura gjatë EDIH Summit në Bruksel dhe në nxitjen e bashkëpunimit me ekosistemin dhe bizneset gjermane të inovacionit.</p>
-
-      <h2 class="gallery-title">Galeria</h2>
-      <div class="gallery"><figure><a href="assets/news/dortmund/dortmund-1.jpg" target="_blank" rel="noopener"><img src="assets/news/dortmund/dortmund-1.jpg" alt="Sesioni i përbashkët i EDIH-eve për komunikimin dhe angazhimin e klientëve" loading="lazy"></a><figcaption>Sesioni i përbashkët i EDIH-eve për komunikimin dhe angazhimin e klientëve</figcaption></figure><figure><a href="assets/news/dortmund/dortmund-2.jpg" target="_blank" rel="noopener"><img src="assets/news/dortmund/dortmund-2.jpg" alt="Ekipi në hapjen e EDIH Days, Digital Week Dortmund" loading="lazy"></a><figcaption>Ekipi në hapjen e EDIH Days, Digital Week Dortmund</figcaption></figure><figure><a href="assets/news/dortmund/dortmund-3.jpg" target="_blank" rel="noopener"><img src="assets/news/dortmund/dortmund-3.jpg" alt="Pjesëmarrësit e EDIH Days 2026 në Dortmund" loading="lazy"></a><figcaption>Pjesëmarrësit e EDIH Days 2026 në Dortmund</figcaption></figure><figure><a href="assets/news/dortmund/dortmund-4.jpg" target="_blank" rel="noopener"><img src="assets/news/dortmund/dortmund-4.jpg" alt="EDIH-et e Ballkanit Perëndimor, Ukrainës dhe Moldavisë" loading="lazy"></a><figcaption>EDIH-et e Ballkanit Perëndimor, Ukrainës dhe Moldavisë</figcaption></figure><figure><a href="assets/news/dortmund/dortmund-5.jpg" target="_blank" rel="noopener"><img src="assets/news/dortmund/dortmund-5.jpg" alt="Tabela e workshop-it: praktika të mira, këshilla dhe sfida" loading="lazy"></a><figcaption>Tabela e workshop-it: praktika të mira, këshilla dhe sfida</figcaption></figure><figure><a href="assets/news/dortmund/dortmund-6.jpg" target="_blank" rel="noopener"><img src="assets/news/dortmund/dortmund-6.jpg" alt="Tabela e workshop-it: formatet e eventeve dhe mjetet" loading="lazy"></a><figcaption>Tabela e workshop-it: formatet e eventeve dhe mjetet</figcaption></figure></div>
     </div>
 
     <!-- ============ ENGLISH ============ -->
@@ -71,7 +66,7 @@
       <span class="tag">Event</span>
       <h1>AI4DigiT took part in the EDIH Days of Digital Week Dortmund</h1>
       <p class="updated">15–17 September 2026</p>
-      <img class="event-img" src="assets/news/dortmund/dortmund-3.jpg" alt="Pjesëmarrësit e EDIH Days 2026 në Dortmund / Participants of the EDIH Days 2026 in Dortmund" />
+      <div class="event-slider tl-slider"><img src="assets/news/dortmund/dortmund-3.jpg" alt="Participants of the EDIH Days 2026 in Dortmund"><img src="assets/news/dortmund/dortmund-4.jpg" alt="Participants of the EDIH Days 2026 in Dortmund" hidden><img src="assets/news/dortmund/dortmund-2.jpg" alt="Participants of the EDIH Days 2026 in Dortmund" hidden><img src="assets/news/dortmund/dortmund-1.jpg" alt="Participants of the EDIH Days 2026 in Dortmund" hidden><button type="button" class="tl-nav tl-prev" aria-label="Previous photo">‹</button><button type="button" class="tl-nav tl-next" aria-label="Next photo">›</button><span class="tl-count">1 / 4</span></div>
 
       <p>AI4DigiT took part in the EDIH Days @ Digital Week Dortmund (15–17 September 2026), a three-day European event dedicated to networking, collaboration and knowledge exchange among European Digital Innovation Hubs.</p>
       <p>During the event, AI4DigiT engaged in interactive EDIH sessions, matchmaking activities and peer-to-peer exchanges, sharing its experience, exploring collaboration opportunities and building partnerships with other EDIHs across Europe.</p>
@@ -79,9 +74,6 @@
       <p>AI4DigiT presented two of its key services, the AI Compliance Portal (AI Act and GDPR assessments) and the AI and Digital Solution Journey. In the matchmaking session it proposed a joint cross-border service: AI Act and GDPR compliance assessments for the clients of partner EDIHs, in their language and under their national law.</p>
       <p>AI4DigiT also attended CONF3RENCE 2026, gaining insights into emerging technologies and digital innovation trends relevant to EDIH activities, and took part in Digital Week Dortmund and the Festival of Arts, Tech &amp; Taste (FATT), with innovation showcases and a live start-up pitch event.</p>
       <p>Dedicated working sessions with EDIHs from the Western Balkans, Ukraine and Moldova focused on strengthening regional cooperation, following up on initiatives launched at the EDIH Summit in Brussels, and fostering collaboration with the German innovation ecosystem and businesses.</p>
-
-      <h2 class="gallery-title">Gallery</h2>
-      <div class="gallery"><figure><a href="assets/news/dortmund/dortmund-1.jpg" target="_blank" rel="noopener"><img src="assets/news/dortmund/dortmund-1.jpg" alt="Joint EDIH session on communication and customer engagement" loading="lazy"></a><figcaption>Joint EDIH session on communication and customer engagement</figcaption></figure><figure><a href="assets/news/dortmund/dortmund-2.jpg" target="_blank" rel="noopener"><img src="assets/news/dortmund/dortmund-2.jpg" alt="The team at the opening of the EDIH Days, Digital Week Dortmund" loading="lazy"></a><figcaption>The team at the opening of the EDIH Days, Digital Week Dortmund</figcaption></figure><figure><a href="assets/news/dortmund/dortmund-3.jpg" target="_blank" rel="noopener"><img src="assets/news/dortmund/dortmund-3.jpg" alt="Participants of the EDIH Days 2026 in Dortmund" loading="lazy"></a><figcaption>Participants of the EDIH Days 2026 in Dortmund</figcaption></figure><figure><a href="assets/news/dortmund/dortmund-4.jpg" target="_blank" rel="noopener"><img src="assets/news/dortmund/dortmund-4.jpg" alt="EDIHs from the Western Balkans, Ukraine and Moldova" loading="lazy"></a><figcaption>EDIHs from the Western Balkans, Ukraine and Moldova</figcaption></figure><figure><a href="assets/news/dortmund/dortmund-5.jpg" target="_blank" rel="noopener"><img src="assets/news/dortmund/dortmund-5.jpg" alt="Workshop board: best practices, advice and challenges" loading="lazy"></a><figcaption>Workshop board: best practices, advice and challenges</figcaption></figure><figure><a href="assets/news/dortmund/dortmund-6.jpg" target="_blank" rel="noopener"><img src="assets/news/dortmund/dortmund-6.jpg" alt="Workshop board: event formats and tools" loading="lazy"></a><figcaption>Workshop board: event formats and tools</figcaption></figure></div>
     </div>
   </main>
 
@@ -118,6 +110,16 @@
       try { saved = localStorage.getItem("ai4digit-lang") || "sq"; } catch (e) {}
       setLang(saved);
       document.getElementById("year").textContent = new Date().getFullYear();
+      document.addEventListener("click", function (e) {
+        var btn = e.target.closest(".tl-nav");
+        if (!btn) return;
+        var box = btn.closest(".tl-slider");
+        var imgs = Array.prototype.slice.call(box.querySelectorAll("img"));
+        var cur = imgs.findIndex(function (i) { return !i.hidden; });
+        var next = (cur + (btn.classList.contains("tl-next") ? 1 : -1) + imgs.length) % imgs.length;
+        imgs.forEach(function (im, k) { im.hidden = k !== next; });
+        box.querySelector(".tl-count").textContent = (next + 1) + " / " + imgs.length;
+      });
     })();
   </script>
   <!-- Visitor statistics: GoatCounter, self-hosted by AI4DigiT. No cookies, no IP addresses stored. -->
