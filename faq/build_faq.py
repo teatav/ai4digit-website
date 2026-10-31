@@ -37,6 +37,50 @@ ORDER = [
 ]
 
 
+# Website versions of answers whose wiki tables do not read well on the page
+# (narrow screens, accordion). Short paragraphs instead; same content.
+OVERRIDE = {
+    "What is the difference between the AI Act and the GDPR assessment?": {
+        "en": (
+            "They cover different regulations and different risks, and are often delivered together.\n\n"
+            "The ''AI Act assessment'' looks at the AI systems you use: which ones you have, how risky each one is "
+            "under Regulation (EU) 2024/1689, and what obligations follow for each system.\n\n"
+            "The ''GDPR assessment'' looks at the personal data you process: whose data you hold and on what legal "
+            "basis, under the GDPR and the aligned Albanian framework. It ends with a record of processing and a "
+            "remediation plan.\n\n"
+            "The overlap is substantial: most AI systems process personal data, so an AI deployment usually triggers "
+            "both sets of obligations. AI4DigiT therefore uses a single combined Albanian-language assessment covering "
+            "both. In neither case does AI4DigiT act as a certification body or a supervisory authority: the result "
+            "is expert advice, not a compliance certificate."),
+        "sq": (
+            "Ato mbulojnë rregullore dhe rreziqe të ndryshme, dhe shpesh ofrohen së bashku.\n\n"
+            "''Vlerësimi për AI Act'' shqyrton sistemet e IA-së që përdorni: cilat janë, sa i rrezikshëm është secili "
+            "sipas Rregullores (BE) 2024/1689 dhe çfarë detyrimesh rrjedhin për secilin sistem.\n\n"
+            "''Vlerësimi për GDPR'' shqyrton të dhënat personale që përpunoni: të kujt janë të dhënat që mbani dhe mbi "
+            "çfarë baze ligjore, sipas GDPR-së dhe kornizës shqiptare të përafruar. Rezultati është një regjistër "
+            "përpunimi dhe një plan veprimi.\n\n"
+            "Mbivendosja është e konsiderueshme: shumica e sistemeve të IA-së përpunojnë të dhëna personale, ndaj një "
+            "vendosje e IA-së zakonisht aktivizon të dyja grupet e detyrimeve. Prandaj AI4DigiT përdor një instrument "
+            "të vetëm vlerësimi në shqip që mbulon të dyja. Në asnjë rast AI4DigiT nuk vepron si organ certifikimi apo "
+            "autoritet mbikëqyrës: rezultati është këshillë eksperti, jo një certifikatë pajtueshmërie."),
+    },
+    "How is AI4DigiT funded?": {
+        "en": (
+            "AI4DigiT (Artificial Intelligence for DIGItal Transformation in Albania Innovation Hub) is a European "
+            "Digital Innovation Hub co-funded by the European Union through the Digital Europe Programme, under the call "
+            "DIGITAL-2025-EDIH-AC-08 (project number 101268847). The project runs for three years.\n\n"
+            "Because delivery is grant-funded, all services are free to beneficiaries for the project's duration. "
+            "Sustaining the Hub beyond the grant period is an explicit objective for year three."),
+        "sq": (
+            "AI4DigiT (Artificial Intelligence for DIGItal Transformation in Albania Innovation Hub) është një Qendër "
+            "Evropiane e Inovacionit Digjital, e bashkëfinancuar nga Bashkimi Evropian përmes Programit Digital Europe, "
+            "në kuadër të thirrjes DIGITAL-2025-EDIH-AC-08 (numri i projektit 101268847). Projekti zgjat tre vjet.\n\n"
+            "Meqë ofrimi financohet nga granti, të gjitha shërbimet janë pa pagesë për përfituesit gjatë kohëzgjatjes "
+            "së projektit. Qëndrueshmëria e Qendrës përtej periudhës së grantit është një objektiv i qartë për vitin e tretë."),
+    },
+}
+
+
 def slug(title):
     return "faq-" + re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-")[:48]
 
@@ -121,7 +165,8 @@ def main():
         items = []
         for t in ORDER:
             q = sq[t]["q"] if lang == "sq" else t
-            a = block(sq[t]["a"] if lang == "sq" else en[t], lang)
+            src_text = OVERRIDE.get(t, {}).get(lang) or (sq[t]["a"] if lang == "sq" else en[t])
+            a = block(src_text, lang)
             items.append(f'<details class="faq-item" id="{SLUGS[t]}{"" if lang == "sq" else "-en"}">'
                          f'<summary>{html.escape(q)}</summary><div class="faq-answer">{a}</div></details>')
             if lang == "sq":
