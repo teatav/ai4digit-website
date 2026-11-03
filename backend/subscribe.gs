@@ -2,7 +2,13 @@
  * AI4DigiT — Newsletter subscription backend (single opt-in).
  *
  * Stores every subscriber in a Google Sheet that acts as your database TABLE.
- * Table "subscribers" columns:  Email | Data | Gjuha | Pëlqimi | Burimi
+ * Table "subscribers" columns:  Email | Data | Gjuha | Pëlqimi | Burimi | Emri | Mbiemri | Lloji | Sektori
+ *
+ * UPDATE (Nov 2026): the website popup now also sends first name, last name,
+ * organisation type (SME / PSO) and sector. After pasting this version:
+ * Deploy → Manage deployments → (pencil) Edit → Version: New version → Deploy.
+ * The /exec URL stays the same, so the website needs no change. Existing rows
+ * are kept; the four new columns are added to the header automatically.
  *
  * ── HOW TO SET IT UP (≈5 min) ──────────────────────────────────────────
  * 1. Create a Google Sheet, e.g. named "AI4DigiT_Subscribers".
@@ -21,6 +27,7 @@
  */
 
 var SHEET_NAME = 'subscribers';
+var HEADER = ['Email', 'Data', 'Gjuha', 'Pëlqimi', 'Burimi', 'Emri', 'Mbiemri', 'Lloji', 'Sektori'];
 
 /**
  * Verification endpoint. Open the /exec URL in a browser (GET) to see
@@ -55,32 +62,36 @@ function doPost(e) {
     }
 
     var ss = SpreadsheetApp.getActiveSpreadsheet();
-    var sheet = ss.getSheetByName(SHEET_NAME);
-    if (!sheet) {
-      sheet = ss.insertSheet(SHEET_NAME);
-      sheet.appendRow(['Email', 'Data', 'Gjuha', 'Pëlqimi', 'Burimi']);
-    }
-    if (sheet.getLastRow() === 0) {
-      sheet.appendRow(['Email', 'Data', 'Gjuha', 'Pëlqimi', 'Burimi']);
+    var sheet = ss.getSheetByName(SHEET_NAME) || ss.insertSheet(SHEET_NAME);
+    // Header: create it, or extend an older 5-column header with the new columns.
+    var width = Math.max(sheet.getLastColumn(), 1);
+    var head = sheet.getLastRow() >= 1 ? sheet.getRange(1, 1, 1, width).getValues()[0] : [];
+    if (head.length < HEADER.length || head[0] !== 'Email') {
+      sheet.getRange(1, 1, 1, HEADER.length).setValues([HEADER]);
     }
 
-    // De-duplicate: skip if the email is already subscribed.
-    // Guard: only read existing rows when there is at least one data row,
-    // otherwise getRange(..., 0, ...) throws "number of rows must be at least 1".
+    var clean = function (v, n) { return String(v || '').trim().slice(0, n); };
+    var row = [
+      email,
+      data.ts || new Date(),
+      clean(data.language, 5),
+      clean(data.consent, 40) || 'single opt-in',
+      clean(data.source, 40) || 'website',
+      clean(data.first_name, 80),
+      clean(data.last_name, 80),
+      ['SME', 'PSO'].indexOf(data.org_type) >= 0 ? data.org_type : '',
+      clean(data.sector, 120)
+    ];
+
+    // One row per e-mail: a new subscription from a known address updates its row.
     var last = sheet.getLastRow();
-    var existing = [];
-    if (last >= 2) {
-      existing = sheet.getRange(2, 1, last - 1, 1)
-                      .getValues().map(function (r) { return String(r[0]).toLowerCase(); });
-    }
-    if (existing.indexOf(email) === -1) {
-      sheet.appendRow([
-        email,
-        data.ts || new Date(),
-        data.language || '',
-        data.consent || 'single opt-in',
-        data.source || 'website'
-      ]);
+    var emails = last >= 2 ? sheet.getRange(2, 1, last - 1, 1).getValues()
+                               .map(function (r) { return String(r[0]).toLowerCase(); }) : [];
+    var at = emails.indexOf(email);
+    if (at === -1) {
+      sheet.appendRow(row);
+    } else {
+      sheet.getRange(at + 2, 1, 1, HEADER.length).setValues([row]);
     }
     return json({ ok: true });
   } catch (err) {

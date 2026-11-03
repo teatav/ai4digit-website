@@ -59,7 +59,11 @@ const I18N = {
     "aud5": "Universitete & komunitete kërkimore", "aud6": "Institucione të BE-së / DEP", "aud7": "Media & gazetarë", "aud8": "Investitorë potencialë",
     "cta.title": "Qëndroni të informuar", "cta.body": "Abonohuni në buletinin tonë 6-mujor dygjuhësh për lajme mbi shërbimet, eventet dhe historitë e suksesit të AI4DigiT.",
     "cta.label": "Email", "cta.ph": "emri@shembull.al", "cta.btn": "Abonohuni", "cta.note": "Duke u abonuar në buletinin e AI4DigiT jeni duke bërë pajtimin e vetëm (single opt-in) sipas GDPR dhe Ligjit nr. 124/2024 “Për Mbrojtjen e të Dhënave Personale”. Ju mund të ç'abonoheni në çdo kohë nga buletini, ose duke dërguar një email në info@ai4digit.eu.",
-    "cta.thanks": "Faleminderit! Do ju dërgohet një email konfirmimi (single opt-in).",
+    "cta.thanks": "Faleminderit! U regjistruat në buletinin e AI4DigiT.",
+    "nl.title": "Abonohuni në buletinin e AI4DigiT", "nl.first": "Emri", "nl.last": "Mbiemri",
+    "nl.type": "Organizata juaj është", "nl.sme": "NVM (ndërmarrje e vogël ose e mesme)", "nl.pso": "Institucion publik (PSO)",
+    "nl.sector": "Sektori kryesor", "nl.sectorPso": "Fusha kryesore e qeverisjes", "nl.pickType": "Zgjidhni fillimisht llojin e organizatës",
+    "nl.pick": "Zgjidhni…", "nl.missing": "Ju lutemi plotësoni të gjitha fushat me * dhe një email të vlefshëm.",
     "cta.error": "Ndodhi një gabim. Ju lutem provoni sërish ose na shkruani në info@ai4digit.eu.",
     "faq.eyebrow": "Pyetje të shpeshta", "faq.title": "Pyetjet më të shpeshta për AI4DigiT",
     "faq.lead": "Përgjigje të shkurtra për pyetjet që na bëjnë më shpesh NVM-të dhe institucionet publike. Nuk e gjeni përgjigjen? Na shkruani në <a href=\"mailto:info@ai4digit.eu\">info@ai4digit.eu</a>.",
@@ -142,7 +146,11 @@ const I18N = {
     "aud5": "Universities & research communities", "aud6": "EU institutions / DEP", "aud7": "Media & journalists", "aud8": "Potential investors",
     "cta.title": "Stay informed", "cta.body": "Subscribe to our bilingual six-monthly newsletter for AI4DigiT news on services, events and success stories.",
     "cta.label": "Email", "cta.ph": "name@example.com", "cta.btn": "Subscribe", "cta.note": "By subscribing to the AI4DigiT newsletter you are giving single opt-in consent under the GDPR and Albanian Law no. 124/2024 “On the Protection of Personal Data”. You may unsubscribe at any time from the newsletter, or by emailing info@ai4digit.eu.",
-    "cta.thanks": "Thank you! We'll send you a confirmation email (single opt-in).",
+    "cta.thanks": "Thank you! You are now subscribed to the AI4DigiT newsletter.",
+    "nl.title": "Subscribe to the AI4DigiT newsletter", "nl.first": "First name", "nl.last": "Last name",
+    "nl.type": "Your organisation is", "nl.sme": "SME (small or medium-sized enterprise)", "nl.pso": "Public sector organisation (PSO)",
+    "nl.sector": "Primary sector", "nl.sectorPso": "Primary government area", "nl.pickType": "First choose the type of organisation",
+    "nl.pick": "Choose…", "nl.missing": "Please fill in all fields marked * and a valid email address.",
     "cta.error": "Something went wrong. Please try again or write to us at info@ai4digit.eu.",
     "faq.eyebrow": "Frequently asked questions", "faq.title": "Frequently asked questions about AI4DigiT",
     "faq.lead": "Short answers to the questions SMEs and public institutions ask us most often. Can't find your answer? Write to us at <a href=\"mailto:info@ai4digit.eu\">info@ai4digit.eu</a>.",
@@ -223,6 +231,7 @@ function setLang(lang) {
     btn.setAttribute("aria-pressed", active ? "true" : "false");
   });
   renderNews(lang);
+  if (window.__nlReady) nlFillSectors();
   // FAQ: one block per language, generated from the knowledge base
   document.querySelectorAll("[data-faq-lang]").forEach(el => {
     el.hidden = el.getAttribute("data-faq-lang") !== lang;
@@ -261,48 +270,225 @@ if (navToggle) {
 // Paste your Google Apps Script Web App URL below (see backend/subscribe.gs).
 const SUBSCRIBE_ENDPOINT = "https://script.google.com/macros/s/AKfycby7X2zwbH85mMCGh5AG0XQhEjsNsYeb9fQkh94ZHTAqnMFDJlwhvHLxqwSVbJavRMcH/exec"; // e.g. "https://script.google.com/macros/s/XXXX/exec"
 
+// Sector lists of the EU DMA questionnaires (same as the AI4DigiT portal DMAT): [en, sq]
+const NL_SECTORS = {
+ "SME": [
+  [
+   "Aeronautics & Space",
+   "Aeronautikë dhe hapësirë"
+  ],
+  [
+   "Agriculture and food",
+   "Bujqësi dhe ushqim"
+  ],
+  [
+   "Community, social and personal service activities",
+   "Shërbime komunitare, sociale dhe personale"
+  ],
+  [
+   "Construction",
+   "Ndërtim"
+  ],
+  [
+   "Consumer goods/products",
+   "Mallra/produkte konsumi"
+  ],
+  [
+   "Culture and Creative industries",
+   "Kulturë dhe industri krijuese"
+  ],
+  [
+   "Defence and security",
+   "Mbrojtje dhe siguri"
+  ],
+  [
+   "Education",
+   "Arsim"
+  ],
+  [
+   "Energy and utilities",
+   "Energji dhe shërbime komunale"
+  ],
+  [
+   "Environment",
+   "Mjedis"
+  ],
+  [
+   "Financial services",
+   "Shërbime financiare"
+  ],
+  [
+   "Life sciences & healthcare",
+   "Shkencat e jetës dhe kujdesi shëndetësor"
+  ],
+  [
+   "Manufacturing",
+   "Prodhim"
+  ],
+  [
+   "Maritime and fishery",
+   "Detari dhe peshkim"
+  ],
+  [
+   "Mining and quarrying",
+   "Miniera dhe gurore"
+  ],
+  [
+   "Mobility (incl. Automotive)",
+   "Lëvizshmëri (përfshirë automobilistikën)"
+  ],
+  [
+   "Public administration",
+   "Administratë publike"
+  ],
+  [
+   "Real estate, renting and business activities",
+   "Pasuri të paluajtshme, qiradhënie dhe veprimtari biznesi"
+  ],
+  [
+   "Professional, Scientific and Technical Activities",
+   "Veprimtari profesionale, shkencore dhe teknike"
+  ],
+  [
+   "Telecommunications, Information and Communication",
+   "Telekomunikacion, informacion dhe komunikim"
+  ],
+  [
+   "Tourism (incl. restaurants and hospitality)",
+   "Turizëm (përfshirë restorantet dhe mikpritjen)"
+  ],
+  [
+   "Wholesale and retail",
+   "Tregti me shumicë dhe pakicë"
+  ],
+  [
+   "Legal Aspects",
+   "Aspekte ligjore"
+  ],
+  [
+   "Regulation",
+   "Rregullim"
+  ]
+ ],
+ "PSO": [
+  [
+   "General public services",
+   "Shërbime të përgjithshme publike"
+  ],
+  [
+   "Defence",
+   "Mbrojtje"
+  ],
+  [
+   "Public order and safety",
+   "Rendi dhe siguria publike"
+  ],
+  [
+   "Economic affairs",
+   "Çështje ekonomike"
+  ],
+  [
+   "Environmental protection",
+   "Mbrojtja e mjedisit"
+  ],
+  [
+   "Housing and community amenities",
+   "Strehimi dhe shërbimet komunitare"
+  ],
+  [
+   "Health",
+   "Shëndetësi"
+  ],
+  [
+   "Recreation, culture and religion",
+   "Argëtim, kulturë dhe fe"
+  ],
+  [
+   "Education",
+   "Arsim"
+  ],
+  [
+   "Social protection",
+   "Mbrojtje sociale"
+  ],
+  [
+   "Other",
+   "Tjetër"
+  ]
+ ]
+};
+
+// Newsletter popup: name, e-mail, SME or PSO, and the sector list that fits the type
+const subDialog = document.getElementById("subDialog");
 const subForm = document.getElementById("subForm");
+function nlLang() { return document.documentElement.lang === "en" ? "en" : "sq"; }
+function nlFillSectors() {
+  if (!subForm) return;
+  const lang = nlLang(), dict = I18N[lang];
+  const type = (subForm.querySelector('input[name="org_type"]:checked') || {}).value;
+  const sel = subForm.querySelector('select[name="sector"]');
+  const keep = sel.value;
+  const label = document.getElementById("nlSectorLabel");
+  if (label) label.textContent = dict[type === "PSO" ? "nl.sectorPso" : "nl.sector"];
+  if (!type) {
+    sel.innerHTML = `<option value="">${dict["nl.pickType"]}</option>`;
+    sel.disabled = true;
+    return;
+  }
+  sel.disabled = false;
+  sel.innerHTML = `<option value="">${dict["nl.pick"]}</option>` + NL_SECTORS[type]
+    .map(([en, sq]) => `<option value="${en.replace(/"/g, "&quot;")}">${lang === "en" ? en : sq}</option>`).join("");
+  if ([...sel.options].some(o => o.value === keep)) sel.value = keep;
+}
+window.__nlReady = !!subForm;
 if (subForm) {
+  document.querySelectorAll("[data-open-sub]").forEach(b => b.addEventListener("click", () => {
+    nlFillSectors();
+    subForm.querySelector(".nl-msg").textContent = "";
+    if (subDialog.showModal) subDialog.showModal(); else subDialog.setAttribute("open", "");
+    subForm.querySelector('input[name="first_name"]').focus();
+  }));
+  subDialog.querySelectorAll("[data-close-sub]").forEach(b => b.addEventListener("click", () => subDialog.close()));
+  subDialog.addEventListener("click", e => { if (e.target === subDialog) subDialog.close(); });   // click outside
+  subForm.querySelectorAll('input[name="org_type"]').forEach(r => r.addEventListener("change", nlFillSectors));
+
   subForm.addEventListener("submit", async e => {
     e.preventDefault();
-    const lang = document.documentElement.lang || "sq";
-    const note = subForm.querySelector("small");
-    const btn = subForm.querySelector("button");
-    const input = subForm.querySelector("input");
-    const email = (input.value || "").trim();
-    if (!email) return;
-
+    const lang = nlLang(), dict = I18N[lang];
+    const msg = subForm.querySelector(".nl-msg");
+    const btn = subForm.querySelector(".nl-submit");
+    const f = new FormData(subForm);
+    const v = k => String(f.get(k) || "").trim();
     const record = {
-      email: email,
-      language: lang,
-      consent: "single opt-in",
-      source: "website",
-      ts: new Date().toISOString()
+      first_name: v("first_name"), last_name: v("last_name"), email: v("email").toLowerCase(),
+      org_type: v("org_type"), sector: v("sector"),
+      language: lang, consent: "single opt-in", source: "website popup", ts: new Date().toISOString()
     };
-
-    if (btn) btn.disabled = true;
+    if (!record.first_name || !record.last_name || !record.org_type || !record.sector ||
+        !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(record.email)) {
+      msg.textContent = dict["nl.missing"]; msg.className = "nl-msg err";
+      return;
+    }
+    btn.disabled = true;
     try {
       if (SUBSCRIBE_ENDPOINT) {
-        // Store the subscriber in the database (Google Sheet / backend).
+        // Store the subscriber in the Google Sheet (backend/subscribe.gs).
         await fetch(SUBSCRIBE_ENDPOINT, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
+          method: "POST", mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
           body: JSON.stringify(record)
         });
       } else {
-        // No endpoint configured yet, keep a local copy so nothing is lost.
-        console.warn("SUBSCRIBE_ENDPOINT not set, storing locally only.", record);
         const list = JSON.parse(localStorage.getItem("ai4digit-subscribers") || "[]");
-        list.push(record);
-        localStorage.setItem("ai4digit-subscribers", JSON.stringify(list));
+        list.push(record); localStorage.setItem("ai4digit-subscribers", JSON.stringify(list));
       }
-      if (note) note.textContent = I18N[lang]["cta.thanks"];
-      input.value = "";
+      msg.textContent = dict["cta.thanks"]; msg.className = "nl-msg ok";
+      subForm.reset(); nlFillSectors();
+      setTimeout(() => { if (subDialog.open) subDialog.close(); msg.textContent = ""; }, 2500);
     } catch (err) {
-      if (note) note.textContent = I18N[lang]["cta.error"];
+      msg.textContent = dict["cta.error"]; msg.className = "nl-msg err";
     } finally {
-      if (btn) btn.disabled = false;
+      btn.disabled = false;
     }
   });
 }

@@ -9,8 +9,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=202610312227" />
-  <link rel="stylesheet" href="enhance.css?v=202610312227" />
+  <link rel="stylesheet" href="styles.css?v=202611031526" />
+  <link rel="stylesheet" href="enhance.css?v=202611031526" />
 </head>
 <body>
   <a href="#main" class="skip-link" data-i18n="nav.skip">Kalo te përmbajtja</a>
@@ -385,12 +385,9 @@
         <div class="cta-band">
           <h2 data-i18n="cta.title">Qëndroni të informuar</h2>
           <p data-i18n="cta.body">Abonohuni në buletinin tonë 6-mujor dygjuhësh për lajme mbi shërbimet, eventet dhe historitë e suksesit të AI4DigiT.</p>
-          <form class="subscribe" id="subForm">
-            <label for="email" class="skip-link" data-i18n="cta.label">Email</label>
-            <input type="email" id="email" name="email" required placeholder="emri@shembull.al" data-i18n-ph="cta.ph" />
-            <button class="btn btn-primary" type="submit" data-i18n="cta.btn">Abonohuni</button>
-            <small data-i18n="cta.note">Duke u abonuar në buletinin e AI4DigiT jeni duke bërë pajtimin e vetëm (single opt-in) sipas GDPR dhe Ligjit nr. 124/2024 “Për Mbrojtjen e të Dhënave Personale”. Ju mund të ç'abonoheni në çdo kohë nga buletini, ose duke dërguar një email në info@ai4digit.eu.</small>
-          </form>
+          <div class="subscribe">
+            <button class="btn btn-primary" type="button" data-open-sub data-i18n="cta.btn">Abonohuni</button>
+          </div>
         </div>
       </div>
     </section>
@@ -531,6 +528,31 @@
     </section>
   </main>
 
+
+  <!-- ================= NEWSLETTER POPUP ================= -->
+  <dialog id="subDialog" class="nl-dialog" aria-labelledby="nlTitle">
+    <form id="subForm" class="nl-form" novalidate>
+      <button type="button" class="nl-close" data-close-sub aria-label="Mbyll / Close">×</button>
+      <h2 id="nlTitle" data-i18n="nl.title">Abonohuni në buletinin e AI4DigiT</h2>
+      <p class="nl-sub" data-i18n="cta.body">Abonohuni në buletinin tonë 6-mujor dygjuhësh për lajme mbi shërbimet, eventet dhe historitë e suksesit të AI4DigiT.</p>
+      <div class="nl-row">
+        <label><span class="nl-lbl"><span data-i18n="nl.first">Emri</span> *</span><input type="text" name="first_name" required maxlength="80" autocomplete="given-name"></label>
+        <label><span class="nl-lbl"><span data-i18n="nl.last">Mbiemri</span> *</span><input type="text" name="last_name" required maxlength="80" autocomplete="family-name"></label>
+      </div>
+      <label><span class="nl-lbl"><span data-i18n="cta.label">Email</span> *</span><input type="email" name="email" required maxlength="160" autocomplete="email" placeholder="emri@shembull.al" data-i18n-ph="cta.ph"></label>
+      <fieldset class="nl-type">
+        <legend><span data-i18n="nl.type">Organizata juaj është</span> *</legend>
+        <label class="nl-radio"><input type="radio" name="org_type" value="SME" required> <span data-i18n="nl.sme">NVM (ndërmarrje e vogël ose e mesme)</span></label>
+        <label class="nl-radio"><input type="radio" name="org_type" value="PSO"> <span data-i18n="nl.pso">Institucion publik (PSO)</span></label>
+      </fieldset>
+      <label><span class="nl-lbl"><span id="nlSectorLabel" data-i18n="nl.sector">Sektori kryesor</span> *</span>
+        <select name="sector" required disabled><option value="" data-i18n="nl.pickType">Zgjidhni fillimisht llojin e organizatës</option></select></label>
+      <p class="nl-msg" role="status" aria-live="polite"></p>
+      <button class="btn btn-primary nl-submit" type="submit" data-i18n="cta.btn">Abonohuni</button>
+      <small data-i18n="cta.note">Duke u abonuar në buletinin e AI4DigiT jeni duke bërë pajtimin e vetëm (single opt-in) sipas GDPR dhe Ligjit nr. 124/2024 “Për Mbrojtjen e të Dhënave Personale”. Ju mund të ç'abonoheni në çdo kohë nga buletini, ose duke dërguar një email në info@ai4digit.eu.</small>
+    </form>
+  </dialog>
+
   <!-- ================= FOOTER ================= -->
   <footer class="site">
     <div class="container">
@@ -571,9 +593,9 @@
     </div>
   </footer>
 
-  <script src="assets/news/news-data.js?v=202610312227"></script>
-  <script src="script.js?v=202610312227"></script>
-  <script src="enhance.js?v=202610312227"></script>
+  <script src="assets/news/news-data.js?v=202611031526"></script>
+  <script src="script.js?v=202611031526"></script>
+  <script src="enhance.js?v=202611031526"></script>
   <!-- Visitor statistics: GoatCounter, self-hosted by AI4DigiT. No cookies, no IP addresses stored. -->
   <script data-goatcounter="https://stats.ai4digit.eu/count" async src="https://stats.ai4digit.eu/count.js"></script>
 </body>

@@ -406,3 +406,27 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   position:absolute; bottom:8px; right:8px; z-index:2; font-size:.75rem; font-weight:700;
   color:#fff; background:rgba(26,58,107,.75); padding:2px 8px; border-radius:999px;
 }
+
+/* Newsletter popup */
+.nl-dialog { border:0; border-radius:var(--radius); padding:0; width:min(560px, calc(100vw - 32px)); box-shadow:0 24px 80px rgba(26,58,107,.35); }
+.nl-dialog::backdrop { background:rgba(26,58,107,.55); }
+.nl-form { position:relative; padding:30px 28px 24px; display:grid; gap:14px; }
+.nl-form h2 { margin:0; font-size:1.35rem; color:var(--navy); padding-right:30px; }
+.nl-sub { margin:-6px 0 0; color:var(--steel); font-size:.95rem; }
+.nl-form label { display:grid; gap:6px; font-family:"Montserrat",sans-serif; font-weight:600; font-size:.88rem; color:var(--navy); }
+.nl-form input[type=text], .nl-form input[type=email], .nl-form select {
+  font:inherit; font-family:"Open Sans",sans-serif; font-weight:400; font-size:1rem; color:var(--charcoal);
+  padding:11px 12px; border:1px solid var(--mid-grey); border-radius:10px; background:#fff; width:100%; }
+.nl-form input:focus, .nl-form select:focus { outline:3px solid var(--sky-10); border-color:var(--sky); }
+.nl-form select:disabled { background:var(--light-grey); color:var(--steel); }
+.nl-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.nl-type { border:0; padding:0; margin:0; display:grid; gap:6px; }
+.nl-type legend { font-family:"Montserrat",sans-serif; font-weight:600; font-size:.88rem; color:var(--navy); margin-bottom:4px; }
+.nl-form .nl-radio { display:flex; align-items:center; gap:8px; font-family:"Open Sans",sans-serif; font-weight:400; font-size:.95rem; color:var(--charcoal); }
+.nl-close { position:absolute; top:12px; right:14px; border:0; background:none; font-size:1.8rem; line-height:1; color:var(--steel); cursor:pointer; }
+.nl-close:hover { color:var(--navy); }
+.nl-msg { margin:0; font-size:.92rem; min-height:1.2em; }
+.nl-msg.ok { color:#15803d; font-weight:600; }
+.nl-msg.err { color:#b91c1c; }
+.nl-form small { color:var(--steel); font-size:.78rem; line-height:1.45; }
+@media (max-width:560px) { .nl-row { grid-template-columns:1fr; } }
