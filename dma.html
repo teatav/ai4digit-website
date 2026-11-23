@@ -64,6 +64,8 @@
   .stmt b { color:#1c2230; }
   .eg { color:var(--muted); }
   .other { margin-top:8px; }
+  .def { background:#eef4fc; border-left:4px solid var(--brand2); border-radius:4px; padding:10px 14px; margin:6px 0 10px; font-size:.9rem; }
+  .def p { margin:4px 0; } .def ul { margin:4px 0 4px 18px; padding:0; }
   .other small { color:var(--muted); }
   .subs { margin-top:10px; border:1px solid var(--line); border-radius:8px; padding:10px 12px; background:#fafbfe; }
   .subs .hint { color:var(--muted); font-size:.85rem; margin-bottom:6px; }
@@ -95,7 +97,7 @@
   <img class="eu" src="assets/eu-cofunded.png" alt="Co-funded by the European Union">
 </div></div>
 <header>
-  <h1>SME Digital Maturity Assessment (DMA2) Questionnaire – T0</h1>
+  <h1>SME Digital Maturity Assessment (DMA2) Questionnaire – <span id="tpTitle">T0</span></h1>
   <p>AI4DigiT European Digital Innovation Hub</p>
 </header>
 
@@ -141,6 +143,12 @@
 
       <h3 id="s1">Section 1 – Customer Data (General Data)</h3>
       <div class="fields">
+        <label class="fld"><span>Timepoint <b>*</b></span>
+          <select name="s1_timepoint" id="s1_timepoint" required>
+            <option value="T0">T0 – baseline, before the EDIH services</option>
+            <option value="T1">T1 – first follow-up assessment</option>
+            <option value="T2">T2 – second follow-up assessment</option>
+          </select></label>
         <label class="fld"><span>Maturity assessment date <b>*</b></span><input type="date" name="s1_date" required></label>
         <label class="fld"><span>Name of the enterprise supported by the EDIH</span><input type="text" name="s1_name" id="s1_name"></label>
         <label class="fld"><span>Fiscal registration number (VAT or equivalent)</span><input type="text" name="s1_vat" id="s1_vat"></label>
@@ -284,6 +292,16 @@ const SECTIONS = [
       ["10.5","We consider the environmental standards of our partners","e.g., assessing suppliers' sustainability practices, opting for cloud services that use renewable energy and efficient data centres; etc."]]]]],
 ];
 
+// Q6 is aligned with the Eurostat ICT usage in enterprises survey; the JRC DMAT 2.0 requires its AI definition
+const AI_DEF = `<div class="def"><p><b>Definition of Artificial Intelligence (Eurostat ICT usage in enterprises survey)</b></p>
+<p>Artificial intelligence refers to systems that use technologies such as: text mining, computer vision, speech recognition,
+natural language generation, machine learning, deep learning to gather, use and/or produce data, for example to make predictions,
+recommendations, or decisions, with varying levels of autonomy.</p>
+<p>Artificial intelligence systems can be software based, e.g.:</p>
+<ul><li>systems that create content (generative AI);</li><li>chatbots and business virtual assistants based on natural language processing;</li>
+<li>face recognition systems based on computer vision or speech recognition systems;</li><li>data analysis based on machine learning;</li></ul>
+<p>or embedded in devices, e.g.:</p>
+<ul><li>autonomous robots for warehouse automation or production assembly works;</li><li>autonomous drones for production surveillance or parcel handling, etc.</li></ul></div>`;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const STORE = "dma2_t0_draft";
 
@@ -358,7 +376,7 @@ SECTIONS.forEach(([sid, stitle, sdesc, qs]) => {
   let h = `<h3 id="${sid}">${esc(stitle)}</h3><p class="intro">${esc(sdesc)}</p>`;
   qs.forEach(([qid, qtext, scale, otherLbl, items]) => {
     const first = qid === "Q5" ? "Digital solution" : qid === "Q6" ? "AI technology" : "Statement";
-    h += `<h3 id="${qid}" style="color:#1c2230">${qid}. ${esc(qtext)}</h3>
+    h += `<h3 id="${qid}" style="color:#1c2230">${qid}. ${esc(qtext)}</h3>` + (qid === "Q6" ? AI_DEF : "") + `
       <table class="q"><thead><tr><th>${first}</th>${scale.map(s => `<th>${esc(s)}</th>`).join("")}</tr></thead><tbody>`;
     items.forEach(([id, bold, eg]) => {
       TOTAL++;
@@ -455,7 +473,7 @@ document.getElementById("btnCsv").onclick = () => {
   A1.forEach(([id, label]) => rows.push(["A1", label, d["a1_" + id] || ""]));
   rows.push(["A2", "Primary sector", d.primary_sector || ""]);
   rows.push(["A2", "Subsectors", (d.subsectors || []).join(" ")]);
-  rows.push(["S1", "Maturity assessment date", d.s1_date || ""], ["S1", "Name of the enterprise", d.s1_name || ""], ["S1", "Fiscal registration number", d.s1_vat || ""], ["S1", "Comments", d.s1_comments || ""]);
+  rows.push(["S1", "Timepoint", d.s1_timepoint || ""], ["S1", "Maturity assessment date", d.s1_date || ""], ["S1", "Name of the enterprise", d.s1_name || ""], ["S1", "Fiscal registration number", d.s1_vat || ""], ["S1", "Comments", d.s1_comments || ""]);
   SECTIONS.forEach(s => s[3].forEach(([qid, , scale, , items]) => {
     items.forEach(([id, bold]) => { const v = d["q" + id.replace(".", "_")]; rows.push([id, bold, v === undefined ? "" : scale[+v]]); });
     rows.push([qid + " other", "Other (please specify)", d[qid.toLowerCase() + "_other"] || ""]);
@@ -491,6 +509,8 @@ function validate() {
   const yr = form.a1_founded.value, badYr = !!yr && (yr < 1900 || yr > 2026);
   markField(form.a1_founded, badYr); if (badYr) problems.push("Enterprise foundation year (1900–2026)");
   markField(sel, !sel.value); if (!sel.value) problems.push("Primary sector");
+  const tpOk = ["T0", "T1", "T2"].includes(form.s1_timepoint.value);
+  markField(form.s1_timepoint, !tpOk); if (!tpOk) problems.push("Timepoint");
   markField(form.s1_date, !form.s1_date.value); if (!form.s1_date.value) problems.push("Maturity assessment date");
   const missing = [];
   document.querySelectorAll("tr[data-q]").forEach(tr => {
@@ -541,6 +561,12 @@ form.addEventListener("submit", e => {
 });
 
 restore();
+// timepoint: a link such as dma.html?t=T1 preselects the follow-up round
+const tpSel = document.getElementById("s1_timepoint");
+const tpUrl = (new URLSearchParams(location.search).get("t") || "").toUpperCase();
+if (["T0", "T1", "T2"].includes(tpUrl)) tpSel.value = tpUrl;
+const tpShow = () => { document.getElementById("tpTitle").textContent = tpSel.value; document.title = document.title.replace(/T[012]\b|$/, m => m ? tpSel.value : ""); };
+tpSel.addEventListener("change", tpShow); tpShow();
 progress();
 </script>
 <script data-goatcounter="https://stats.ai4digit.eu/count" async src="https://stats.ai4digit.eu/count.js"></script>
