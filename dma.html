@@ -198,7 +198,7 @@ const A1 = [
   ["role", "Role in the enterprise", "text", false],
   ["email", "Email address", "email", false],
   ["phone", "Telephone", "tel", false],
-  ["website", "Website (external URL, e.g. https://example.com)", "url", false],
+  ["website", "Website (external URL, e.g. https://example.com)", "text", false],
   ["size", "Staff size", "radio", true, ["Micro-size (1–9)", "Small-size (10–49)", "Medium-size (50–249)", "Small mid-cap (250–499 employees)", "Mid-cap (500–2999 employees)", "Large company (> 3000 employees)"]],
   ["founded", "Enterprise foundation year (1900–2026)", "year", false],
   ["country", "Country", "text", true, null, "Albania"],
@@ -339,7 +339,7 @@ A1.forEach(([id, label, type, req, opts, def]) => {
   } else if (type === "year") {
     html = `<label class="fld"><span>${esc(label)}${star}</span><input type="number" name="${name}" min="1900" max="2026" step="1"></label>`;
   } else {
-    html = `<label class="fld"><span>${esc(label)}${star}</span><input type="${type}" name="${name}"${req ? " required" : ""}${def ? ` value="${esc(def)}"` : ""}${type === "url" ? ' placeholder="https://example.com"' : ""}></label>`;
+    html = `<label class="fld"><span>${esc(label)}${star}</span><input type="${type}" name="${name}"${req ? " required" : ""}${def ? ` value="${esc(def)}"` : ""}${id === "website" ? ' placeholder="e.g. www.example.com"' : ""}></label>`;
   }
   a1.insertAdjacentHTML("beforeend", html);
 });
@@ -522,8 +522,6 @@ function validate() {
   });
   const email = form.a1_email.value.trim(), badEmail = !!email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
   markField(form.a1_email, badEmail); if (badEmail) problems.push("Email address (invalid format)");
-  const web = form.a1_website.value.trim(), badWeb = !!web && !/^https?:\/\/\S+$/.test(web);
-  markField(form.a1_website, badWeb); if (badWeb) problems.push("Website (must start with http:// or https://)");
   const yr = form.a1_founded.value, badYr = !!yr && (yr < 1900 || yr > 2026);
   markField(form.a1_founded, badYr); if (badYr) problems.push("Enterprise foundation year (1900–2026)");
   markField(sel, !sel.value); if (!sel.value) problems.push("Primary sector");
