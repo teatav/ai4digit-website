@@ -56,6 +56,10 @@
   table.q td.opt { text-align:center; vertical-align:middle; cursor:pointer; }
   table.q td.opt input { width:18px; height:18px; cursor:pointer; }
   table.q tr.missing td { background:#fdecea; }
+  .invalid input[type=text], .invalid input[type=email], .invalid input[type=url], .invalid input[type=number],
+  .invalid input[type=date], .invalid select, select.invalid, input.invalid { border:2px solid var(--err); background:#fff7f6; }
+  div.fld.invalid .chips { outline:2px solid var(--err); outline-offset:4px; border-radius:4px; background:#fff7f6; }
+  .fld.invalid > span::after { content:"  Required"; color:var(--err); font-size:.8rem; font-weight:600; }
   table.q tr.answered td:first-child { border-left:3px solid var(--ok); }
   .stmt b { color:#1c2230; }
   .eg { color:var(--muted); }
@@ -133,7 +137,7 @@
     <section class="part" id="partB">
       <h2>Part B – DMA-T0 Questionnaire</h2>
       <p class="intro">The questions that follow aim to measure the digital maturity of your enterprise. This information will help to characterise the departing point of the digital transformation journey of your enterprise, identifying areas where it might need EDIH support. It will also help to assess the services eventually provided by the EDIH to your enterprise as well as to fine tune the EU policies and financial instruments supporting EDIHs.</p>
-      <p class="intro"><b>How to answer:</b> For each statement, select one option only. All statements are mandatory; "Other (please specify)" and "Comments" fields are optional.</p>
+      <p class="intro"><b>How to answer:</b> For each statement, select one option only. All statements are mandatory (*); "Other (please specify)" and "Comments" fields are optional.</p>
 
       <h3 id="s1">Section 1 – Customer Data (General Data)</h3>
       <div class="fields">
@@ -436,6 +440,7 @@ function download(name, text, type) {
 }
 function fileStem() { return "DMA2_T0_" + ((form.a1_name.value || "SME").replace(/[^\w-]+/g, "_")); }
 document.getElementById("btnExport").onclick = () => {
+  const pr = validate(); if (pr.length) return showProblems(pr, "exported");
   const d = collect();
   // add readable answer labels
   const labels = {};
@@ -445,6 +450,7 @@ document.getElementById("btnExport").onclick = () => {
   download(fileStem() + ".json", JSON.stringify({questionnaire: "DMA2 – T0", exported: new Date().toISOString(), fields: d, answers: labels}, null, 2), "application/json");
 };
 document.getElementById("btnCsv").onclick = () => {
+  const pr = validate(); if (pr.length) return showProblems(pr, "exported");
   const d = collect(), rows = [["Item", "Question / field", "Answer"]];
   A1.forEach(([id, label]) => rows.push(["A1", label, d["a1_" + id] || ""]));
   rows.push(["A2", "Primary sector", d.primary_sector || ""]);
@@ -461,26 +467,31 @@ document.getElementById("btnReset").onclick = () => {
   if (!confirm("Clear all answers on this device?")) return;
   localStorage.removeItem(STORE); form.reset(); sel.value = ""; showSubs(); limitSubs();
   document.querySelectorAll("tr[data-q]").forEach(tr => tr.classList.remove("missing"));
+  document.querySelectorAll(".invalid").forEach(x => x.classList.remove("invalid"));
   document.getElementById("msg").className = "msg"; progress();
 };
 
-// ---- validation
-form.addEventListener("submit", e => {
-  e.preventDefault();
+// ---- validation: every field marked * and every statement is mandatory
+function markField(el, bad) {
+  const box = el.closest(".fld") || el.closest(".subs") || el;
+  box.classList.toggle("invalid", bad);
+}
+function validate() {
   const problems = [];
   A1.filter(f => f[3]).forEach(([id, label, type]) => {
     const els = form.querySelectorAll(`[name="a1_${id}"]`);
     const ok = type === "radio" ? [...els].some(x => x.checked) : els[0].value.trim() !== "";
+    markField(els[0], !ok);
     if (!ok) problems.push(label);
   });
-  const email = form.a1_email.value.trim();
-  if (email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) problems.push("Email address (invalid format)");
-  const web = form.a1_website.value.trim();
-  if (web && !/^https?:\/\/\S+$/.test(web)) problems.push("Website (must start with http:// or https://)");
-  const yr = form.a1_founded.value;
-  if (yr && (yr < 1900 || yr > 2026)) problems.push("Enterprise foundation year (1900–2026)");
-  if (!sel.value) problems.push("Primary sector");
-  if (!form.s1_date.value) problems.push("Maturity assessment date");
+  const email = form.a1_email.value.trim(), badEmail = !!email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
+  markField(form.a1_email, badEmail); if (badEmail) problems.push("Email address (invalid format)");
+  const web = form.a1_website.value.trim(), badWeb = !!web && !/^https?:\/\/\S+$/.test(web);
+  markField(form.a1_website, badWeb); if (badWeb) problems.push("Website (must start with http:// or https://)");
+  const yr = form.a1_founded.value, badYr = !!yr && (yr < 1900 || yr > 2026);
+  markField(form.a1_founded, badYr); if (badYr) problems.push("Enterprise foundation year (1900–2026)");
+  markField(sel, !sel.value); if (!sel.value) problems.push("Primary sector");
+  markField(form.s1_date, !form.s1_date.value); if (!form.s1_date.value) problems.push("Maturity assessment date");
   const missing = [];
   document.querySelectorAll("tr[data-q]").forEach(tr => {
     const ok = !!tr.querySelector("input:checked");
@@ -488,13 +499,26 @@ form.addEventListener("submit", e => {
     if (!ok) missing.push(tr.dataset.q.slice(1).replace("_", "."));
   });
   if (missing.length) problems.push(`Unanswered statements: ${missing.join(", ")}`);
+  return problems;
+}
+function showProblems(problems, action) {
+  const msg = document.getElementById("msg");
+  msg.className = "msg err";
+  msg.innerHTML = `<b>The questionnaire cannot be ${action} yet. Please complete the following:</b><ul>` +
+    problems.map(p => `<li>${esc(p)}</li>`).join("") + "</ul>";
+  const first = document.querySelector(".invalid, tr.missing");
+  (first || msg).scrollIntoView({behavior: "smooth", block: "center"});
+}
+// once a field has been flagged, re-check it as soon as it changes
+form.addEventListener("change", () => { if (document.querySelector(".invalid, tr.missing")) validate(); });
+
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  const problems = validate();
   const msg = document.getElementById("msg");
   save();
   if (problems.length) {
-    msg.className = "msg err";
-    msg.innerHTML = "<b>Please complete the following:</b><ul>" + problems.map(p => `<li>${esc(p)}</li>`).join("") + "</ul>";
-    const firstMissing = document.querySelector("tr.missing");
-    (firstMissing || msg).scrollIntoView({behavior: "smooth", block: "center"});
+    showProblems(problems, "submitted");
   } else {
     msg.className = "msg ok";
     msg.textContent = "Sending your answers to AI4DigiT…";
