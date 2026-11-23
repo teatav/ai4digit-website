@@ -123,9 +123,9 @@
         </label>
       </div>
       <div class="subs" id="subsWrap">
-        <div class="hint" id="subsHint">Select a primary sector to see its subsectors. You may tick up to three subsectors in total (from any section).</div>
+        <div class="hint" id="subsHint">Select a primary sector to see its subsectors. You may tick up to three subsectors.</div>
         <div id="subsList"></div>
-        <details style="margin-top:8px"><summary style="cursor:pointer;color:var(--brand2);font-size:.9rem">Show subsectors from all sections</summary><div id="subsAll"></div></details>
+        <div id="subsAll" hidden></div>
       </div>
       <p class="intro" style="font-size:.82rem">Source: sector list as shown in the DMA platform's "Create SME" dropdowns (NACE Rev. 2.1).</p>
     </section>
@@ -336,9 +336,15 @@ function limitSubs(changed) {
     alert("You can tick up to three subsectors.");
   }
   document.getElementById("subsHint").textContent =
-    `Subsectors selected: ${all.filter(i => i.checked).map(i => i.value).join(", ") || "none"} (maximum three, from any section).`;
+    `Subsectors selected: ${all.filter(i => i.checked).map(i => i.value).join(", ") || "none"} (maximum three).`;
 }
-sel.addEventListener("change", () => { showSubs(); save(); });
+sel.addEventListener("change", () => {
+  // subsectors must belong to the chosen section
+  document.querySelectorAll('#subsAll input[name="subsector"]').forEach(i => {
+    if (i.closest("div[data-sec]").dataset.sec !== sel.value) i.checked = false;
+  });
+  showSubs(); limitSubs(); save();
+});
 document.getElementById("subsAll").addEventListener("change", e => { if (e.target.name === "subsector") { limitSubs(e.target); showSubs(); save(); } });
 
 // ---- Part B sections
