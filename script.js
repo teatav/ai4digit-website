@@ -6,7 +6,7 @@ const I18N = {
   sq: {
     "meta.desc": "AI4DigiT, Qendra Evropiane e Inovacionit Digjital për Shqipërinë. Vlerësim digjital, trajnime, financim dhe ekosistem për sektorin publik, NVM-të dhe inovatorët.",
     "nav.skip": "Kalo te përmbajtja", "nav.services": "Shërbimet", "nav.about": "Rreth nesh",
-    "nav.partners": "Partneriteti", "nav.impact": "Ndikimi", "nav.activities": "Aktivitetet", "nav.news": "Lajme", "nav.faq": "Pyetje", "nav.contact": "Kontakt",
+    "nav.partners": "Partneriteti", "nav.impact": "Ndikimi", "nav.activities": "Aktivitetet", "nav.news": "Lajme", "nav.dma": "DMA", "nav.faq": "Pyetje", "nav.contact": "Kontakt",
     "news.eyebrow": "Lajme & Njoftime", "news.title": "Të rejat nga AI4DigiT", "news.more": "Lexo më shumë →", "news.all": "Të gjitha lajmet →", "news.pageTitle": "Të gjitha lajmet dhe eventet e AI4DigiT", "news.pageLead": "Lajmet, eventet dhe aktivitetet e Qendrës, nga më i fundit te më i hershmi.", "news.back": "← Kthehu te faqja kryesore",
     "eu.cofunded": "Co-funded by the European Union",
     "hero.eyebrow": "Qendër Evropiane e Inovacionit Digjital në Shqipëri",
@@ -93,7 +93,7 @@ const I18N = {
   en: {
     "meta.desc": "AI4DigiT, the European Digital Innovation Hub for Albania. Digital assessment, training, finance and ecosystem services for the public sector, SMEs and innovators.",
     "nav.skip": "Skip to content", "nav.services": "Services", "nav.about": "About",
-    "nav.partners": "Partnership", "nav.impact": "Impact", "nav.activities": "Activities", "nav.news": "News", "nav.faq": "FAQ", "nav.contact": "Contact",
+    "nav.partners": "Partnership", "nav.impact": "Impact", "nav.activities": "Activities", "nav.news": "News", "nav.dma": "DMA", "nav.faq": "FAQ", "nav.contact": "Contact",
     "news.eyebrow": "News & Updates", "news.title": "The latest from AI4DigiT", "news.more": "Read more →", "news.all": "All news →", "news.pageTitle": "All AI4DigiT news and events", "news.pageLead": "News, events and activities of the Hub, from the most recent to the earliest.", "news.back": "← Back to the home page",
     "eu.cofunded": "Co-funded by the European Union",
     "hero.eyebrow": "European Digital Innovation Hub in Albania",

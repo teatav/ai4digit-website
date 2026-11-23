@@ -344,3 +344,8 @@ section:not(.hero) h2.reveal.in::after { width: 56px; }
     position: static; transform: none; width: auto; top: auto; bottom: auto;
   }
 }
+
+/* main menu: keep each item on one line (DMA item added) */
+.nav-links a { white-space: nowrap; }
+@media (max-width: 1280px) and (min-width: 721px) { .nav-links { gap: 14px; } .nav-links a { font-size: .9em; } }
+@media (max-width: 1060px) and (min-width: 721px) { .nav-links { gap: 10px; } .nav-links a { font-size: .82em; } }

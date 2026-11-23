@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DMA – SME Digital Maturity Assessment Questionnaire · AI4DigiT</title>
+<meta name="description" content="AI4DigiT European Digital Innovation Hub – SME Digital Maturity Assessment (DMA2) questionnaire, T0.">
+<link rel="icon" href="assets/ai4digit-logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root { --brand:#1A3A6B; --brand2:#2b6cd4; --bg:#f4f6fb; --line:#dde3ee; --muted:#5b6578; --ok:#1f8a4c; --err:#c0392b; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family: "Open Sans", Arial, Helvetica, sans-serif; background:var(--bg); color:#1c2230; line-height:1.45; }
+  header { background:var(--brand); color:#fff; padding:22px 24px; }
+  header h1 { margin:0; font-size:1.5rem; font-family:Montserrat, Arial, sans-serif; }
+  h2, h3 { font-family:Montserrat, Arial, sans-serif; }
+  .site-top { background:#fff; border-bottom:1px solid var(--line); }
+  .site-top .in { max-width:1140px; margin:0 auto; padding:10px 16px; display:flex; align-items:center; gap:14px; }
+  .site-top a.brand { display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--brand); }
+  .site-top a.brand img { height:42px; }
+  .site-top a.brand b { font-family:Montserrat, Arial, sans-serif; font-size:1.15rem; display:block; }
+  .site-top a.brand span { font-size:.78rem; color:var(--muted); }
+  .site-top .sp { flex:1; }
+  .site-top .back { color:var(--brand); text-decoration:none; font-weight:600; font-size:.9rem; }
+  .site-top .eu { height:38px; }
+  header p { margin:6px 0 0; opacity:.85; }
+  .bar { position:sticky; top:0; z-index:5; background:#fff; border-bottom:1px solid var(--line); padding:10px 24px; display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+  .progress { flex:1; min-width:180px; height:10px; background:#e7ebf3; border-radius:6px; overflow:hidden; }
+  .progress > div { height:100%; width:0; background:var(--brand2); transition:width .2s; }
+  .bar .count { font-size:.9rem; color:var(--muted); white-space:nowrap; }
+  .btn { background:var(--brand2); color:#fff; border:0; border-radius:6px; padding:8px 14px; font-size:.9rem; cursor:pointer; }
+  .btn.ghost { background:#fff; color:var(--brand2); border:1px solid var(--brand2); }
+  main { max-width:1000px; margin:0 auto; padding:20px 16px 60px; }
+  nav.toc { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px; }
+  nav.toc a { font-size:.85rem; text-decoration:none; color:var(--brand); background:#fff; border:1px solid var(--line); border-radius:14px; padding:4px 10px; }
+  section.part { background:#fff; border:1px solid var(--line); border-radius:10px; padding:20px 22px; margin-bottom:18px; }
+  h2 { color:var(--brand); margin:0 0 6px; font-size:1.25rem; }
+  h3 { color:var(--brand); margin:22px 0 8px; font-size:1.05rem; }
+  h2, h3, section.part { scroll-margin-top:64px; }
+  .intro { color:var(--muted); margin:4px 0 12px; }
+  .notice { background:#fff6e0; border-left:4px solid #e0a100; padding:10px 14px; border-radius:4px; margin:10px 0 14px; }
+  .fields { display:grid; grid-template-columns: 1fr 1fr; gap:12px 18px; }
+  .fld { display:flex; flex-direction:column; gap:4px; font-size:.92rem; }
+  .fld.full { grid-column: 1 / -1; }
+  .fld span b { color:var(--err); }
+  input[type=text], input[type=email], input[type=tel], input[type=url], input[type=number], input[type=date], select, textarea {
+    font:inherit; padding:8px 10px; border:1px solid #c7cfdd; border-radius:6px; background:#fff; width:100%; }
+  textarea { min-height:60px; resize:vertical; }
+  .chips { display:flex; flex-wrap:wrap; gap:6px 14px; padding-top:4px; }
+  .chips label { display:flex; gap:6px; align-items:center; font-size:.92rem; }
+  table.q { width:100%; border-collapse:collapse; margin:6px 0 4px; font-size:.92rem; }
+  table.q th { background:#eef2f9; color:#2a3550; font-weight:600; padding:8px 6px; border:1px solid var(--line); text-align:center; font-size:.82rem; }
+  table.q th:first-child { text-align:left; width:52%; }
+  table.q td { border:1px solid var(--line); padding:8px 8px; vertical-align:top; }
+  table.q td.opt { text-align:center; vertical-align:middle; cursor:pointer; }
+  table.q td.opt input { width:18px; height:18px; cursor:pointer; }
+  table.q tr.missing td { background:#fdecea; }
+  table.q tr.answered td:first-child { border-left:3px solid var(--ok); }
+  .stmt b { color:#1c2230; }
+  .eg { color:var(--muted); }
+  .other { margin-top:8px; }
+  .other small { color:var(--muted); }
+  .subs { margin-top:10px; border:1px solid var(--line); border-radius:8px; padding:10px 12px; background:#fafbfe; }
+  .subs .hint { color:var(--muted); font-size:.85rem; margin-bottom:6px; }
+  .subs label { display:flex; gap:8px; align-items:flex-start; font-size:.9rem; margin:4px 0; }
+  .msg { padding:10px 14px; border-radius:6px; margin:12px 0; display:none; }
+  .msg.err { background:#fdecea; color:var(--err); display:block; }
+  .msg.ok { background:#e6f5ec; color:var(--ok); display:block; }
+  .end { text-align:center; color:var(--muted); margin-top:20px; }
+  .actions { display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end; margin-top:16px; }
+  @media (max-width:700px) {
+    .fields { grid-template-columns:1fr; }
+    table.q th { font-size:.7rem; padding:6px 2px; }
+    table.q th:first-child { width:44%; }
+  }
+  @media print {
+    .site-top, .bar, nav.toc, .actions, .btn { display:none !important; }
+    body { background:#fff; }
+    section.part { border:0; padding:0; page-break-inside:auto; }
+    table.q tr { page-break-inside:avoid; }
+    header { background:#fff; color:var(--brand); padding:0 0 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="site-top"><div class="in">
+  <a class="brand" href="index.html"><img src="assets/ai4digit-logo.png" alt=""><span><b>AI4DigiT</b><span>European Digital Innovation Hub</span></span></a>
+  <span class="sp"></span>
+  <a class="back" href="index.html">← ai4digit.eu</a>
+  <img class="eu" src="assets/eu-cofunded.png" alt="Co-funded by the European Union">
+</div></div>
+<header>
+  <h1>SME Digital Maturity Assessment (DMA2) Questionnaire – T0</h1>
+  <p>AI4DigiT European Digital Innovation Hub</p>
+</header>
+
+<div class="bar">
+  <div class="progress" title="Answered statements"><div id="pbar"></div></div>
+  <span class="count" id="pcount">0 / 0 statements answered</span>
+  <button class="btn ghost" type="button" onclick="window.print()">Print / PDF</button>
+  <button class="btn ghost" type="button" id="btnExport">Export JSON</button>
+  <button class="btn ghost" type="button" id="btnCsv">Export CSV</button>
+  <button class="btn ghost" type="button" id="btnReset">Clear</button>
+</div>
+
+<main>
+  <nav class="toc" id="toc"></nav>
+  <form id="dma" novalidate>
+
+    <section class="part" id="partA">
+      <h2>Part A – SME Registration</h2>
+      <p class="intro">These are the details needed to register the SME on the DMA platform before the T0 assessment. Fields marked <b style="color:var(--err)">*</b> are required.</p>
+      <div class="notice"><b>Important notice:</b> When creating a new SME, choose between DMA1 and DMA2. This choice cannot be changed later, as the same DMAT version must be used throughout the entire client's journey.</div>
+
+      <h3 id="a1">A1. Enterprise and contact details</h3>
+      <div class="fields" id="a1fields"></div>
+
+      <h3 id="a2">A2. Sector of activity (NACE Rev. 2.1)</h3>
+      <p class="intro">Primary sector <b style="color:var(--err)">*</b> — select ONE section (letter). Subsectors — tick UP TO THREE subsectors (number). Subsectors are grouped under the section they belong to.</p>
+      <div class="fields">
+        <label class="fld full"><span>Primary sector <b>*</b></span>
+          <select name="primary_sector" id="primary_sector" required><option value="">— Select a section —</option></select>
+        </label>
+      </div>
+      <div class="subs" id="subsWrap">
+        <div class="hint" id="subsHint">Select a primary sector to see its subsectors. You may tick up to three subsectors in total (from any section).</div>
+        <div id="subsList"></div>
+        <details style="margin-top:8px"><summary style="cursor:pointer;color:var(--brand2);font-size:.9rem">Show subsectors from all sections</summary><div id="subsAll"></div></details>
+      </div>
+      <p class="intro" style="font-size:.82rem">Source: sector list as shown in the DMA platform's "Create SME" dropdowns (NACE Rev. 2.1).</p>
+    </section>
+
+    <section class="part" id="partB">
+      <h2>Part B – DMA-T0 Questionnaire</h2>
+      <p class="intro">The questions that follow aim to measure the digital maturity of your enterprise. This information will help to characterise the departing point of the digital transformation journey of your enterprise, identifying areas where it might need EDIH support. It will also help to assess the services eventually provided by the EDIH to your enterprise as well as to fine tune the EU policies and financial instruments supporting EDIHs.</p>
+      <p class="intro"><b>How to answer:</b> For each statement, select one option only. All statements are mandatory; "Other (please specify)" and "Comments" fields are optional.</p>
+
+      <h3 id="s1">Section 1 – Customer Data (General Data)</h3>
+      <div class="fields">
+        <label class="fld"><span>Maturity assessment date <b>*</b></span><input type="date" name="s1_date" required></label>
+        <label class="fld"><span>Name of the enterprise supported by the EDIH</span><input type="text" name="s1_name" id="s1_name"></label>
+        <label class="fld"><span>Fiscal registration number (VAT or equivalent)</span><input type="text" name="s1_vat" id="s1_vat"></label>
+        <label class="fld full"><span>Comments</span><textarea name="s1_comments" maxlength="2000"></textarea></label>
+      </div>
+
+      <div id="sections"></div>
+
+      <div id="msg" class="msg"></div>
+      <div class="actions">
+        <button class="btn ghost" type="button" onclick="window.print()">Print / PDF</button>
+        <button class="btn" type="submit">Check and submit</button>
+      </div>
+      <p class="end">End of questionnaire. Thank you for completing the Digital Maturity Assessment.</p>
+    </section>
+  </form>
+</main>
+
+<script>
+const EXTENT = ["Not at all", "To a small extent", "To some extent", "To a large extent"];
+const ADOPT  = ["No", "No, but we are prototyping and testing", "No, but we are implementing", "Yes, it is operational"];
+
+const A1 = [
+  ["name", "Name of the enterprise supported by the EDIH", "text", true],
+  ["vat", "Fiscal registration number (VAT or equivalent)", "text", true],
+  ["description", "Description", "textarea", false],
+  ["pic", "PIC Number", "text", false],
+  ["contact", "Contact person", "text", false],
+  ["role", "Role in the enterprise", "text", false],
+  ["email", "Email address", "email", false],
+  ["phone", "Telephone", "tel", false],
+  ["website", "Website (external URL, e.g. https://example.com)", "url", false],
+  ["size", "Staff size", "radio", true, ["Micro-size (1–9)", "Small-size (10–49)", "Medium-size (50–249)", "Small mid-cap (250–499 employees)", "Mid-cap (500–2999 employees)", "Large company (> 3000 employees)"]],
+  ["founded", "Enterprise foundation year (1900–2026)", "year", false],
+  ["country", "Country", "text", true, null, "Albania"],
+  ["region", "Region (NUTS2)", "radio", true, ["Central Albania", "Northern Albania", "Southern Albania"]],
+  ["address", "Address", "text", false],
+  ["department", "Department or organisation", "text", false],
+  ["attachments", "Attachments (txt, doc, docx, pdf, odt; max. 200 MB per file)", "file", false],
+];
+
+const NACE = [
+  ["A","AGRICULTURE, FORESTRY AND FISHING",[["01","Crop and animal production, hunting and related service activities"],["02","Forestry and logging"],["03","Fishing and aquaculture"]]],
+  ["B","MINING AND QUARRYING",[["05","Mining of coal and lignite"],["06","Extraction of crude petroleum and natural gas"],["07","Mining of metal ores"],["08","Other mining and quarrying"],["09","Mining support service activities"]]],
+  ["C","MANUFACTURING",[["10","Manufacture of food products"],["11","Manufacture of beverages"],["12","Manufacture of tobacco products"],["13","Manufacture of textiles"],["14","Manufacture of wearing apparel"],["15","Manufacture of leather and related products of other materials"],["16","Manufacture of wood and of products of wood and cork, except furniture; manufacture of articles of straw and plaiting materials"],["17","Manufacture of paper and paper products"],["18","Printing and reproduction of recorded media"],["19","Manufacture of coke and refined petroleum products"],["20","Manufacture of chemicals and chemical products"],["21","Manufacture of basic pharmaceutical products and pharmaceutical preparations"],["22","Manufacture of rubber and plastic products"],["23","Manufacture of other non-metallic mineral products"],["24","Manufacture of basic metals"],["25","Manufacture of fabricated metal products, except machinery and equipment"],["26","Manufacture of computer, electronic and optical products"],["27","Manufacture of electrical equipment"],["28","Manufacture of machinery and equipment n.e.c."],["29","Manufacture of motor vehicles, trailers and semi-trailers"],["30","Manufacture of other transport equipment"],["31","Manufacture of furniture"],["32","Other manufacturing"],["33","Repair, maintenance and installation of machinery and equipment"]]],
+  ["D","ELECTRICITY, GAS, STEAM AND AIR CONDITIONING SUPPLY",[["35","Electricity, gas, steam and air conditioning supply"]]],
+  ["E","WATER SUPPLY; SEWERAGE, WASTE MANAGEMENT AND REMEDIATION ACTIVITIES",[["36","Water collection, treatment and supply"],["37","Sewerage"],["38","Waste collection, recovery and disposal activities"],["39","Remediation activities and other waste management service activities"]]],
+  ["F","CONSTRUCTION",[["41","Construction of residential and non-residential buildings"],["42","Civil engineering"],["43","Specialised construction activities"]]],
+  ["G","WHOLESALE AND RETAIL TRADE",[["46","Wholesale trade"],["47","Retail trade"]]],
+  ["H","TRANSPORTATION AND STORAGE",[["49","Land transport and transport via pipelines"],["50","Water transport"],["51","Air transport"],["52","Warehousing, storage and support activities for transportation"],["53","Postal and courier activities"]]],
+  ["I","ACCOMMODATION AND FOOD SERVICE ACTIVITIES",[["55","Accommodation"],["56","Food and beverage service activities"]]],
+  ["J","PUBLISHING, BROADCASTING, AND CONTENT PRODUCTION AND DISTRIBUTION ACTIVITIES",[["58","Publishing activities"],["59","Motion picture, video and television programme production, sound recording and music publishing activities"],["60","Programming, broadcasting, news agency and other content distribution activities"]]],
+  ["K","TELECOMMUNICATION, COMPUTER PROGRAMMING, CONSULTING, COMPUTING INFRASTRUCTURE AND OTHER INFORMATION SERVICE ACTIVITIES",[["61","Telecommunication"],["62","Computer programming, consultancy and related activities"],["63","Computing infrastructure, data processing, hosting and other information service activities"]]],
+  ["L","FINANCIAL AND INSURANCE ACTIVITIES",[["64","Financial service activities, except insurance and pension funding"],["65","Insurance, reinsurance and pension funding, except compulsory social security"],["66","Activities auxiliary to financial services and insurance activities"]]],
+  ["M","REAL ESTATE ACTIVITIES",[["68","Real estate activities"]]],
+  ["N","PROFESSIONAL, SCIENTIFIC AND TECHNICAL ACTIVITIES",[["69","Legal and accounting activities"],["70","Activities of head offices and management consultancy"],["71","Architectural and engineering activities; technical testing and analysis"],["72","Scientific research and development"],["73","Activities of advertising, market research and public relations"],["74","Other professional, scientific and technical activities"],["75","Veterinary activities"]]],
+  ["O","ADMINISTRATIVE AND SUPPORT SERVICE ACTIVITIES",[["77","Rental and leasing activities"],["78","Employment activities"],["79","Travel agency, tour operator and other reservation service and related activities"],["80","Investigation and security activities"],["81","Services to buildings and landscape activities"],["82","Office administrative, office support and other business support activities"]]],
+  ["P","PUBLIC ADMINISTRATION AND DEFENCE; COMPULSORY SOCIAL SECURITY",[["84","Public administration and defence; compulsory social security"]]],
+  ["Q","EDUCATION",[["85","Education"]]],
+  ["R","HUMAN HEALTH AND SOCIAL WORK ACTIVITIES",[["86","Human health activities"],["87","Residential care activities"],["88","Social work activities without accommodation"]]],
+  ["S","ARTS, SPORTS AND RECREATION",[["90","Arts creation and performing arts activities"],["91","Libraries, archives, museums and other cultural activities"],["92","Gambling and betting activities"],["93","Sports activities and amusement and recreation activities"]]],
+  ["T","OTHER SERVICE ACTIVITIES",[["94","Activities of membership organisations"],["95","Repair and maintenance of computers, personal and household goods, and motor vehicles and motorcycles"],["96","Personal service activities"]]],
+  ["U","ACTIVITIES OF HOUSEHOLDS AS EMPLOYERS AND UNDIFFERENTIATED GOODS- AND SERVICE-PRODUCING ACTIVITIES OF HOUSEHOLDS FOR OWN USE",[["97","Activities of households as employers of domestic personnel"],["98","Undifferentiated goods- and service-producing activities of private households for own use"]]],
+  ["V","ACTIVITIES OF EXTRATERRITORIAL ORGANISATIONS AND BODIES",[["99","Activities of extraterritorial organisations and bodies"]]],
+];
+
+// [section id, title, description, [ [qid, question, scale, otherLabel, [[id, bold, example], ...]] ]]
+const SECTIONS = [
+  ["s2","Section 2 – Strategy","A digital strategy outlines how a firm uses digital technologies to achieve business goals and maintain competitiveness. It integrates digital opportunities into the business model to drive value creation. This dimension assesses how well a firm identifies digital benefits, incorporates them into business objectives, and aligns digital initiatives with strategic goals.",[
+    ["Q1","What measures do you take to digitalise your business and to what extent?",EXTENT,"Other (please specify, max. 500 characters)",[
+      ["1.1","We identify and prioritise digital opportunities","e.g., we identify tasks that can be automated; we identify opportunities for digital product enhancements or new digital products; etc."],
+      ["1.2","We analyse and evaluate digital business cases","e.g., using structured approaches to analyse costs and benefits such as return on investment (ROI); conducting feasibility studies for digital projects; etc."],
+      ["1.3","We have a clear digital roadmap","e.g., setting milestones and timelines for digital transformation; creating a strategic plan for digitalisation; etc."],
+      ["1.4","We assess and mitigate digital risks","e.g., implementing risk management for technological dependencies, cybersecurity; developing contingency plans for digital system failures; etc."],
+      ["1.5","We allocate dedicated investments and resources to digitalisation projects","e.g., budgeting for IT enhancements and digital marketing; ensuring adequate personnel to digitalisation projects; etc."],
+      ["1.6","We monitor and evaluate progress of digitalisation","e.g., tracking KPIs to see the development in real-time; using dashboards to visualise milestones; etc."]]],
+    ["Q2","How and to what extent do you leverage digital technologies in your business?",EXTENT,"Other (please specify, max. 500 characters)",[
+      ["2.1","By enhancing our business model","e.g., integrating AI to offer personalized product recommendations; implementing a data-driven pricing model to maximize revenue; etc."],
+      ["2.2","By improving decision making","e.g., using business intelligence tools to analyse market trends and adjust strategies; leveraging predictive analytics for decisions; etc."],
+      ["2.3","By designing new products and services","e.g., using digital tools to develop smart products with Internet of things (IoT) capabilities; using 3D printing for quick prototyping; etc."],
+      ["2.4","By improving customer experience","e.g., implementing a chat bot for 24/7 customer support; using augmented reality to visualize products before purchase; etc."],
+      ["2.5","By increasing internal efficiency","e.g., automating order processing to speed up deliveries; integrating supply chain management system to improve tracking; etc."],
+      ["2.6","By fostering collaboration with external partners","e.g., developing a shared platform for real-time collaboration with suppliers; using a customer portal to streamline communication and feedback; etc."]]]]],
+  ["s3","Section 3 – People","The people dimension evaluates how staff and workplace culture embrace and lead digitalisation. It focuses on empowering employees to adopt digital solutions and ensuring they have the necessary skills. This dimension assesses how well an organisation adapts its environment for digital growth and involves staff in leveraging digital opportunities.",[
+    ["Q3","How and to what extent do you advance digital skills in your business?",EXTENT,"Other (please specify, max. 500 characters)",[
+      ["3.1","We monitor digital skill needs of employees","e.g., assessing the current digital skill levels and future needs; using surveys to identify areas for digital training; etc."],
+      ["3.2","We tailor individual digital skills trainings and up-skilling","e.g., drafting comprehensive training plans; providing regular training and development opportunities; etc."],
+      ["3.3","We encourage and support continuous learning on advanced digital skills topics","e.g., offering advanced courses on emerging technologies; organising masterclasses on advanced digital topics; etc."],
+      ["3.4","We foster a culture of digital innovation and experimentation","e.g., allowing employees to test new digital solutions and ideas without fear of failure; encouraging creative problem-solving through digital hackathons; etc."],
+      ["3.5","We promote collaboration for learning","e.g., organising cross-functional teams to solve digital challenges; creating learning groups to share knowledge on new tools; etc."],
+      ["3.6","We provide efficient access to digital support","e.g., maintaining a helpdesk for technical support; partnering with external experts to assist with more specialized digital needs; etc."]]],
+    ["Q4","How and to what extent do you involve employees in your digital transformation?",EXTENT,"Other (please specify, max. 500 characters)",[
+      ["4.1","Employees participate in creating digitalisation plans","e.g., involving staff in discussions on the organisation's digital transformation; providing feedback loops for digital initiatives; etc."],
+      ["4.2","We measure staff acceptance of digital developments","e.g., conducting surveys and focus groups to understand employee perspectives on digital changes; using digital adoption metrics to assess engagement; etc."],
+      ["4.3","We review and adapt existing processes to accommodate digital solutions","e.g., adapting workflows to integrate new software tools; customizing roles to align with digital needs; etc."],
+      ["4.4","We encourage the use of digital decision-making tools","e.g., providing access to analytics platforms; offering training on tools for decision support; etc."],
+      ["4.5","We enable flexible working arrangements through digital tools","e.g., enabling remote work with collaboration software and cloud services; providing mobile solutions for on-the-go access; etc."]]]]],
+  ["s4","Section 4 – Technology","The technology dimension evaluates the extent to which an organization adopts artificial intelligence (AI) and other technologies or solutions to harness the benefits of digitalization. This dimension categorizes relevant use cases for AI and other technologies that can be employed to enhance business performance. It assesses how firms integrate technologies and use AI to improve processes and generate value for the firm.",[
+    ["Q5","Does your enterprise use any of the following digital solutions?",ADOPT,"Other digital technologies (please specify, max. 500 characters)",[
+      ["5.1","Information Management Systems to automate business processes","e.g., using customer relationship management (CRM) systems to improve customer service; implementing enterprise resource planning (ERP) systems for resource optimisation; etc."],
+      ["5.2","Robotics to automate physical tasks","e.g., using industrial robots for manufacturing tasks; deploying robotic process automation for administrative work; etc."],
+      ["5.3","Smart devices to collect and exchange data","e.g., deploying Internet of things (IoT) sensors in supply chain management; utilizing smart meters for energy consumption tracking; etc."],
+      ["5.4","Data analytics to improve decision-making","e.g., using big data analytics for informed decisions; employing predictive analytics to forecast sales trends; etc."],
+      ["5.5","Advanced computing infrastructure to process big data","e.g., implementing high-performance computing for data-intensive tasks; using cloud computing for scalable data processing; etc."],
+      ["5.6","Digital simulations of physical environments and processes","e.g., using digital twins for manufacturing process optimisation; using virtual reality for training simulations; etc."],
+      ["5.7","Distributed ledger technologies to enhance security and transparency","e.g., implementing Blockchain for secure transactions; using distributed ledgers for supply chain traceability; etc."]]],
+    ["Q6","Does your enterprise use any of the following Artificial Intelligence (AI) technologies?",ADOPT,"Other AI technologies (please specify, max. 500 characters)",[
+      ["6.1","AI technologies performing analysis of written language","e.g., text mining"],
+      ["6.2","AI technologies converting spoken language into machine-readable format","speech recognition"],
+      ["6.3","AI technologies generating written, spoken language or programming codes","natural language generation, speech synthesis"],
+      ["6.4","AI technologies generating pictures, videos, sound/audio",""],
+      ["6.5","AI technologies identifying objects or persons based on images or videos","image recognition, image processing"],
+      ["6.6","Machine learning (e.g., deep learning) for data analysis",""],
+      ["6.7","AI technologies automating different workflows or assisting in decision making","e.g., AI-based software robotic process automation"],
+      ["6.8","AI technologies enabling physical movement of machines via autonomous decisions based on observation of surroundings","autonomous robots, self-driving vehicles, autonomous drones"]]]]],
+  ["s5","Section 5 – Data","The data dimension evaluates how an organisation collects, organises, accesses, uses, and protects data. It focuses on creating data flow across the organisation to analyse patterns and quickly adapt to new information. This dimension assesses whether data quality is maintained, is readily accessible, and is secured against unauthorised access.",[
+    ["Q7","How and to what extent do you manage and leverage your data?",EXTENT,"Other (please specify, max. 500 characters)",[
+      ["7.1","We have structured how we collect, use and archive data","e.g., implementing data management systems for structured storage; establishing data governance policies for consistency; etc."],
+      ["7.2","We assess data quality and consistency","e.g., conducting regular data quality audits for accuracy and completeness; using data cleansing tools to maintain quality; etc."],
+      ["7.3","We integrate data across the organisation","e.g., using APIs for seamless data exchange; developing a centralized data warehouse for unified access; etc."],
+      ["7.4","We enrich our data by combining it with external sources","e.g., merging customer data with market trends to gain deeper insights; integrating third-party data to improve analysis; etc."],
+      ["7.5","We use data to improve our business","e.g., leveraging data to optimise operations; driving strategic decisions with data analytics; etc."]]],
+    ["Q8","How and to what extent do you secure your data and infrastructure?",EXTENT,"Other (please specify, max. 500 characters)",[
+      ["8.1","We use a comprehensive data security plan","e.g., implementing cybersecurity protocols to safeguard information; using encryption technologies to protect data; etc."],
+      ["8.2","We restrict access based on protection levels","e.g., using role-based access control for sensitive information; implementing multi-factor authentication for secure access; etc."],
+      ["8.3","We conduct regular staff training on cybersecurity and data protection","e.g., organizing workshops and simulations; providing e-learning modules on security best practices; etc."],
+      ["8.4","We monitor for cyber threats","e.g., using intrusion detection systems; employing security information and event management systems; etc."],
+      ["8.5","We ensure regular backups of critical business data","e.g., using automated systems for data redundancy and recovery; maintaining off-site backups for disaster recovery; etc."]]]]],
+  ["s6","Section 6 – Sustainability","The sustainability dimension focuses on how digitalisation supports a firm's transition to more sustainable practices. It examines how technology reduces energy and resource use, as well as greenhouse gas emissions, while recognizing the resource demands of digitalisation. This dimension assesses a firm's ability to implement digital solutions responsibly, ensuring long-term environmental protection and sustainable use of natural resources.",[
+    ["Q9","How and to what extent do you leverage digital technologies to enhance sustainability?",EXTENT,"Other (please specify, max. 500 characters)",[
+      ["9.1","We encourage sustainable use of our products and services","e.g., notifying users of their energy usage patterns; suggesting optimal maintenance to extend product life; etc."],
+      ["9.2","We track our environmental footprint","e.g., using digital tools to monitor operational impacts on energy and emissions; using digital tools to analyse carbon footprint; etc."],
+      ["9.3","We optimise energy consumption","e.g., using smart systems for real-time energy management; sensors and AI to minimise excess energy consumption; etc."],
+      ["9.4","We optimise resource use","e.g., deploying Internet of things (IoT) sensors to conserve water and materials; leveraging data to reduce raw material consumption; etc."],
+      ["9.5","We minimise waste and pollution","e.g., optimising logistics with data analytics to reduce transportation; applying digital solutions to decrease production waste; etc."]]],
+    ["Q10","How and to what extent do you mitigate the environmental impact of digital technologies?",EXTENT,"Other (please specify, max. 500 characters)",[
+      ["10.1","We purchase energy efficient hardware","e.g., purchasing servers and cooling systems with high energy efficiency; selecting products with eco-design and green certifications; etc."],
+      ["10.2","We use hardware designed with circularity in mind","e.g., recycling outdated equipment; partnering with certified e-waste disposal services; repairing, refurbishing and reusing equipment; etc."],
+      ["10.3","We optimise the energy use of our hardware","e.g., sharing servers and hardware, optimising server utilisation, low-power modes, automatic shut-down; etc."],
+      ["10.4","We optimise the energy efficiency of software design","e.g., designing software to process only necessary data, focusing on sustainable software engineering practices; etc."],
+      ["10.5","We consider the environmental standards of our partners","e.g., assessing suppliers' sustainability practices, opting for cloud services that use renewable energy and efficient data centres; etc."]]]]],
+];
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const STORE = "dma2_t0_draft";
+
+// ---- Part A1
+const a1 = document.getElementById("a1fields");
+A1.forEach(([id, label, type, req, opts, def]) => {
+  const star = req ? " <b>*</b>" : "";
+  const name = "a1_" + id;
+  let html;
+  if (type === "radio") {
+    html = `<div class="fld full"><span>${esc(label)}${star}</span><div class="chips">` +
+      opts.map(o => `<label><input type="radio" name="${name}" value="${esc(o)}"${req ? " required" : ""}> ${esc(o)}</label>`).join("") + `</div></div>`;
+  } else if (type === "textarea") {
+    html = `<label class="fld full"><span>${esc(label)}${star}</span><textarea name="${name}"></textarea></label>`;
+  } else if (type === "file") {
+    html = `<label class="fld full"><span>${esc(label)}</span><input type="file" name="${name}" multiple accept=".txt,.doc,.docx,.pdf,.odt"></label>`;
+  } else if (type === "year") {
+    html = `<label class="fld"><span>${esc(label)}${star}</span><input type="number" name="${name}" min="1900" max="2026" step="1"></label>`;
+  } else {
+    html = `<label class="fld"><span>${esc(label)}${star}</span><input type="${type}" name="${name}"${req ? " required" : ""}${def ? ` value="${esc(def)}"` : ""}${type === "url" ? ' placeholder="https://example.com"' : ""}></label>`;
+  }
+  a1.insertAdjacentHTML("beforeend", html);
+});
+
+// ---- Part A2
+const sel = document.getElementById("primary_sector");
+NACE.forEach(([l, n]) => sel.insertAdjacentHTML("beforeend", `<option value="${l}">${l} – ${esc(n)}</option>`));
+const subBox = (l, n, subs) => `<div data-sec="${l}"><div style="font-weight:600;font-size:.85rem;margin-top:8px;color:var(--brand)">${l} – ${esc(n)}</div>` +
+  subs.map(([c, t]) => `<label><input type="checkbox" name="subsector" value="${c}"> <span><b>${c}</b> ${esc(t)}</span></label>`).join("") + `</div>`;
+document.getElementById("subsAll").innerHTML = NACE.map(([l, n, s]) => subBox(l, n, s)).join("");
+const subsList = document.getElementById("subsList");
+function showSubs() {
+  const l = sel.value;
+  subsList.innerHTML = "";
+  document.querySelectorAll("#subsAll > div").forEach(d => d.style.display = (d.dataset.sec === l ? "none" : ""));
+  if (!l) return;
+  const sec = NACE.find(x => x[0] === l);
+  // move the primary section's checkboxes (keeping state) into the main list
+  const node = document.querySelector(`#subsAll > div[data-sec="${l}"]`);
+  const clone = node.cloneNode(true); clone.style.display = "";
+  clone.querySelectorAll("input").forEach(inp => {
+    const orig = node.querySelector(`input[value="${inp.value}"]`);
+    inp.checked = orig.checked;
+    inp.addEventListener("change", () => { orig.checked = inp.checked; limitSubs(inp); save(); });
+  });
+  subsList.appendChild(clone);
+}
+function limitSubs(changed) {
+  const all = [...document.querySelectorAll('#subsAll input[name="subsector"]')];
+  const n = all.filter(i => i.checked).length;
+  if (n > 3 && changed) {
+    changed.checked = false;
+    const orig = document.querySelector(`#subsAll input[value="${changed.value}"]`); if (orig) orig.checked = false;
+    alert("You can tick up to three subsectors.");
+  }
+  document.getElementById("subsHint").textContent =
+    `Subsectors selected: ${all.filter(i => i.checked).map(i => i.value).join(", ") || "none"} (maximum three, from any section).`;
+}
+sel.addEventListener("change", () => { showSubs(); save(); });
+document.getElementById("subsAll").addEventListener("change", e => { if (e.target.name === "subsector") { limitSubs(e.target); showSubs(); save(); } });
+
+// ---- Part B sections
+const secWrap = document.getElementById("sections");
+let TOTAL = 0;
+SECTIONS.forEach(([sid, stitle, sdesc, qs]) => {
+  let h = `<h3 id="${sid}">${esc(stitle)}</h3><p class="intro">${esc(sdesc)}</p>`;
+  qs.forEach(([qid, qtext, scale, otherLbl, items]) => {
+    const first = qid === "Q5" ? "Digital solution" : qid === "Q6" ? "AI technology" : "Statement";
+    h += `<h3 id="${qid}" style="color:#1c2230">${qid}. ${esc(qtext)}</h3>
+      <table class="q"><thead><tr><th>${first}</th>${scale.map(s => `<th>${esc(s)}</th>`).join("")}</tr></thead><tbody>`;
+    items.forEach(([id, bold, eg]) => {
+      TOTAL++;
+      const name = "q" + id.replace(".", "_");
+      const sep = eg ? (eg.startsWith("e.g.") ? " — " : " — ") : "";
+      h += `<tr data-q="${name}"><td class="stmt"><b>${id}</b> <b>${esc(bold)}</b>${sep}<span class="eg">${esc(eg)}</span></td>` +
+        scale.map((s, i) => `<td class="opt"><input type="radio" name="${name}" value="${i}" aria-label="${esc(id + " " + s)}"></td>`).join("") + `</tr>`;
+    });
+    h += `</tbody></table>
+      <label class="fld other"><small>${esc(otherLbl)}:</small><textarea name="${qid.toLowerCase()}_other" maxlength="500"></textarea></label>`;
+  });
+  secWrap.insertAdjacentHTML("beforeend", h);
+});
+
+// make the whole cell clickable
+secWrap.addEventListener("click", e => {
+  const td = e.target.closest("td.opt");
+  if (td && e.target.tagName !== "INPUT") { const r = td.querySelector("input"); r.checked = true; r.dispatchEvent(new Event("change", {bubbles:true})); }
+});
+
+// ---- TOC
+document.getElementById("toc").innerHTML =
+  [["partA","Part A"],["a2","A2 Sector"],["s1","1 General"],["s2","2 Strategy"],["s3","3 People"],["s4","4 Technology"],["s5","5 Data"],["s6","6 Sustainability"]]
+  .map(([id, t]) => `<a href="#${id}">${t}</a>`).join("");
+
+// ---- progress
+const form = document.getElementById("dma");
+function progress() {
+  let n = 0;
+  document.querySelectorAll("tr[data-q]").forEach(tr => {
+    const ok = !!tr.querySelector("input:checked");
+    tr.classList.toggle("answered", ok);
+    if (ok) { n++; tr.classList.remove("missing"); }
+  });
+  document.getElementById("pbar").style.width = (100 * n / TOTAL) + "%";
+  document.getElementById("pcount").textContent = `${n} / ${TOTAL} statements answered`;
+}
+
+// ---- Part B Section 1 mirrors Part A names unless edited
+form.addEventListener("input", e => {
+  if (e.target.name === "a1_name" && !document.getElementById("s1_name").dataset.edited) document.getElementById("s1_name").value = e.target.value;
+  if (e.target.name === "a1_vat" && !document.getElementById("s1_vat").dataset.edited) document.getElementById("s1_vat").value = e.target.value;
+  if (e.target.id === "s1_name" || e.target.id === "s1_vat") e.target.dataset.edited = "1";
+});
+
+// ---- save / restore (browser only)
+function collect() {
+  const data = {};
+  new FormData(form).forEach((v, k) => {
+    if (v instanceof File) return;
+    if (k === "subsector") return;
+    data[k] = v;
+  });
+  data.subsectors = [...document.querySelectorAll('#subsAll input[name="subsector"]:checked')].map(i => i.value);
+  return data;
+}
+function save() { try { localStorage.setItem(STORE, JSON.stringify(collect())); } catch (e) {} progress(); }
+function restore() {
+  let d; try { d = JSON.parse(localStorage.getItem(STORE) || "null"); } catch (e) {}
+  if (!d) return;
+  Object.entries(d).forEach(([k, v]) => {
+    if (k === "subsectors") return;
+    form.querySelectorAll(`[name="${k}"]`).forEach(el => {
+      if (el.type === "radio") el.checked = el.value === v;
+      else if (el.type !== "file") el.value = v;
+    });
+  });
+  (d.subsectors || []).forEach(c => { const i = document.querySelector(`#subsAll input[value="${c}"]`); if (i) i.checked = true; });
+  showSubs(); limitSubs();
+}
+form.addEventListener("change", save);
+form.addEventListener("input", () => { clearTimeout(window._t); window._t = setTimeout(save, 400); });
+
+// ---- export
+function download(name, text, type) {
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([text], {type}));
+  a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+function fileStem() { return "DMA2_T0_" + ((form.a1_name.value || "SME").replace(/[^\w-]+/g, "_")); }
+document.getElementById("btnExport").onclick = () => {
+  const d = collect();
+  // add readable answer labels
+  const labels = {};
+  SECTIONS.forEach(s => s[3].forEach(([qid, , scale, , items]) => items.forEach(([id]) => {
+    const v = d["q" + id.replace(".", "_")]; labels[id] = v === undefined ? null : {value: +v, label: scale[+v]};
+  })));
+  download(fileStem() + ".json", JSON.stringify({questionnaire: "DMA2 – T0", exported: new Date().toISOString(), fields: d, answers: labels}, null, 2), "application/json");
+};
+document.getElementById("btnCsv").onclick = () => {
+  const d = collect(), rows = [["Item", "Question / field", "Answer"]];
+  A1.forEach(([id, label]) => rows.push(["A1", label, d["a1_" + id] || ""]));
+  rows.push(["A2", "Primary sector", d.primary_sector || ""]);
+  rows.push(["A2", "Subsectors", (d.subsectors || []).join(" ")]);
+  rows.push(["S1", "Maturity assessment date", d.s1_date || ""], ["S1", "Name of the enterprise", d.s1_name || ""], ["S1", "Fiscal registration number", d.s1_vat || ""], ["S1", "Comments", d.s1_comments || ""]);
+  SECTIONS.forEach(s => s[3].forEach(([qid, , scale, , items]) => {
+    items.forEach(([id, bold]) => { const v = d["q" + id.replace(".", "_")]; rows.push([id, bold, v === undefined ? "" : scale[+v]]); });
+    rows.push([qid + " other", "Other (please specify)", d[qid.toLowerCase() + "_other"] || ""]);
+  }));
+  const csv = rows.map(r => r.map(c => `"${String(c).replace(/"/g, '""')}"`).join(",")).join("\r\n");
+  download(fileStem() + ".csv", "﻿" + csv, "text/csv");
+};
+document.getElementById("btnReset").onclick = () => {
+  if (!confirm("Clear all answers on this device?")) return;
+  localStorage.removeItem(STORE); form.reset(); sel.value = ""; showSubs(); limitSubs();
+  document.querySelectorAll("tr[data-q]").forEach(tr => tr.classList.remove("missing"));
+  document.getElementById("msg").className = "msg"; progress();
+};
+
+// ---- validation
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  const problems = [];
+  A1.filter(f => f[3]).forEach(([id, label, type]) => {
+    const els = form.querySelectorAll(`[name="a1_${id}"]`);
+    const ok = type === "radio" ? [...els].some(x => x.checked) : els[0].value.trim() !== "";
+    if (!ok) problems.push(label);
+  });
+  const email = form.a1_email.value.trim();
+  if (email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) problems.push("Email address (invalid format)");
+  const web = form.a1_website.value.trim();
+  if (web && !/^https?:\/\/\S+$/.test(web)) problems.push("Website (must start with http:// or https://)");
+  const yr = form.a1_founded.value;
+  if (yr && (yr < 1900 || yr > 2026)) problems.push("Enterprise foundation year (1900–2026)");
+  if (!sel.value) problems.push("Primary sector");
+  if (!form.s1_date.value) problems.push("Maturity assessment date");
+  const missing = [];
+  document.querySelectorAll("tr[data-q]").forEach(tr => {
+    const ok = !!tr.querySelector("input:checked");
+    tr.classList.toggle("missing", !ok);
+    if (!ok) missing.push(tr.dataset.q.slice(1).replace("_", "."));
+  });
+  if (missing.length) problems.push(`Unanswered statements: ${missing.join(", ")}`);
+  const msg = document.getElementById("msg");
+  save();
+  if (problems.length) {
+    msg.className = "msg err";
+    msg.innerHTML = "<b>Please complete the following:</b><ul>" + problems.map(p => `<li>${esc(p)}</li>`).join("") + "</ul>";
+    const firstMissing = document.querySelector("tr.missing");
+    (firstMissing || msg).scrollIntoView({behavior: "smooth", block: "center"});
+  } else {
+    msg.className = "msg ok";
+    msg.textContent = "Sending your answers to AI4DigiT…";
+    const body = new URLSearchParams({payload: JSON.stringify(collect()), website: ""});
+    const SUBMIT = /(^|\.)ai4digit\.eu$/.test(location.hostname) && location.hostname !== "portal.ai4digit.eu"
+      ? "https://portal.ai4digit.eu/dma/submit" : "/dma/submit";
+    fetch(SUBMIT, {method: "POST", body, credentials: "same-origin"})
+      .then(r => r.json().then(j => ({ok: r.ok, j})))
+      .then(({ok, j}) => {
+        if (!ok || !j.ok) throw new Error(j.error || "not saved");
+        msg.className = "msg ok";
+        msg.textContent = `Thank you — your questionnaire has been submitted to AI4DigiT (reference #${j.id}). You can still use Print / PDF to keep a copy.`;
+      })
+      .catch(err => {
+        msg.className = "msg err";
+        msg.textContent = "The answers could not be sent (" + err.message + "). They are kept in this browser: please try again, or use Export JSON / CSV and email the file to info@ai4digit.eu.";
+      })
+      .finally(() => msg.scrollIntoView({behavior: "smooth", block: "center"}));
+  }
+});
+
+restore();
+progress();
+</script>
+<script data-goatcounter="https://stats.ai4digit.eu/count" async src="https://stats.ai4digit.eu/count.js"></script>
+<script defer src="https://analytics.ai4digit.eu/script.js" data-website-id="20dfb4e6-2be8-4b26-b853-823042162b34" data-domains="ai4digit.eu,www.ai4digit.eu"></script>
+</body>
+</html>
