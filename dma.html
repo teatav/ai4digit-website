@@ -73,6 +73,13 @@
   .msg { padding:10px 14px; border-radius:6px; margin:12px 0; display:none; }
   .msg.err { background:#fdecea; color:var(--err); display:block; }
   .msg.ok { background:#e6f5ec; color:var(--ok); display:block; }
+  .thanks { text-align:center; padding:40px 28px; }
+  .thanks h2 { font-size:1.8rem; margin:6px 0 14px; }
+  .thanks .big { font-size:1.08rem; max-width:680px; margin:10px auto; }
+  .thanks hr { border:0; border-top:1px solid var(--line); max-width:520px; margin:20px auto; }
+  .thanks .tick { width:64px; height:64px; line-height:64px; border-radius:50%; background:var(--ok); color:#fff; font-size:2rem; margin:0 auto; }
+  body.done .bar, body.done nav.toc { display:none; }
+  @media print { .thanks { display:none !important; } body.done #dma { display:block !important; } }
   .end { text-align:center; color:var(--muted); margin-top:20px; }
   .actions { display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end; margin-top:16px; }
   @media (max-width:700px) {
@@ -111,6 +118,17 @@
 </div>
 
 <main>
+  <section class="part thanks" id="thanks" hidden>
+    <div class="tick">✓</div>
+    <h2>Thank you!</h2>
+    <p class="big">Your questionnaire has been submitted to AI4DigiT<span id="thanksRef"></span>.</p>
+    <p class="big">We will shortly send you the analysis of your Digital Maturity Assessment and get in contact with you.</p>
+    <hr>
+    <p class="big" lang="sq"><b>Faleminderit!</b> Pyetësori juaj iu dërgua AI4DigiT. Së shpejti do t'ju dërgojmë analizën e Vlerësimit të Maturitetit Digjital dhe do të kontaktojmë me ju.</p>
+    <p class="actions" style="justify-content:center">
+      <button class="btn ghost" type="button" id="btnPrintCopy">Print / PDF a copy of my answers</button>
+    </p>
+  </section>
   <nav class="toc" id="toc"></nav>
   <form id="dma" novalidate>
 
@@ -549,17 +567,24 @@ form.addEventListener("submit", e => {
       .then(r => r.json().then(j => ({ok: r.ok, j})))
       .then(({ok, j}) => {
         if (!ok || !j.ok) throw new Error(j.error || "not saved");
-        msg.className = "msg ok";
-        msg.textContent = `Thank you — your questionnaire has been submitted to AI4DigiT (reference #${j.id}). You can still use Print / PDF to keep a copy.`;
+        msg.className = "msg";
+        document.getElementById("thanksRef").textContent = j.id ? ` (reference #${j.id})` : "";
+        form.hidden = true;
+        document.body.classList.add("done");
+        document.getElementById("thanks").hidden = false;
+        try { localStorage.removeItem(STORE); } catch (e) {}   // the next questionnaire starts empty
+        window.scrollTo({top: 0, behavior: "smooth"});
+        return;
       })
       .catch(err => {
         msg.className = "msg err";
         msg.textContent = "The answers could not be sent (" + err.message + "). They are kept in this browser: please try again, or use Export JSON / CSV and email the file to info@ai4digit.eu.";
-      })
-      .finally(() => msg.scrollIntoView({behavior: "smooth", block: "center"}));
+        msg.scrollIntoView({behavior: "smooth", block: "center"});
+      });
   }
 });
 
+document.getElementById("btnPrintCopy").onclick = () => window.print();
 restore();
 // timepoint: a link such as dma.html?t=T1 preselects the follow-up round
 const tpSel = document.getElementById("s1_timepoint");
